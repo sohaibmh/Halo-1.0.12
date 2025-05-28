@@ -1,0 +1,10 @@
+<div class="accordion-block sidebarBlock bg-white b-r-16">
+    {{> components/faceted-search/faceted-search-navigation}}
+
+    <div id="facetedSearch-content--{{dashcase facet}}" class="accordion-content{{#unless start_collapsed}} is-open{{/unless}}">
+        {{> components/faceted-search/range-form}}
+    </div>
+    {{#if selected}}
+        <a href="{{remove_url}}" class="facetedSearch-clearLink remove-item d-block color-heading u-u u-p-u" data-faceted-search-facet>{{lang 'search.faceted.clear'}}</a>
+    {{/if}}
+</div>

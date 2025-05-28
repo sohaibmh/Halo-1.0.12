@@ -1,0 +1,37 @@
+{{#if theme_settings.halo_label_product}}
+    <div class="halo-badges left">
+        {{#each productsnew}}
+            {{#if id '==' ../id}}
+                <div class="new-badge halo-badge center">
+                    <span class="text f-root f-size-small-tb f-size-tiny-mb">{{lang 'products.new_label'}}</span>
+                </div>
+            {{/if}}
+        {{/each}}
+        {{#or price.non_sale_price_with_tax price.non_sale_price_without_tax}}
+            <div class="sale-badge halo-badge center">
+                {{#if theme_settings.sale_badges_type '==' 'percent'}}
+                    {{#if price.non_sale_price_with_tax}}
+                        <span class="text f-root f-size-small-tb f-size-tiny-mb">{{lang 'products.sale_label'}}{{round (subtract 100 (multiply (divide price.with_tax.value price.non_sale_price_with_tax.value) 100)) 0}}%</span>
+                    {{/if}}
+                    {{#if price.non_sale_price_without_tax}}
+                        <span class="text f-root f-size-small-tb f-size-tiny-mb">{{lang 'products.sale_label'}}{{round (subtract 100 (multiply (divide price.without_tax.value price.non_sale_price_without_tax.value) 100)) 0}}%</span>
+                    {{/if}}
+                {{else}}
+                    <span class="text f-root f-size-small-tb f-size-tiny-mb">{{lang 'products.badge_sale'}}</span>
+                {{/if}}
+            </div>
+        {{/or}}
+        {{#each custom_fields}}
+            {{#if name '===' '__customlabel'}}
+                <div class="custom-badge halo-badge center">
+                    <span class="text f-root f-size-small-tb f-size-tiny-mb">{{{value}}}</span>
+                </div>
+            {{/if}}
+        {{/each}}
+        {{#if out_of_stock_message}}
+            <div class="soldOut-badge halo-badge center">
+                <span class="text f-root f-size-small-tb f-size-tiny-mb">{{lang 'products.sold_out'}}</span>
+            </div>
+        {{/if}}
+    </div>
+{{/if}}

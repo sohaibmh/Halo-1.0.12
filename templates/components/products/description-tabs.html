@@ -1,0 +1,78 @@
+<ul class="tabs" data-tab>
+    {{#if product.description}}
+        <li class="tab is-active">
+            <a class="tab-title" href="#tab-description">{{lang 'products.description'}}</a>
+        </li>
+    {{/if}}
+    {{#if product.warranty}}
+        <li class="tab">
+            <a class="tab-title" href="#tab-warranty">{{lang 'products.warranty'}}</a>
+        </li>
+    {{/if}}
+    {{#if theme_settings.show_shipping_tab}}
+        <li class="tab">
+            <a class="tab-title" href="#tab-shipping">{{theme_settings.show_shipping_tab}}</a>
+        </li>
+    {{/if}}
+    {{#if theme_settings.show_custom_tab}}
+        <li class="tab">
+            <a class="tab-title" href="#tab-custom">{{theme_settings.show_custom_tab}}</a>
+        </li>
+    {{/if}}
+</ul>
+<div class="tabs-contents m-0">
+    {{#if product.description}}
+        <div class="tab-content b-r-24" id="tab-description">
+            <div class="toggle-title">
+                <a class="toggleLink is-open" data-collapsible href="#tab-description-mobile">
+                    <span class="text">{{lang 'products.description'}}</span>
+                    <span class="icon-plus">&nbsp;</span>
+                </a>
+            </div>
+            <div class="toggle-content is-open" id="tab-description-mobile">
+                {{{product.description}}}
+            </div>
+        </div>
+    {{/if}}
+    {{#if product.warranty}}
+        <div class="tab-content b-r-24" id="tab-warranty">
+            <div class="toggle-title">
+                <a class="toggleLink" data-collapsible href="#tab-warranty-mobile">
+                    <span class="text">{{lang 'products.warranty'}}</span>
+                    <span class="icon-plus">&nbsp;</span>
+                </a>
+            </div>
+            <div class="toggle-content" id="tab-warranty-mobile">
+                <div class="warranty-text">{{{product.warranty}}}</div>
+            </div>
+        </div>
+    {{/if}}
+    {{#if theme_settings.show_shipping_tab}}
+        <div class="tab-content b-r-24" id="tab-shipping">
+            <div class="toggle-title">
+                <a class="toggleLink" data-collapsible href="#tab-shipping-mobile">
+                    <span class="text">{{theme_settings.show_shipping_tab}}</span>
+                    <span class="icon-plus">&nbsp;</span>
+                </a>
+            </div>
+            <div class="toggle-content" id="tab-shipping-mobile">
+                {{{region name="product_tab_shipping_content"}}}
+                {{{region name="product_tab_shipping_content--global"}}}
+            </div>
+        </div>
+    {{/if}}
+    {{#if theme_settings.show_custom_tab}}
+        <div class="tab-content b-r-24" id="tab-custom">
+            <div class="toggle-title">
+                <a class="toggleLink" data-collapsible href="#tab-custom-mobile">
+                    <span class="text">{{theme_settings.show_custom_tab}}</span>
+                    <span class="icon-plus">&nbsp;</span>
+                </a>
+            </div>
+            <div class="toggle-content" id="tab-custom-mobile">
+                {{{region name="product_tab_custom_content"}}}
+                {{{region name="product_tab_custom_content--global"}}}
+            </div>
+        </div>
+    {{/if}}
+</div>

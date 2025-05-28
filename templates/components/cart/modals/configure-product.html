@@ -1,0 +1,88 @@
+<div class="modal-header">
+    <h2 class="modal-header-title">{{lang 'cart.edit_product' name=product.title}}</h2>
+    <button class="modal-close" type="button" title="Close">
+        <span class="aria-description--hidden">Close</span>
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+<div class="modal-body haloCustomScrollbar">
+    <div class="product-edit-wrapper" data-count="0">
+        <div class="product-edit-item product-edit-itemFirst" data-product-edit-id="{{product.id}}" data-product-edit-item-id>
+            <div class="product-edit-itemLeft">
+                <div class="product-edit-image">
+                    <img src="{{getImage product.main_image 'productthumb_size'}}" alt="{{product.title}}" title="{{product.title}}">
+                    <a class="remove" href="#" arial-label="Remove" title="Remove" data-edit-cart-remove>
+                        <svg class="icon"><use xlink:href="#icon-close"></use></svg>
+                    </a>
+                </div>
+                <div class="product-edit-content">
+                    <div class="product-edit-title m-b-8">
+                        <a class="f-semibold" href="{{product.url}}">{{product.title}}</a>
+                    </div>
+                    <div class="product-edit-variant m-b-8"></div>
+                    <div class="product-edit-price">
+                        {{#or customer (unless settings.hide_price_from_guests)}}
+                            {{> components/products/price price=product.price}}
+                        {{else}}
+                            {{> components/common/login-for-pricing}}
+                        {{/or}}
+                    </div>
+                    <div class="product-edit-increment">
+                        <label class="form-label d-none">{{lang 'cart.checkout.quantity'}}</label>
+                        <div class="form-increment" data-cart-edit-item-quantity>
+                            <button class="button button--icon" data-cart-itemid="{{id}}" data-action="dec">
+                                <span class="is-srOnly">{{lang 'products.quantity_decrease'}}</span>
+                            </button>
+                            <input class="form-input form-input--incrementTotal"
+                                id="qty-{{id}}"
+                                name="qty[]"
+                                type="tel"
+                                value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+                                data-quantity-min="{{product.min_purchase_quantity}}"
+                                data-quantity-max="{{product.max_purchase_quantity}}"
+                                data-preval=""
+                                min="1"
+                                pattern="[0-9]*"
+                                aria-live="polite"
+                                data-cart-itemid="{{id}}"
+                            >
+                            <button class="button button--icon" data-cart-itemid="{{id}}" data-action="inc">
+                                <span class="is-srOnly">{{lang 'products.quantity_increase'}}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-edit-itemRight">
+                <div class="product-edit-change" data-product-edit-option-change>
+                    <form class="form" method="post" action="cart.php" enctype="multipart/form-data">
+                        <input type="hidden" name="action" value="add">
+                        <input type="hidden" name="product_id" value="{{product.id}}"/>
+                        {{#if product.cart_order_source}}
+                            <input type="hidden" name="cart_order_source" value="{{product.cart_order_source}}"/>
+                        {{/if}}
+                        <input type="hidden" name="qty[]" value=""/>
+                        <div class="product-edit-option halo-productOptions halo-options"></div>
+                    </form>
+                </div>
+                {{#if theme_settings.halo_stock_level}}
+                    <div class="product-edit-optionsStock u-hiddenVisually">
+                        <span>Hurry! Only </span>
+                        <span data-stock-left></span>
+                        <span> left</span>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="product-edit-action">
+        <div class="product-add-more">
+            <a class="add-more" href="#" data-edit-cart-add-more>
+                <span class="text">{{lang 'cart.checkout.add_more'}}</span>
+            </a>
+        </div>
+        <div class="product-edit-button">
+            <button class="button button--primary" data-edit-cart-add-to-cart>{{lang 'products.add_to_cart'}}</button>
+        </div>
+    </div>
+</div>

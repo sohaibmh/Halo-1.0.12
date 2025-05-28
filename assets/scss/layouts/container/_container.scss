@@ -1,0 +1,71 @@
+// =============================================================================
+// GRID (CSS)
+// =============================================================================
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    width: layout("fixed");
+
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    &.container--large {
+        max-width: 1670px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &.container--medium {
+        max-width: 1470px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    &.container--small {
+        max-width: 1270px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &.container-full {
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @include smin-s {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    @include smin-xxl {
+        max-width: 1670px;
+
+        &.container-1200 {
+            max-width: 1270px;
+        }
+        
+        &.container-1400 {
+            max-width: 1470px;
+        }
+
+        &.container-1500 {
+            max-width: 1570px;
+        }
+
+        &.container-1600 {
+            max-width: 1670px;
+        }
+
+        &.container-1800 {
+            max-width: 1870px;
+        }
+    }
+}

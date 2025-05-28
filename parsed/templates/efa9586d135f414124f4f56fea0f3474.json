@@ -1,0 +1,3 @@
+{
+  "components/products/custom-fields": "{{#each product.custom_fields}}\n    {{#startsWith '__' name}}\n    {{else}}\n        <div class=\"productView-info-item\">\n            <span class=\"productView-info-name {{chop name}}\">{{name}}:</span>\n            <span class=\"productView-info-value {{chop name}}\">{{{ sanitize value}}}</span>\n        </div>\n    {{/startsWith}}\n{{/each}}"
+}

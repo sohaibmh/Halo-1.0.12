@@ -1,0 +1,58 @@
+// =============================================================================
+// WRITE A REVIEW (CSS)
+// =============================================================================
+
+.writeReview-productDetails {
+    margin-bottom: 40px;
+
+    @include breakpoint("medium") {
+        @include grid-column(6);
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .product-brand {
+        color: $productView-brand-link-color;
+        margin: 15px 0;
+    }
+
+    .product-title {
+        margin-top: 0;
+    }
+}
+
+
+.writeReview-form {
+
+    @include breakpoint("medium") {
+        @include grid-column(6);
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .form-fieldset .form-field--textarea {
+        margin-bottom: 15px;
+    }
+
+    .form-field--submit {
+        margin-top: 5px;
+        
+        .button {
+            min-width: 210px;
+        }
+    }
+}
+
+.writeReview-productImage-container {
+    position: relative;
+
+    img {
+        @include lazy-loaded-img;
+        height: 100%;
+        object-fit: contain;
+        /* Object-fit polyfill */
+        font-family: 'object-fit: contain;';
+    }
+
+    @include lazy-loaded-padding('product_size');
+}

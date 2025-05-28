@@ -1,0 +1,102 @@
+{{#if theme_settings.halo_stickyAddToCart}}
+    <div id="halo_sticky_addToCart" class="{{#if theme_settings.halo_stickyAddToCartMB}}halo_sticky_addToCart_mb{{/if}}">
+        <div class="container container--large">
+            <div class="item item-product">
+                <div class="product-wrapper">
+                    <div class="product-image" data-image-gallery-main>
+                        <img src="{{getImage product.main_image 'productcart_size' (cdn ../theme_settings.default_image_product)}}" data-main-image alt="{{product.title}}" title="{{product.title}}">
+                    </div>
+                    <div class="product-content">
+                        <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+                        <div class="productView-price">
+                            {{#or customer (unless settings.hide_price_from_guests)}}
+                                {{> components/products/price price=product.price schema_org=schema}}
+                            {{else}}
+                                {{> components/common/login-for-pricing}}
+                            {{/or}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="background-overlay"></div>
+                <form class="form form-popup product-main" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add-2>
+                    <input type="hidden" name="action" value="add">
+                    <input type="hidden" name="product_id" value="{{product.id}}"/>
+                    <div class="form-field form-field--increments">
+                        <label class="form-label form-label--alternate" for="qty-sticky">{{lang 'products.quantity'}}</label>
+                        <div class="form-increment" data-quantity-change>
+                            <button class="button button--icon" data-action="dec">
+                                <span class="is-srOnly">{{lang 'products.quantity_decrease' name=product.title}}</span>
+                            </button>
+                            <input class="form-input form-input--incrementTotal"
+                                id="qty-sticky[]"
+                                name="qty[]"
+                                type="tel"
+                                value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+                                data-quantity-min="{{product.min_purchase_quantity}}"
+                                data-quantity-max="{{product.max_purchase_quantity}}"
+                                min="1"
+                                pattern="[0-9]*"
+                                aria-live="polite"
+                            >
+                            <button class="button button--icon" data-action="inc">
+                                <span class="is-srOnly">{{lang 'products.quantity_increase' name=product.title}}</span>
+                            </button>
+                        </div>
+                    </div>
+                    {{#or customer (unless settings.hide_price_from_guests)}}
+                        <div class="form-action">
+                            <button id="form-action-addToCart-2" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--secondary halothemes"  {{#if product.can_purchase}}{{else}}disabled {{/if}}>
+                                <span>{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}</span>
+                            </button>
+
+                            {{#if product.options}}
+                                <button type="button" aria-label="Choose Option" class="button button--secondary choose_options_add">
+                                    <span>Choose Option</span>
+                                </button>
+                            {{/if}}
+                        </div>
+                        {{{snippet 'product_addtocart'}}}
+                    {{/or}}
+
+                    {{#if product.options}}
+                        <div class="pop-up-option halo-productOptions halo-options">
+                            <div class="container container--large">
+                                <button class="close{{#if class_modal}} {{class_modal}}{{/if}}" type="button" title="{{lang 'common.close'}}">
+                                    <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+                                        <title>{{lang 'common.close'}}</title>
+                                        <desc>{{lang 'common.close'}}</desc>
+                                        <use xlink:href="#icon-close"></use>
+                                    </svg>
+                                </button>                            
+                                <div class="data-product-name">
+                                    <h3 class="productView-title card-ellipsis">{{product.title}}<span class="option-value"></span></h3>
+                                    <div class="productView-price">
+                                        {{#or customer (unless settings.hide_price_from_guests)}}
+                                            {{> components/products/price price=product.price}}
+                                        {{else}}
+                                            {{> components/common/login-for-pricing}}
+                                        {{/or}}
+                                    </div>
+                                </div>
+                                <div class="data-product-option{{#if product.options.length '>' 2}} data-product-option-2{{/if}} scrollbar haloCustomScrollbar" data-product-option-change-2>
+                                    {{#each product.options}}
+                                        {{{dynamicComponent 'components/halothemes/options-sticky'}}}
+                                    {{/each}}
+                                </div>
+                                {{#if product.out_of_stock}}
+                                    {{#if product.out_of_stock_message}}
+                                        {{> components/common/alert/alert-error product.out_of_stock_message}}
+                                    {{else}}
+                                        {{> components/common/alert/alert-error (lang 'products.sold_out')}}
+                                    {{/if}}
+                                {{/if}}
+                            </div>
+                        </div>
+                    {{/if}}
+                </form>
+            </div>
+        </div>
+    </div>
+{{/if}}

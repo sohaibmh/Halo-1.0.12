@@ -1,0 +1,13 @@
+// =============================================================================
+// TAGS (Settings)
+// =============================================================================
+
+
+$tag-fontSize:                      fontSize("base");
+$tag-color:                         stencilColor("color-textSecondary");
+$tag-color-hover:                   stencilColor("color-textSecondary--hover");
+$tag-paddingVertical:               10px;
+$tag-paddingHorizontal:             12px;
+$tag-padding:                       $tag-paddingVertical $tag-paddingHorizontal;
+$tag-textDecoration:                none;
+$tag-content:                       "#";

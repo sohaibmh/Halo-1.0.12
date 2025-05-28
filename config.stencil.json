@@ -1,0 +1,11 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {}
+  },
+  "normalStoreUrl": "https://prime-appliances-c9.mybigcommerce.com",
+  "port": 3000,
+  "packageManager": "npm"
+}

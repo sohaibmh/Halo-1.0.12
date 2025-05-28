@@ -1,0 +1,17 @@
+// =============================================================================
+// QUICK VIEW (CSS)
+// =============================================================================
+
+.quickView {
+    @include clearfix();
+    max-height: 730px !important;
+    overflow-x: hidden;
+
+    @include smin-m {
+        .productView-images {
+            .is-sticky & {
+                top: 0;
+            }
+        }
+    }
+}

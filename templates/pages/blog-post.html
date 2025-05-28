@@ -1,0 +1,23 @@
+---
+blog:
+    recent_posts:
+        limit: 3
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+---
+{{#partial "page"}}
+<div class="container container-1600">
+    <div class="breadcrumb-wrapper">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} 
+    </div>
+    {{> components/blog/post-detail post=blog.post show_tags=true is_blog_post=true}}
+</div>
+{{> components/halothemes/blog/blog-post-featured-2 post=blog.recent_posts}}
+
+{{/partial}}
+{{> layout/base}}

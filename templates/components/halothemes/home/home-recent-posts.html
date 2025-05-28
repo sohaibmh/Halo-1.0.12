@@ -1,0 +1,42 @@
+{{#if theme_settings.halo_recent_post}}
+    <div class="halo-block halo-block-post" data-halo-load="animation">
+        <div class="container container-1600">
+            <div class="halo-block-header center o-h">
+                <h2 class="title d-inline-block halo-fadeInUp">{{{theme_settings.halo_recent_post_title}}}</h2>
+            </div>
+            <div class="haloSwiper o-h" data-swiper-pag-des="true" data-swiper-pag-tab="true" data-swiper-pag-mob="true" data-swiper-space-des="0" data-swiper-space-tab="0" data-swiper-space-mob="0">
+                <div class="halo-recent-post swiper-wrapper disable-srollbar">
+                    {{#each post}}
+                        <div class="item swiper-slide hover-zoom pos-relative" data-index="{{add @index 1}}">
+                            {{#if thumbnail}}
+                                <div class="item-image o-h">
+                                    <a class="halo-fadeZoom image-with-overlay b-r-32" href="{{url}}">
+                                        <img class="w-100" src="{{getImage thumbnail 'theme_settings.recent_blog_size'}}" alt="{{title}}">
+                                    </a>
+                                </div>
+                            {{else}}
+                                <div class="item-image o-h">
+                                    <a class="halo-fadeZoom image-with-overlay b-r-32" href="{{url}}">
+                                        <img class="w-100" src="{{cdn 'img/placeholder-electronic.svg'}}" alt="{{title}}">
+                                    </a>
+                                </div>
+                            {{/if}}
+                            <div class="content-wrapper halo-fadeInUp">
+                                <p class="date color-custom-white m-b-16 m-b-12-tb m-b-8-mb">{{#if author}}{{lang 'blog.posted_by' name=author}} on {{/if}}{{date_published}}</p>
+                                <h4 class="m-t-0 m-b-16 m-b-12-tb m-b-8-mb">
+                                    <a class="link-line color-custom-white f-h2" href="{{url}}" aria-label="{{title}}"><span>{{title}}</span></a>
+                                </h4>
+                                {{#if summary}}
+                                    <div class="summary f-root f-size-small-tb f-size-tiny-mb w-s-normal color-custom-white m-b m-b-18-tb m-b-16-mb l-h-extra l-h-larger-tb l-h-large-mb">{{{summary}}} &hellip;</div>
+                                {{/if}}
+                                <a class="button button--tertiary m-0" href="{{url}}">{{lang 'common.read_more'}}</a>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+    {{{region name="home_below_recent_posts"}}}
+{{/if}}

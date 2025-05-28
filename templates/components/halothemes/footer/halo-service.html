@@ -1,0 +1,44 @@
+{{#if theme_settings.service}}
+    <div class="halo-block service" data-halo-load="animation">
+        <div class="container container-1600 o-h">
+            <div class="haloSwiper pos-relative p-b-38-mb" data-per-view-mob="1.2" data-per-view-tab="2" data-per-view-des="3" data-swiper-pag-mob="true" data-swiper-space-des="20" data-swiper-space-tab="20" data-swiper-space-mob="20">
+                <div class="service__wrapper swiper-wrapper disable-srollbar">
+                    <div class="service__item swiper-slide">
+                        <div class="service__content d-flex a-i-center">
+                            <div class="icon d-flex a-i-center j-c-center b-circle">
+                                <svg><use href="#icon-car"></use></svg>
+                            </div>
+                            <div class="content m-l m-l-18-tb m-l-12-mb">
+                                <h6 class="title m-t-0 m-b-16 m-b-8-mb halo-fadeInUp">{{theme_settings.service_text1}}</h6>
+                                <p class="desc m-0 f-size-small-tb f-size-tiny-mb l-h-extra halo-fadeInUp">{{{theme_settings.service_desc1}}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service__item swiper-slide">
+                        <div class="service__content d-flex a-i-center">
+                            <div class="icon d-flex a-i-center j-c-center b-circle">
+                                <svg><use href="#icon-helper-2"></use></svg>
+                            </div>
+                            <div class="content m-l m-l-18-tb m-l-12-mb">
+                                <h6 class="title m-t-0 m-b-16 m-b-8-mb halo-fadeInUp">{{theme_settings.service_text2}}</h6>
+                                <p class="desc m-0 f-size-small-tb f-size-tiny-mb l-h-extra halo-fadeInUp">{{{theme_settings.service_desc2}}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service__item swiper-slide">
+                        <div class="service__content d-flex a-i-center">
+                            <div class="icon d-flex a-i-center j-c-center b-circle">
+                                <svg><use href="#icon-quality"></use></svg>
+                            </div>
+                            <div class="content m-l m-l-18-tb m-l-12-mb">
+                                <h6 class="title m-t-0 m-b-16 m-b-8-mb halo-fadeInUp">{{theme_settings.service_text3}}</h6>
+                                <p class="desc m-0 f-size-small-tb f-size-tiny-mb l-h-extra halo-fadeInUp">{{{theme_settings.service_desc3}}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+{{/if}}

@@ -1,0 +1,7 @@
+<ul class="productGrid productListing halo-content" data-layout="{{#if theme_settings.product_list_display_mode '==' 'grid2'}}product-col2{{else if theme_settings.product_list_display_mode '==' 'grid3'}}product-col3{{/if}}">
+    {{#each products}}
+        <li class="product halo-item-child">
+            {{>components/products/card settings=../settings show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event position=(add @index 1)}}
+        </li>
+    {{/each}}
+</ul>

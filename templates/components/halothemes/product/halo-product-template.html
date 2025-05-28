@@ -1,0 +1,164 @@
+<div data-product-slide class="productCarousel-slide swiper-slide">
+    <article
+        class="card animated{{#if alternate}} card--alternate{{/if}}{{#all (if product.images.length '>=' 2) (if theme_settings.halo_card_image_swap)}} card-hover{{/all}}"
+        data-test="card-{{product.id}}"
+        data-product-id="{{product.id}}"
+        data-event-type="{{event}}"
+        data-entity-id="{{product.id}}"
+        data-position="{{position}}"
+        data-name="{{product.title}}"
+        data-product-category="
+        {{#each product.category}}
+            {{#if @last}}
+                {{this}}
+            {{else}}
+                {{this}},
+            {{/if}}
+        {{/each}}"
+        data-product-brand="{{product.brand.name}}"
+        data-product-price="
+        {{#or customer (unless settings.hide_price_from_guests)}}
+            {{#if product.price.with_tax}}
+                {{product.price.with_tax.value}}
+            {{else}}
+                {{product.price.without_tax.value}}
+            {{/if}}
+        {{else}}
+            {{lang 'common.login_for_pricing'}}
+        {{/or}}"
+        data-halo-load="animation"
+    >
+        <figure class="card-figure">
+            {{> components/products/product-badge productsnew=products.new}}
+
+            <a href="{{product.url}}"
+            class="card-figure__link pos-relative"
+            aria-label="{{> components/products/product-info}}"
+            data-event-type="product-click"
+            >
+                <div class="card-img-container halo-fadeZoom">
+                    {{> components/common/responsive-img
+                        image=product.main_image
+                        class="card-image active w-100"
+                        fallback_size=theme_settings.productgallery_size
+                        lazyload=theme_settings.lazyload_mode
+                        default_image=theme_settings.default_image_product
+                    }}
+                    {{#all (if product.images.length '>=' 2) (if theme_settings.halo_card_image_swap)}}
+                        {{#each product.images}}
+                            {{#or (if @index '==' 1) (if @index '==' 2) (if @index '==' 3)}}
+                                <span class="card-image card-image-hover">
+                                    {{> components/common/responsive-img
+                                        image=this
+                                        class="w-100"
+                                        fallback_size=../theme_settings.productgallery_size
+                                        lazyload=../theme_settings.lazyload_mode
+                                        default_image=../theme_settings.default_image_product
+                                    }}
+                                </span>
+                            {{/or}}
+                        {{/each}}
+                    {{/all}}
+                </div>
+            </a>
+            <figcaption class="card-figcaption d-block">
+                <div class="card-figcaption-body e-all d-flex a-i-end j-c- f-column w-100 h-100">
+                    {{#all settings.show_wishlist theme_settings.show_wishlist}}
+                        <a href="/wishlist.php?action=add&product_id={{product.id}}" class="item-action wishlist{{#if theme_settings.show_product_wishlist_mobile}} show-mobile{{/if}} m-b-8 z-index-1" data-product-id="{{product.id}}" aria-label="Add to Wish List">
+                            <span class="text form-option-tooltip f-size-tiny d-none">{{lang 'products.wishlist'}}</span>
+                            <svg class="icon"><use xlink:href="#icon-add-wishlist"/></svg>
+                        </a>
+                    {{/all}}
+                    {{#unless hide_product_quick_view}}
+                        {{#if theme_settings.show_product_quick_view}}
+                            <button type="button" class="item-action quickview button--quickview d-none-tb p-0 m-b-8 z-index-1" data-event-type="product-click" data-product-id="{{product.id}}" aria-label="{{lang 'products.quick_view'}}">
+                                <svg class="icon"><use xlink:href="#icon-quickview"/></svg>
+                            </button>
+                        {{/if}}
+                    {{/unless}}
+                    {{#all settings.show_compare theme_settings.show_compare}}
+                        <label class="item-action button--compare d-none-tb c-pointer z-index-1" for="compare-{{product.id}}" aria-label="{{lang 'products.compare'}}">
+                            <input class="d-none" type="checkbox" name="products[]" value="{{product.id}}" id="compare-{{product.id}}" data-compare-id="{{product.id}}">
+                            <svg class="icon"><use xlink:href="#icon-compare"/></svg>
+                        </label>
+                    {{/all}}
+                    <a class="link-image pos-absolute left-0 top-0 w-100 h-100" href="{{url}}" aria-label="{{name}}">
+                        {{#all (if product.images.length '>=' 2) (if theme_settings.halo_card_image_swap)}}
+                            <div class="hover-sections">
+                                {{#each product.images}}
+                                    {{#if @index '==' 1}}
+                                        <div class="hover-section section-{{@index}}"></div>
+                                    {{/if}}
+                                    {{#if @index '==' 2}}
+                                        <div class="hover-section section-{{@index}}"></div>
+                                    {{/if}}
+                                    {{#if @index '==' 3}}
+                                        <div class="hover-section section-{{@index}}"></div>
+                                    {{/if}}
+                                {{/each}}
+                            </div>
+                        {{/all}}
+                    </a>
+                </div>
+                {{#or customer (unless settings.hide_price_from_guests)}}
+                    {{#if product.options}}
+                        <a href="{{product.url}}" data-event-type="product-click" class="card-figcaption-button button button--tertiary d-inline-block button e-all pos-absolute left-0" data-product-id="{{product.id}}" aria-label="{{lang 'products.choose_options'}}">
+                            <span class="text f-size-large f-root-tb f-size-tiny-mb f-semibold">{{lang 'products.choose_options'}}</span>
+                        </a>
+                    {{else}}
+                        {{#if product.can_purchase }}
+                            <a href="{{product.url}}" {{#unless theme_settings.haloAjaxAddToCart}}data-event-type="product-click"{{/unless}} data-button-type="add-cart" class="card-figcaption-button button button--tertiary d-inline-block button e-all pos-absolute left-0 halo-add-to-cart" data-product-id="{{product.id}}" data-wait-message="{{lang 'products.adding_to_cart'}}" aria-label="{{lang 'products.add_to_cart'}}">
+                                <span class="text f-size-large f-root-tb f-size-tiny-mb f-semibold">{{lang 'products.add_to_cart'}}</span>
+                            </a>
+                            <span class="product-status-message aria-description--hidden">{{lang 'category.add_cart_announcement'}}</span>
+                        {{/if}}
+                    {{/if}}
+                    {{#if product.pre_order}}
+                        <a href="{{product.url}}" data-event-type="product-click" class="card-figcaption-button button button--tertiary d-inline-block button e-all pos-absolute left-0" aria-label="{{lang 'products.pre_order'}}">
+                            <span class="text f-size-large f-root-tb f-size-tiny-mb f-semibold">{{lang 'products.pre_order'}}</span>
+                        </a>
+                    {{/if}}
+                    {{#if product.out_of_stock }}
+                        {{#if product.out_of_stock_message}}
+                            <a href="{{product.url}}" data-event-type="product-click" class="card-figcaption-button button button--tertiary d-inline-block button e-all pos-absolute left-0 button--outOfStock" data-product-id="{{product.id}}" aria-label="{{product.out_of_stock_message}}">
+                                <span class="text f-size-large f-root-tb f-size-tiny-mb f-semibold">{{product.out_of_stock_message}}</span>
+                            </a>
+                        {{else}}
+                            <a href="{{product.url}}" data-event-type="product-click" class="card-figcaption-button button button--tertiary d-inline-block button e-all pos-absolute left-0 button--outOfStock" data-product-id="{{product.id}}" aria-label="{{lang 'products.sold_out'}}">
+                                <span class="text f-size-large f-root-tb f-size-tiny-mb f-semibold">{{product.out_of_stock_message}}</span>
+                            </a>
+                        {{/if}}
+                    {{/if}}
+                {{/or}}
+            </figcaption>
+        </figure>
+        <div class="card-body">
+            <div class="card-info">
+                {{#all product.brand.name theme_settings.show_brand}}
+                    <p class="card-brand color-secondary f-size-small m-b-8" data-test-info-type="brandName">{{product.brand.name}}</p>
+                {{/all}}
+                <a class="card-title f-semibold f-root f-size-small-tb f-size-tiny-mb w-s-normal m-b-8" aria-label="{{> components/products/product-info}}" href="{{product.url}}" data-event-type="product-click">{{product.title}}</a>
+                {{#all settings.show_product_rating theme_settings.show_rating}}
+                    <p class="card-text m-b-8" data-test-info-type="productRating">
+                        <span class="rating--small">
+                            {{> components/products/ratings rating_target=product.title rating=product.rating}}
+                        </span>
+                    </p>
+                {{/all}}
+                {{> components/products/bulk-discount-rates}}
+            </div>
+            <div class="card-text m-b-8 f-root" data-test-info-type="price">
+                {{#or customer (unless settings.hide_price_from_guests)}}
+                    {{> components/products/price price=product.price price-range-custom=true}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}
+            </div>
+            <div class="halo-options card-option card-option-{{product.id}}">
+                {{#if theme_settings.haloAddOptionForProduct}}
+                    <div class="form-field m-0"></div>
+                {{/if}}
+            </div>
+        </div>
+    </article>
+</div>

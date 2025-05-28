@@ -1,0 +1,31 @@
+<div class="halo-block halo-block-product pos-relative arrow-custom-center-center" id="{{block_id}}" data-halo-load="animation">
+    <div class="container container-1600">
+        <div class="halo-block-header o-h">
+            {{#if title}}
+                <h2 class="title d-inline-block halo-fadeInUp">{{title}}</h2>
+            {{/if}}
+        </div>
+        {{#if block_layout}}
+            {{> components/products/carousel
+                products=products
+                productsnew=productsnew
+                block_limit=block_limit
+                block_column=block_column
+                list="New Products"
+            }}
+        {{else}}
+            {{> components/products/no-carousel
+                products=products
+                productsnew=productsnew
+                block_limit=block_limit
+                block_column=block_column
+                list="New Products"
+            }}
+        {{/if}}
+    </div>
+</div>
+{{#if page_type '==' 'default'}}
+    {{{region name="home_below_new_products"}}}
+{{else}}
+    {{{region name="block_below_new_products"}}}
+{{/if}}

@@ -1,0 +1,52 @@
+<div class="navPage-subMenu navPage-subMenu-horizontal halo-fadeIn" id="navPages-{{id}}" tabindex="1">
+    <div class="container container-1600">
+        <ul class="navPage-subMenu-list">
+            <li class="navPage-subMenu-item-parent navPage-subMenu-item-child navPage-subMenu-title d-none d-block-tb">
+                <p class="navPage-subMenu-action navPages-action navPages-action-depth-max has-subMenu">
+                    <span class="navPages-action-moreIcon" aria-hidden="true">
+                        <svg class="icon"><use xlink:href="#icon-arrow-prev" /></svg>
+                    </span>
+                    <a class="text" href="{{url}}"><span>{{name}}</span></a>
+                </p>
+            </li>
+            {{assignVar "value" name}}
+            {{assignVar "urlValue" url}}
+            {{#each children}}
+                <li class="navPage-subMenu-item-child{{#if children}} has-dropdown{{/if}}">
+                    {{#if children}}
+                        {{#if @index '==' 0}}
+                            <a class="navPage-subMenu-action navPage-subMenu-action-all link-line navPages-action navPages-action-depth-max  d-none d-block-tb no-subMenu{{#if is_active}} activePage{{/if}}{{#if ../uppercase}} f-size-large f-bold{{/if}}" href="{{getVar 'urlValue'}}">
+                                <span>{{lang 'category.view_all.name_no_category'}} {{getVar 'value'}}</span>
+                            </a>
+                        {{/if}}
+                        <a class="navPage-subMenu-action link-line navPages-action navPages-action-depth-max has-subMenu{{#if is_active}} activePage{{/if}}{{#if ../uppercase}} f-size-large f-bold{{/if}}" href="{{url}}">
+                            <span>{{name}}</span><i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use href="#icon-chevron-down" /></svg></i>
+                        </a>
+                        <div class="navPage-subMenu navPage-subMenu-horizontal" id="navPages-{{id}}" tabindex="1">
+                            <ul class="navPage-subMenu-list">
+                                <li class="navPage-subMenu-item-parent navPage-subMenu-item-child navPage-subMenu-title d-none d-block-tb">
+                                    <p class="navPage-subMenu-action navPages-action navPages-action-depth-max has-subMenu">
+                                        <span class="navPages-action-moreIcon" aria-hidden="true">
+                                            <svg class="icon"><use xlink:href="#icon-arrow-prev" /></svg>
+                                        </span>
+                                        <a class="text" href="{{url}}"><span>{{name}}</span></a>
+                                    </p>
+                                </li>
+                                <li class="navPage-subMenu-item-child d-block capitalize">
+                                    <a class="navPage-subMenu-action link-line navPages-action navPages-action-depth-max  d-none d-block-tbno-subMenu" href="{{url}}"><span>{{lang 'category.view_all.name' category=name}}</span></a>
+                                </li>
+                                {{#each children}}
+                                    <li class="navPage-subMenu-item-child capitalize">
+                                        <a class="navPage-subMenu-action link-line navPages-action{{#if is_active}} activePage{{/if}} no-subMenu" href="{{url}}"><span>{{name}}</span></a>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </div>                    
+                    {{else}}
+                        <a class="navPage-subMenu-action link-line navPages-action{{#if is_active}} activePage{{/if}}{{#if ../uppercase}} f-size-large f-bold{{/if}} no-subMenu" href="{{url}}"><span>{{name}}</span></a>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>

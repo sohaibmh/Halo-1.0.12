@@ -1,0 +1,142 @@
+// =============================================================================
+// TYPE (CSS)
+// =============================================================================
+
+// Stencil type component additions
+// -----------------------------------------------------------------------------
+
+
+body {
+    font-size: $fontSize-root - 4;
+    font-weight: $body-font-weight;
+    line-height: 1.5;
+
+    @include smin-xs {
+        font-size: $fontSize-root - 2;
+    }
+
+    @include smin-m {
+        font-size: $fontSize-root;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: $header-font-weight;
+    margin-top: $heading-marginTop;
+    line-height: 1.25;
+}
+
+a {
+    transition: $anchor-transition;
+
+    @include smax-m {
+        &:hover {
+            color: inherit;
+        }
+    }
+}
+
+cite {
+    line-height: $blockquote-cite-lineHeight;
+    margin: $blockquote-cite-margin;
+}
+
+.page-heading {
+    font-size: $h1-font-size * 0.72;
+    margin: 0 0 16px;
+    text-align: center;
+
+    @include smin-s {
+        font-size: $h1-font-size * 0.88;
+        margin: 0 0 24px;
+    }
+
+    @include smin-m {
+        font-size: $h1-font-size;
+        margin: 0 0 32px;
+    }
+}
+
+h1 {
+    font-size: $h1-font-size * 0.52;
+
+    @include smin-xs {
+        font-size: $h1-font-size * 0.72;
+    }
+
+    @include smin-m {
+        font-size: $h1-font-size;
+    }
+}
+
+h2 {
+    font-size: $h2-font-size * 0.4545454545454545;
+
+    @include smin-xs {
+        font-size: $h2-font-size * 0.6818181818181818;
+    }
+
+    @include smin-m {
+        font-size: $h2-font-size;
+    }
+}
+
+h3 {
+    font-size: $h3-font-size * 0.6315789473684211;
+
+    @include smin-m {
+        font-size: $h3-font-size;
+    }
+}
+
+h4 {
+    font-size: $fontSize-root + 2;
+
+    @include smin-m {
+        font-size: $h4-font-size;
+    }
+}
+
+h5 {
+    font-size: $fontSize-root;
+
+    @include smin-xs {
+        font-size: $fontSize-root + 2;
+    }
+
+    @include smin-m {
+        font-size: $h5-font-size;
+    }
+}
+
+h6 {
+    font-size: $fontSize-root;
+
+    @include smin-xs {
+        font-size: $fontSize-root + 2;
+    }
+
+    @include smin-m {
+        font-size: $h6-font-size;
+    }
+}
+
+.definitionList {
+    @include clearfix;
+}
+
+.definitionList-key {
+    color: $header-font-color;
+    float: left;
+    font-weight: fontWeight("normal");
+    margin: 0 spacing("quarter") 0 0;
+}
+
+.definitionList-value {
+    margin: 0;
+}

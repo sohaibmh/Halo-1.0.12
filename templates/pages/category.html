@@ -1,0 +1,108 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+    <div class="container container-1600">
+        <div class="page-header--banner pos-relative o-h" data-halo-load="animation">
+            <div class="breadcrumb-wrapper">
+                {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+            </div>
+            <div class="page-header--wrapper d-flex c-gap-30 halo-fadeZoom">
+                {{#if category.subcategories}}
+                    <div class="category-sub b-r-20 bg-white d-none-tb">
+                        <ul class="navList">
+                            {{#each category.subcategories}}
+                                <li class="navList-item pos-relative">
+                                    <a class="navList-action b-r-100 f-size-large" href="{{url}}" title="{{name}}">{{name}}<svg class="icon pos-absolute"><use href="#icon-arrow-next"></use></svg></a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                {{/if}}
+                <div class="category-image pos-relative w-100 h-100">
+                    {{#if category.image}}
+                        {{> components/common/responsive-img
+                            image=category.image
+                            fallback_size=theme_settings.zoom_size
+                            lazyload=theme_settings.lazyload_mode
+                            class="category-header-image b-r-20 w-100"
+                        }}
+                    {{else}}
+                        <img class="w-100 b-r-20 bg-opacity-4" src="{{cdn 'img/placeholder-electronic.svg'}}" alt="{{title}}">
+                    {{/if}}
+                    <div class="content-wrapper">
+                        <div class="content-left">
+                            <h1 class="page-heading color-custom-white left">{{category.name}}</h1>
+                        </div>
+                        <div class="content-right f-size-large f-root-tb l-h-large l-h-extra-tb color-custom-white">
+                            {{{category.description}}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{{region name="category_below_header"}}}
+        <div class="page halo-page">
+            {{#if category.faceted_search_enabled}}
+                <div class="page-sidebar-mobile-wrapper">
+                    <div class="page-sidebar-mobile b-r-24">
+                        <span class="text d-inline-block v-a-middle">{{lang 'common.sidebar_button'}}</span>
+                        <svg class="icon d-inline-block v-a-middle" aria-hidden="true"><use href="#icon-chevron-down" /></svg>
+                    </div>
+                </div>
+                <aside class="page-sidebar" id="faceted-search-container">
+                    {{> components/category/sidebar}}
+                </aside>
+            {{else if category.subcategories}}
+                <div class="page-sidebar-mobile-wrapper">
+                    <div class="page-sidebar-mobile">
+                        <span class="text">{{lang 'common.sidebar_button'}}</span>
+                    </div>
+                </div>
+                <aside class="page-sidebar" id="faceted-search-container">
+                    {{> components/category/sidebar}}
+                </aside>
+            {{else if category.shop_by_price}}
+                {{#if theme_settings.shop_by_price_visibility}}
+                    <div class="page-sidebar-mobile-wrapper">
+                        <div class="page-sidebar-mobile">
+                            <span class="text">{{lang 'common.sidebar_button'}}</span>
+                        </div>
+                    </div>
+                    <aside class="page-sidebar" id="faceted-search-container">
+                        {{> components/category/sidebar}}
+                    </aside>
+                {{/if}}
+            {{/if}}
+
+            <main class="page-content" id="product-listing-container">
+                {{> components/category/product-listing}}
+            </main>
+
+            <div class="page-region">
+                {{{region name="category_below_content"}}}
+            </div>
+        </div>
+    </div>
+{{/partial}}
+{{> layout/base}}

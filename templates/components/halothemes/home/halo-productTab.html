@@ -1,0 +1,8 @@
+{{#if theme_settings.productbyTabs}}
+    {{> components/halothemes/home/halo-product-tab-by-category 
+        productsnew=products.new
+        title=theme_settings.productbyTabs_title
+        cateID=theme_settings.productbyTabs_id
+    }}
+    {{{region name="home_below_product_tab"}}}
+{{/if}}

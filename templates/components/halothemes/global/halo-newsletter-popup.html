@@ -1,0 +1,56 @@
+{{#if theme_settings.halo_newsletter_popup}}
+    <div id="halo-newsletter-popup" class="halo-popup halo-newsletter-popup{{#unless theme_settings.halo_newsletter_popup_image}} halo-newsletter-popup-noImage{{/unless}} hide">
+        <div class="newsletter-popup-container">
+            <div class="newsletter-popup-inner b-r-20 haloCustomScrollbar">
+                <button type="button" data-close-newsletter-popup>
+                    <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+                        <title>{{lang 'common.close'}}</title>
+                        <desc>{{lang 'common.close'}}</desc>
+                        <use href="#icon-close"></use>
+                    </svg>
+                </button>
+                {{#if theme_settings.halo_newsletter_popup_image}}
+                    <div class="newsletter-top pos-relative o-h w-100 d-inline-block d-none-mb">
+                        <div class="image-wrapper halo-fadeZoom">
+                            <img class="b-r-0" src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.halo_newsletter_popup_image}}" alt="{{{lang 'newsletter.subscribe'}}}" title="{{{lang 'newsletter.subscribe'}}}">
+                        </div>
+                    </div>
+                {{/if}}
+                <div class="newsletter-bottom center">
+                    <div class="content">
+                        <h4 class="newsletter-heading halo-fadeIn m-t-0 m-b-10" data-halo-animate="2">{{{lang 'newsletter.subscribe_popup'}}}</h4>
+                        <div class="newsletter-message halo-fadeIn m-b" data-halo-animate="3">
+                            <span class="color-secondary f-root">{{lang 'newsletter.subscribe_intro'}}</span>
+                        </div>
+                        <div class="halo-fadeIn" id="popupSubscribeForm" data-halo-animate="4">
+                            <form class="form" action="{{urls.subscribe.action}}" method="post" id="popupSubscribeFormSubmit">
+                                <fieldset class="form-fieldset">
+                                    <input type="hidden" name="action" value="subscribe">
+                                    <input type="hidden" name="nl_first_name" value="bc">
+                                    <input type="hidden" name="check" value="1">
+                                    <div class="form-field">
+                                        <label class="form-label is-srOnly" for="nl_email2">{{lang 'newsletter.email_placeholder'}}</label>
+                                        <input class="form-input center m-b-20" id="nl_email2" name="nl_email" type="email" placeholder="{{lang 'newsletter.email_placeholder'}}">
+                                        <input class="button button--primary f-size-large f-root-tb f-size-small-mb m-b-20" type="submit" value="{{lang 'newsletter.subscribe_submit'}}">
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        {{#if theme_settings.halo_newsletter_popup_again}}
+                            <div class="form-show-again halo-fadeIn" data-halo-animate="5">
+                                <form class="form m-0">
+                                    <div class="form-field form-field-checkbox">
+                                        <input id="do-not-show-again" class="do-not-show-again" type="checkbox" name="don't show again" value="1"> 
+                                        <label class="form-label c-pointer m-0" for="do-not-show-again">
+                                            <span class="u-u u-p-u">{{lang 'newsletter.subscribe_dontshow'}}</span>
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}

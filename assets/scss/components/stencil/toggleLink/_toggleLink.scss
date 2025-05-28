@@ -1,0 +1,71 @@
+// =============================================================================
+// TOGGLE LINK (CSS)
+// =============================================================================
+
+
+// Toggle link
+// -----------------------------------------------------------------------------
+
+$toggle-spacing: spacing("single") + spacing("half");
+
+.toggle {
+    border-top: container("border");
+    margin-bottom: $toggle-spacing;
+
+    &:last-of-type {
+        margin-bottom: $toggle-spacing * 2;
+    }
+}
+
+.toggle-title {
+    margin-bottom: $toggle-spacing;
+}
+
+.toggleLink {
+    color: $header-font-color;
+
+    .toggle-title & {
+        float: right;
+        line-height: 24px;
+    }
+}
+
+.toggleLink-text {
+    font-family: $fontFamily-sans;
+    font-size: $fontSize-root - 2;
+    font-weight: fontWeight("normal");
+    line-height: 1.556;
+    text-decoration: underline;
+
+    @include smin-s {
+        font-size: $fontSize-root;
+    }
+
+    @include smin-m {
+        font-size: $fontSize-root + 2;
+    }
+}
+
+.toggleLink-text--off {
+    display: inline-block;
+
+    .toggleLink.is-open & {
+        display: none;
+    }
+}
+
+.toggleLink-text--on {
+    display: none;
+
+    .toggleLink.is-open & {
+        display: inline-block;
+    }
+}
+
+.toggle-content {
+    display: none;
+
+    &.is-open {
+        display: block;
+    }
+}

@@ -1,0 +1,50 @@
+<nav class="pagination" aria-label="pagination">
+    <ul class="pagination-list">
+        {{#or next previous}}
+            <li class="pagination-item pagination-item--previous d-none-mb{{#unless previous}} button--disable{{/unless}}">
+                <a class="pagination-link d-flex a-i-center j-c-center"
+                   href="{{previous}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   aria-label="{{lang 'common.previous'}}"
+                >
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use href="#icon-arrow-prev"></use>
+                        </svg>
+                    </i>
+                </a>
+            </li>
+        {{/or}}
+        {{#each links}}
+            <li class="pagination-item {{#if this.number '==' ../current}}pagination-item--current{{/if}}">
+                <a class="pagination-link d-flex a-i-center j-c-center"
+                   href="{{this.url}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   {{#if this.number '==' ../current}}
+                   aria-current="page"
+                   data-pagination-current-page-link
+                   {{/if}}
+                   aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
+                >
+                    {{this.number}}
+                </a>
+            </li>
+        {{/each}}
+
+        {{#or next previous}}
+            <li class="pagination-item pagination-item--next d-none-mb{{#unless next}} button--disable{{/unless}}">
+                <a class="pagination-link d-flex a-i-center j-c-center"
+                   href="{{next}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   aria-label="{{lang 'common.next'}}"
+                >
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use href="#icon-arrow-next"></use>
+                        </svg>
+                    </i>
+                </a>
+            </li>
+        {{/or}}
+    </ul>
+</nav>

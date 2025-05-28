@@ -1,0 +1,6 @@
+# .gitignore
+# -------------
+# Node dependencies
+node_modules/
+# (optional) catch nested ones in sub-folders
+**/node_modules/

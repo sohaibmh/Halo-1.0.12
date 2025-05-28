@@ -1,0 +1,5 @@
+{{#each (limit category.products theme_settings.productbyTabs_limit)}}
+    <div data-product-slide class="productCarousel-slide swiper-slide animated">
+        {{> components/products/card settings=../settings theme_settings=../theme_settings show_compare=true show_rating=../settings.show_product_rating customer=../customer productsnew=../products.new event="list" position=(add @index 1)}}
+    </div>
+{{/each}}

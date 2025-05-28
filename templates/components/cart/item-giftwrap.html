@@ -1,0 +1,28 @@
+{{#if show_gift_wrapping}}
+    <div class="cart-item-options cart-item-options--giftWrapping m-t-10">
+        <svg class="icon"><use xlink:href="#icon-gift"></use></svg>
+        <div class="cart-item-option-title d-inline-block">
+            {{lang 'cart.gift_wrapping.title'}}:
+        </div>
+        {{#if gift_wrapping}}
+            <div class="cart-item-option-description d-inline-block">
+                {{gift_wrapping.name}}: {{gift_wrapping.price.formatted}}
+                <span class="cart-item-option-actions">
+                    (<a href="" data-item-giftwrap="{{id}}">{{lang 'cart.gift_wrapping.change'}}</a> or <a href="{{gift_wrapping.remove_url}}" onclick="return confirm('{{lang 'cart.gift_wrapping.remove_confirm'}}')">{{lang 'cart.gift_wrapping.remove'}}</a>)
+                </span>
+            </div>
+            {{#if gift_wrapping.message}}
+                <div class="cart-item-option-title">
+                    {{lang 'cart.gift_wrapping.gift_message'}}:
+                </div>
+                <div class="cart-item-option-description d-inline-block">
+                    {{gift_wrapping.message}}
+                </div>
+            {{/if}}
+        {{else}}
+            <div class="cart-item-option-description d-inline-block">
+                <a href="" data-item-giftwrap="{{id}}">{{lang 'cart.gift_wrapping.add'}}</a>
+            </div>
+        {{/if}}
+    </div>
+{{/if}}

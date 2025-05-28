@@ -1,0 +1,698 @@
+// =============================================================================
+// ACCOUNT (CSS)
+// =============================================================================
+
+
+// Account navigation
+// -----------------------------------------------------------------------------
+
+.navBar--account {
+    display: block;
+    padding-top: 5px;
+
+    .navBar-section {
+        display: block;
+        font-size: 0;
+        float: none;
+        margin: 0 10px 2px 10px;
+        text-align: center;
+        white-space: nowrap;
+        overflow-x: auto;
+        border: 1px solid #cbcbcb;
+
+        .navBar-item {
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            width: 220px;
+            float: none;
+
+            .navBar-action {
+                color: $header-font-color;
+                background-color: #fafafa;
+                padding: 11px 15px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-transform: uppercase;
+                transition: unset;
+            }
+
+            &.is-active {
+                .navBar-action {
+                    color: $color-textBase !important;
+                    background-color: $color-white !important;
+                }
+            }
+
+            +.navBar-item {
+                border-left: 1px solid #cbcbcb;
+            }
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .navBar-section {
+            border: none;
+            margin-left: -5px;
+            margin-right: -5px;
+
+            .navBar-item {
+                width: calc(100%/6);
+                padding: 0 5px;
+
+                .navBar-action {
+                    text-transform: capitalize;
+                    font-weight: 500;
+                    border: 1px solid #cccccc;
+                    background: $color-white;
+                    color: $color-greyDark;
+
+                    &:hover {
+                        border: 1px solid $color-textBase;
+                        color: $header-font-color;
+                    }
+                }
+
+                &.is-active {
+                    .navBar-action {
+                        border: 1px solid $color-textBase;
+                    }
+
+                }
+
+                +.navBar-item {
+                    border-left: none;
+                }
+            }
+        }
+    }
+}
+
+// Account headings
+// -----------------------------------------------------------------------------
+
+.account-heading {
+    border-bottom: 1px solid $color-custom-grey;
+    margin: 0;
+    padding-bottom: spacing("base");
+}
+
+.account-description {
+    color: $header-font-color;
+    margin: 30px 0 0 0;
+
+    +.account-list {
+        &.account-list2 {
+            margin-top: 15px;
+        }
+    }
+}
+
+// Account list
+// -----------------------------------------------------------------------------
+
+.account-list {
+    list-style: none;
+    margin: 0;
+
+    +.account-heading {
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+
+    &.account-list2 {
+        list-style-type: decimal;
+        list-style-position: inside;
+    }
+}
+
+.account-listItem {
+    border-bottom: 1px solid $color-custom-grey;
+    padding: 45px 0 40px;
+    position: relative;
+
+    img {
+        width: 100%;
+    }
+
+    .account-product-image {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+}
+
+.account-message {
+
+    .is-read {
+        color: stencilColor('color-textBase');
+    }
+
+    .account-listItem {
+        padding: 25px 0 15px 0;
+
+        &:first-child {
+            padding-top: 0;
+        }
+    }
+
+    .account-list {
+        .account-listItem {
+            &:last-child {
+                margin-bottom: 42px;
+            }
+        }
+    }
+
+    .form-actions {
+        margin-top: 25px;
+    }
+
+    .account-orderStatus {
+        float: none;
+        position: inherit;
+        text-align: left;
+    }
+}
+
+
+.account-listShipping {
+    border-bottom: container("border");
+    font-weight: fontWeight("bold");
+    padding: (spacing("single") + spacing("third")) 0;
+
+    .account-listShipping-title {
+        margin: 0;
+        text-transform: inherit;
+    }
+}
+
+.account-product {
+    @include media;
+}
+
+.account-product-figure {
+    display: flex;
+    align-items: center;
+    margin: 0 30px 0 0;
+    position: relative;
+    width: 100px;
+
+    &:after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 100%;
+        padding-bottom: 128%;
+    }
+}
+
+.account-product-download {
+    border-radius: 50%;
+    height: remCalc(33px);
+    padding: 0;
+    position: absolute;
+    right: -(spacing("half"));
+    top: -(spacing("half"));
+    width: remCalc(33px);
+    z-index: 1;
+
+    .icon {
+        height: spacing("single");
+        margin-top: spacing("quarter");
+        width: spacing("single");
+    }
+
+    svg {
+        fill: color("whites", "bright");
+    }
+}
+
+.account-product-body {
+    overflow: hidden;
+    padding: 0 0 50px 0;
+    position: relative;
+
+    .definitionList {
+        margin: 0;
+    }
+
+    @media (min-width: 551px) {
+        padding-bottom: 0;
+    }
+}
+
+.account-product-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+
+    >a {
+        font-family: $fontFamily-headings;
+        position: relative;
+        text-decoration: none;
+        top: -5px;
+    }
+
+    +.account-product-description {
+        position: relative;
+        top: -8px;
+        display: inline-block;
+    }
+}
+
+.account-product-description {
+    margin: 0;
+
+    +.account-product-details {
+        margin-top: 24px;
+    }
+}
+
+.account-product-subtitle {
+    color: color("greys", "light");
+}
+
+.account-product-price {
+    float: right;
+
+    @media(max-width: 550px) {
+        float: unset;
+    }
+}
+
+.account-product-description {
+    +.definitionList {
+        margin: -(spacing("base") + spacing("quarter")) 0 spacing("single");
+    }
+}
+
+.account-product-title {
+    +.is-read {
+        margin: 0;
+        padding: 15px 0 0 0;
+    }
+}
+
+
+.account-product-refundQty {
+    color: color("greys", "light");
+    margin-bottom: 0;
+}
+
+.account-product-details {
+    @include grid-row($behavior: "nest");
+}
+
+.account-product-detail {
+    @include grid-column(12);
+
+    +.account-product-detail {
+        margin-top: spacing("base");
+    }
+
+    +.account-product-detail--full {
+
+        @include breakpoint("small") {
+            margin-top: spacing("single");
+        }
+    }
+
+    @media (min-width: 551px) {
+        width: 50%;
+
+        +.account-product-detail {
+            margin-top: 0;
+        }
+    }
+
+    @media (min-width: 768px) {
+        width: 25%;
+    }
+
+    @media (min-width: 1025px) {
+        width: auto;
+
+        +.account-product-detail {
+            margin-left: 35px;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        width: auto;
+
+        +.account-product-detail {
+            margin-left: 75px;
+        }
+    }
+}
+
+.account-product-detail--large {
+
+    @include breakpoint("large") {
+        width: grid-calc(6, $total-columns);
+    }
+}
+
+.account-product-detail--full {
+    width: 100%;
+}
+
+.account-product-detail-heading {
+    color: $header-font-color;
+    margin-top: 0;
+    margin-bottom: 5px;
+
+    +span {
+        display: block;
+    }
+}
+
+
+// Vertically aligned product view
+// -----------------------------------------------------------------------------
+
+.account-product--alignMiddle {
+    display: table;
+    width: 100%;
+
+    .account-product-checkItem {
+        display: table-cell;
+        position: relative;
+        vertical-align: middle;
+        width: 2rem;
+
+        @include breakpoint("large") {
+            left: -2.5rem;
+        }
+
+        // scss-lint:disable SelectorDepth, NestingDepth
+        .form-label {
+            height: spacing("single");
+            margin: 0;
+            padding: 0;
+            width: spacing("single");
+        }
+    }
+
+    .account-product-figure,
+    .account-product-body {
+        display: table-cell;
+    }
+
+    .account-product-figure {
+        float: none;
+        margin-right: 0;
+
+        @include breakpoint("large") {
+            left: -2rem;
+        }
+    }
+
+    .account-product-body {
+        padding-left: 2rem;
+        vertical-align: middle;
+
+        @include breakpoint("large") {
+            padding-left: 0;
+        }
+    }
+}
+
+
+// Account product totals
+// -----------------------------------------------------------------------------
+
+.account-orderTotal {
+    float: right;
+    margin: 0;
+    width: grid-calc(8, $total-columns);
+}
+
+.account-orderTotal-key,
+.account-orderTotal-value {
+    margin: 0;
+    padding: 15px 0;
+    color: $color-textBase;
+}
+
+.account-orderTotal-key {
+    color: $color-textBase;
+    float: left;
+
+    &:last-of-type {
+        position: relative;
+        top: spacing("fifth");
+    }
+}
+
+.account-orderTotal-value {
+    border-bottom: 1px solid $color-custom-grey;
+    text-align: right;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+
+// Account status
+// -----------------------------------------------------------------------------
+
+.account-orderStatus {
+    @media (min-width: 551px) {
+        float: right;
+        position: inherit;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.account-orderStatus-label {
+    background-color: $global-color;
+    color: $color-white;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 20px;
+    padding: 0 5px;
+    margin-top: 0;
+
+    @media (min-width: 551px) {
+        margin-top: 0;
+        margin-bottom: 0;
+        min-width: 122px;
+
+        +.account-orderStatus-action {
+            margin-top: 10px;
+        }
+    }
+}
+
+.account-orderStatus-action {
+    display: inline-block;
+    margin: 10px 0 0 15px;
+    text-align: right;
+
+    @media (min-width: 551px) {
+        display: block;
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+
+.page-type-account_returns {
+    .account-product-title {
+        +.account-product-description {
+            top: unset;
+        }
+    }
+
+    .account-product-description {
+        a {
+            font-style: italic;
+            text-decoration: underline;
+            text-underline-position: under;
+        }
+
+        +.definitionList {
+            margin-top: 0;
+        }
+    }
+
+    .definitionList {
+        margin-bottom: 20px;
+    }
+}
+
+// Account pagination & panel
+// -----------------------------------------------------------------------------
+
+.account {
+    .pagination {
+        display: block;
+        text-align: left;
+        margin-top: 18px;
+        margin-bottom: -12px;
+    }
+}
+
+// Sidebar blocks
+// -----------------------------------------------------------------------------
+
+.account-sidebar-block {
+    font-size: fontSize("smaller");
+
+    +.account-sidebar-block {
+        margin-top: spacing("double");
+    }
+
+    .account-heading {
+        margin-bottom: spacing("single");
+    }
+
+    .button {
+        text-transform: uppercase;
+        min-width: 200px;
+        margin-bottom: 10px;
+    }
+}
+
+.account-order-address {
+    margin-bottom: 0;
+    @include u-listBullets("none");
+}
+
+.account-reorder-form {
+    display: inline-block;
+}
+
+.order-payments-description {
+    color: stencilColor("color-primary");
+    font-weight: fontWeight("normal");
+    margin-top: spacing("single");
+}
+
+
+// Product downloads
+// -----------------------------------------------------------------------------
+
+.account-downloads-summary {
+    border-bottom: container("border");
+    font-size: fontSize("smaller");
+    padding-bottom: spacing("single");
+}
+
+.account-downloadsList {
+    @include u-listBullets("none");
+}
+
+.account-downloadsItem {
+    margin-bottom: spacing("single");
+
+    > :first-child {
+        margin-top: 0;
+    }
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.account-downloadsItem-title {
+    color: $header-font-color;
+    font-size: fontSize("smaller");
+    margin-bottom: spacing("eighth");
+    text-transform: inherit;
+}
+
+.account-downloadsItem-description {
+    margin-bottom: 0;
+}
+
+.account-downloadsItem-availability {
+    color: $header-font-color;
+}
+
+.page {
+    &.account {
+        .button {
+            @media (min-width: 381px) {
+                min-width: 205px;
+            }
+        }
+    }
+}
+
+.page.page-giftcertificates,
+.page.page-account {
+    margin: 0;
+
+    .page-header {
+        margin-bottom: 28px;
+    }
+
+    .page-content {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.page.page-giftcertificates {
+    .page-content {
+        .account {
+            >h3 {
+                font-weight: 600;
+            }
+
+            .intro {
+                font-weight: 500;
+            }
+
+            .form-prefixPostfix {
+                max-width: 865px;
+
+                #giftcertificatecode {
+                    width: calc(100% - 225px);
+                }
+            }
+        }
+    }
+}
+
+.form-label {
+    color: $header-font-color;
+
+    small {
+        float: none;
+    }
+}
+
+.form-select {
+    height: 50px;
+    min-height: 50px;
+    border-color: stencilColor("input-border-color");
+}
+
+.page-account.account-created {
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    .page-header {
+        @media (max-width: 1024px) {
+            margin-bottom: 25px;
+        }
+    }
+
+    .button {
+        @media (max-width: 767px) {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<div class="halo-sidebar-header">
+    <span class="title">{{lang 'common.sidebar_title'}}</span>
+    <a href="#" class="close">
+        <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+            <title>{{lang 'common.close'}}</title>
+            <desc>{{lang 'common.close'}}</desc>
+            <use xlink:href="#icon-close"></use>
+        </svg>
+    </a>
+</div>
+<nav class="haloCustomScrollbar">
+    {{#if brand.faceted_search_enabled}}
+        {{> components/faceted-search/index brand}}
+    {{else}}
+        {{#if shop_by_brand}}
+        <div class="sidebarBlock bg-white b-r-16">
+            <p class="sidebarBlock-heading">{{lang 'brand.label'}}</p>
+            <ul class="navList">
+                {{#each shop_by_brand}}
+                    <li class="navList-item">
+                        <a class="navList-action" href="{{url}}">{{name}}</a>
+                    </li>
+                {{/each}}
+                <li class="navList-item">
+                    <a class="navList-action" href="{{urls.brands}}">{{lang 'common.view_all'}}</a>
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+    {{/if}}
+</nav>

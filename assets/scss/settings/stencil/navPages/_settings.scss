@@ -1,0 +1,15 @@
+// =============================================================================
+// NAV PAGES (Settings)
+// =============================================================================
+$navPage-Color:                                     stencilColor("navPages-color");
+$navPage-Color-hover:                               stencilColor("navPages-color--hover");
+$navPage-borderColor:                               stencilColor("navPages-subMenu-separatorColor");
+$navPage-childList-borderColor:                     $navPage-borderColor;
+$navPage-subMenu-horizontal-backgroundColor:        stencilColor("header-backgroundColor");
+$navPage-subMenu-horizontal-height:                 auto;
+$navPage-subMenu-horizontal-width:                  rem-calc(250px);
+$navPage-subMenu-item--is-highlighted-background:   stencilColor("header-backgroundColor");
+$navPage-subMenu-item--is-highlighted-color:        stencilColor("navPages-color--hover");
+$navPages-action-moreIcon-borderColor:              #d6cdc0;
+$navPages-backgroundColor:                          stencilColor("header-backgroundColor");
+$navPages-list--user-borderColor:                   $navPage-borderColor;

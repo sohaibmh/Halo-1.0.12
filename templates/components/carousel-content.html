@@ -1,0 +1,13 @@
+<div class="heroCarousel-content{{#and (if heading '==' false) (if text '==' false)}} heroCarousel-content--empty{{/and}} heroCarousel-content--{{position}}">
+    {{#if heading}}
+        <h2 class="heroCarousel-title f-h1 m-b-16 m-b-8-mb o-h"><span class="halo-fadeInUp d-inline-block">{{{heading}}}</span></h2>
+    {{/if}}
+    {{#if text}}
+        <p class="heroCarousel-description m-b-32 m-b-tb m-b-16-mb l-h-extra f-size-large f-root-tb f-size-small-mb o-h"><span class="halo-fadeInUp d-inline-block" data-halo-animate="2">{{{text}}}</span></p>
+    {{/if}}
+    {{#if button_text}}
+        <div class="heroCarousel-action o-h">
+            <a href="{{url}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'carousel.slide_number' slide_number=(add @index 1)}}{{/if}}, {{button_text}}" data-button-text="{{{button_text}}}" class="button button--primary button--large f-size-large f-root-tb f-size-small-mb m-0 halo-fadeInUp" data-halo-animate="3"><span>{{{button_text}}}</span></a>
+        </div>
+    {{/if}}
+</div>

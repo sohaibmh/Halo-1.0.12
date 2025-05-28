@@ -1,0 +1,17 @@
+{{#if theme_settings.subscribe}}
+    <div class="halo-block subscribe" data-halo-load="animation">
+        <div class="container container-1600">
+            <div class="content d-block-mb d-flex a-i-center j-c-between b-r-20 p-60 p-40-20-tb p-30-10-mb bg-global">
+                <div class="content-left">
+                    <h3 class="m-t-0 m-b-16 m-b-12-tb m-b-8-mb o-h"><span class="title color-custom-white d-inline-block halo-fadeInUp">{{theme_settings.subscribe_title}}</span></h3>
+                    <p class="desc-small color-custom-white l-h-b l-h-larger-tb l-h-large-mb m-0 o-h"><span class="d-inline-block halo-fadeInUp">{{{theme_settings.subscribe_desc}}}</span></p>
+                </div>
+                <div class="content-right m-t-20-mb o-h">
+                    {{#if settings.show_newsletter_box}}
+                        {{> components/common/subscription-form}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>         
+    </div>
+{{/if}}

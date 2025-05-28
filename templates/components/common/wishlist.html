@@ -1,0 +1,29 @@
+{{#if settings.show_wishlist}}
+    <div class="card-wishlist" data-wishlist-add>
+        <button class="js-wishlist button button--secondary" data-id="{{id}}" aria-label="Wishlist">
+            {{lang 'account.wishlists.add_item'}}
+            <svg class="icon" role="img" aria-label="{{lang 'account.wishlists.add_item'}}">
+                <title>{{lang 'account.wishlists.add_item'}}</title>
+                <desc>{{lang 'account.wishlists.add_item'}}</desc>
+                <use xlink:href="#icon-arrow-down"></use>
+            </svg>
+        </button>
+        <ul class="wishlist-menu card has-loading haloCustomScrollbar animated--out" data-halo-animate="1">
+            <li class="wishlist-item wishlist-add">
+                <a class="wishlist" href="/wishlist.php?action=add&product_id={{id}}">
+                    <span>{{lang 'account.wishlists.add_to_default'}}</span>
+                </a>
+            </li>
+            <li class="wishlist-item wishlist-create">
+                <a href="/wishlist.php?action=addwishlist&product_id={{id}}">
+                    <span>{{lang 'account.wishlists.create_new'}}</span>
+                </a>
+            </li>
+            <li class="wishlist-item wishlist-view">
+                <a href="/wishlist.php">
+                    <span>{{lang 'account.wishlists.view'}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+{{/if}}

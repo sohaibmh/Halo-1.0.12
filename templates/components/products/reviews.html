@@ -1,0 +1,92 @@
+{{#if reviews.total}}
+    <div class="halo-block arrow-custom-right-top reviewBlock productReviews c-b" data-halo-load="animation">
+        <div class="container container-1600">
+            <div class="halo-block-header o-h">
+                <h2 class="title d-inline-block halo-fadeInUp m-0">
+                    <span class="text">{{lang 'products.reviews.heading'}} ({{reviews.total}})</span>
+                </h2>
+            </div>
+            <section class="productView-reviews-wrapper toggle b-none m-0 o-h" id="product-reviews" data-product-reviews>
+                <h4 class="toggle-title m-0 d-flex a-i-end j-c-between">
+                    <div class="button-createReview">
+                        <a class="button button--tertiary" href="#" data-reveal-id="modal-review-form">{{lang 'products.reviews.write_a_review'}}</a>
+                    </div>
+                    {{#if theme_settings.show_product_reviews}}
+                        <a class="toggleLink is-open" data-collapsible href="#productReviews-content">
+                            <span class="toggleLink-text toggleLink-text--on">
+                                {{lang 'products.reviews.hide'}}
+                            </span>
+                            <span class="toggleLink-text toggleLink-text--off">
+                                {{lang 'products.reviews.show'}}
+                            </span>
+                        </a>
+                    {{/if}}
+                </h4>
+                <div class="toggle-content is-open" id="productReviews-content">
+                    <div class="productReviews-list pos-relative" id="productReviews-list">
+                        <div class="haloSwiper" 
+                            data-auto-height="false" 
+                            data-per-view-mob="1.3" 
+                            data-per-view-tab="1.8" 
+                            data-per-view-des="2.4613" 
+                            data-swiper-pag-des="true" 
+                            data-swiper-pag-tab="true" 
+                            data-swiper-pag-mob="true" 
+                            data-swiper-space-des="50"
+                        >
+                            <div class="swiper-wrapper disable-srollbar">
+                                {{#each reviews.list}}
+                                    <div class="productReview reviewBlock__item swiper-slide">
+                                        <article class="content">
+                                            <header>
+                                                <div class="star m-b-16 m-b-12-tb c-inline">
+                                                    <span class="productReview-rating rating--small">
+                                                        {{> components/products/ratings rating=rating}}
+                                                        <span class="productReview-ratingNumber">{{ rating }}</span>
+                                                    </span>
+                                                </div>
+                                                <h5 class="productReview-title f-size-large f-root-tb f-size-small-mb title o-h"><span class="d-inline-block halo-fadeInUp">{{{ sanitize title }}}</span></h5>
+                                                {{#if name}}
+                                                    <p class="productReview-author name m-0 o-h"><span class="d-inline-block halo-fadeInUp">{{lang 'products.reviews.post_on_by' date=date name=name }}</span></p>
+                                                {{else}}
+                                                    <p class="productReview-author name m-0 o-h"><span class="d-inline-block halo-fadeInUp">{{lang 'products.reviews.post_on_by' date=date name=(lang 'products.reviews.anonymous_poster')}}</span></p>
+                                                {{/if}}
+                                                <p class="productReview-body desc o-h"><span class="d-inline-block halo-fadeInUp">{{{ sanitize text }}}</span></p>
+                                            </header>
+                                        </article>
+                                    </div>
+                                {{/each}}
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{{else}}
+    <div class="halo-block arrow-custom-right-top reviewBlock productReviews c-b" data-halo-load="animation">
+        <div class="container container-1600">
+            <div class="halo-block-header o-h">
+                <h2 class="title d-inline-block halo-fadeInUp m-0">
+                    <span class="text">{{lang 'products.reviews.heading'}}</span>
+                </h2>
+            </div>
+            <section class="productView-reviews-wrapper toggle b-none m-0 o-h" id="product-reviews" data-product-reviews>
+                <h4 class="toggle-title m-0 d-flex a-i-end j-c-between">
+                    <div class="button-createReview">
+                        <a class="button button--tertiary" href="#" data-reveal-id="modal-review-form">{{lang 'products.reviews.write_a_review'}}</a>
+                    </div>
+                </h4>
+                <div class="alertBox alertBox--warning">
+                    <div class="alertBox-column alertBox-icon">
+                        <svg class="icon"><use xlink:href="#icon-info"></use></svg>
+                    </div>
+                    <p class="alertBox-column alertBox-message">
+                        {{lang 'products.reviews.write_a_review_text'}}
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+{{/if}}

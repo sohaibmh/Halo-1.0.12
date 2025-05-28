@@ -1,0 +1,38 @@
+// =============================================================================
+// LOADING (CSS)
+// =============================================================================
+//
+// 1. If set to false, there is no outputted CSS for this component.
+//
+// -----------------------------------------------------------------------------
+
+.loadingOverlay {
+    background-color: rgba(stencilColor("loadingOverlay-backgroundColor"), 0.4);
+    display: none;
+    z-index: zIndex("low");
+}
+
+.animated-loading {
+    animation-duration: 2.2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: $color-custom-loading;
+    background: linear-gradient(to right, $color-custom-loading 4%, #CDE1FF 25%, $color-custom-loading 36%);
+    background-size: 1200px 100%;
+
+    * {
+        opacity: 0;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1200px 0;
+    }
+
+    100% {
+        background-position: 1200px 0;
+    }
+}

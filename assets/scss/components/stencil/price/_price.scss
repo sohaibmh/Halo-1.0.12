@@ -1,0 +1,26 @@
+// =============================================================================
+// PRICE (CSS)
+// =============================================================================
+
+.price--rrp,
+.price--non-sale,
+.price--discounted {
+    text-decoration: line-through;
+}
+
+.price-section--minor {
+    color: color("greys", "light");
+}
+
+.price {
+    font-weight: $fontWeight-bold;
+}
+
+.price-from {
+    margin-bottom: 5px;
+
+    @include smax-xxl {
+        margin-right: 5px;
+        margin-bottom: 0;
+    }
+}

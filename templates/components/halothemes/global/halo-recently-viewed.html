@@ -1,0 +1,35 @@
+{{#if theme_settings.halo_recently_viewed_products }}
+    <div id="halo-recently-viewed-popup" class="modal modal--large halo-recently-viewed-popup arrow-custom-center-center" data-limit="4" data-reveal>
+        <div class="modal-header">
+            <h2 class="modal-header-title">Recent Viewed Products</h2>
+            <button class="modal-close" type="button" title="Close">
+                <span class="aria-description--hidden">Close</span>
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="recently-viewed-popup-container pos-relative">
+                <div class="halo-block-content center d-none">
+                    <div class="d-flex f-column j-c-center a-i-center">
+                        <svg class="icon d-block m-b" role="img" aria-label="{{lang 'common.no_item'}}">
+                            <title>{{lang 'common.no_item'}}</title>
+                            <desc>{{lang 'common.no_item'}}</desc>
+                            <use xlink:href="#icon-no-products"></use>
+                        </svg>
+                        <span class="text d-block">{{lang 'common.no_item'}}</span>
+                    </div>
+                </div>
+                <section class="productCarousel haloSwiper pos-relative o-h"
+                    data-list-name="Recent Viewed Products"
+                    data-free-mode="true"
+                    data-per-view-mob="{{theme_settings.cardProd_colMob}}" 
+                    data-per-view-tab="{{theme_settings.cardProd_colTab}}" 
+                    data-per-view-des="{{theme_settings.cardProd_col}}"
+                >
+                    <div class="swiper-wrapper disable-srollbar">
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{{/if}}

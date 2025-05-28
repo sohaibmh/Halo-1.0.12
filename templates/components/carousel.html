@@ -1,0 +1,22 @@
+<section class="slideshow swiper haloSwiper" data-swiper-pag="true" data-swiper-autoplay="true" data-swiper-speed="1500" data-swiper-delay="{{carousel.swap_frequency}}" data-halo-load="animation">
+    <div class="swiper-wrapper">
+        {{#each carousel.slides}}
+            {{#if @index '==' 0}}
+                {{> components/carousel-item-first settings=../settings position=../theme_settings.carousel_pos_1}}
+            {{/if}}
+            {{#if @index '==' 1}}
+                {{> components/carousel-item settings=../settings position=../theme_settings.carousel_pos_2}}
+            {{/if}}
+            {{#if @index '==' 2}}
+                {{> components/carousel-item settings=../settings position=../theme_settings.carousel_pos_3}}
+            {{/if}}
+            {{#if @index '==' 3}}
+                {{> components/carousel-item settings=../settings position=../theme_settings.carousel_pos_4}}
+            {{/if}}
+            {{#if @index '==' 4}}
+                {{> components/carousel-item settings=../settings position=../theme_settings.carousel_pos_5}}
+            {{/if}}
+        {{/each}}
+    </div>
+    <div class="swiper-pagination"></div>
+</section>

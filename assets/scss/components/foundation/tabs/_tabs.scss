@@ -1,0 +1,307 @@
+// =============================================================================
+// TABS (CSS)
+// =============================================================================
+//
+// Most of these styles deliberately reset Citadel's defaults for smaller
+// screens since the styles in Stencil for smaller screens are more persistent
+// across breakpoints.
+//
+// -----------------------------------------------------------------------------
+
+.tab {
+    margin: 0 32px 20px 0;
+    float: none;
+
+    @include smin-s {
+        float: left;
+    }
+
+    &.is-active {
+        .tab-title {
+            background-color: $color-white;
+        }
+    }
+}
+
+.tab-title {
+    font-size: $fontSize-root + 4;
+    font-weight: $fontWeight-semibold;
+    padding: 14px 16px;
+    border-radius: 10px;
+
+    @include smax-xxl {
+        font-size: $fontSize-root;
+    }
+}
+
+.tab-content {
+    &.has-jsContent {
+        display: block;
+        height: 0;
+        overflow: hidden;
+        padding: 0;
+        visibility: hidden;
+
+        &.is-active {
+            height: auto;
+            overflow: visible;
+            padding: $tabs-content-padding;
+            visibility: visible;
+        }
+    }
+
+    &.is-active {
+        display: block;
+
+        .toggle-content {
+            display: block;
+        }
+    }
+
+    //
+    // Product review displays in tabs
+    //                                                                                                                                                           
+    // Purpose: Display product reviews within tabbed content on product pages.
+    // -----------------------------------------------------------------------------
+    .productReview {
+        @include breakpoint("small") {
+            width: grid-calc(6, $total-columns);
+        }
+
+        @include smin-m {
+            width: grid-calc(4, $total-columns);
+        }
+
+        @include breakpoint("large") {
+            width: grid-calc(6, $total-columns);
+        }
+    }
+
+    .productReviews {
+        border-top: 0;
+    }
+}
+
+.productView-description {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        table-layout: auto;
+        margin: 0;
+
+        tr {
+            background: transparent;
+            height: 45px;
+
+            &:nth-child(odd) {
+                td:first-child {
+                    border-radius: 10px 0 0 10px;
+                    background: $body-bg;
+                }
+
+                td:last-child {
+                    border-radius: 0 10px 10px 0;
+                    background: $body-bg;
+                }
+            }
+        }
+
+        td {
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-normal;
+            line-height: 1.75;
+            padding: 11px 14px;
+            text-align: left;
+            color: $color-textBase;
+
+            &.tb-title {
+                color: stencilColor(color-textHeading);
+                font-weight: $fontWeight-medium;
+                min-width: 200px;
+            }
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        line-height: 1.25;
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .tab-content {
+        background-color: $color-white;
+        line-height: 1.75;
+    }
+
+    @include smin-s {
+        .tab-content {
+            padding: 20px;
+            transition: $anchor-transition;
+        }
+
+        .toggle-title {
+            display: none;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    @include smin-m {
+        .tab-content {
+            padding: 45px;
+        }
+    }
+
+    @include smax-s {
+        .tabs {
+            display: none;
+            margin-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+            padding-bottom: 0;
+            border-bottom: 0;
+
+            .tab {
+                display: block;
+                float: none;
+                width: 100%;
+            }
+
+            .tab-title {
+                display: block;
+                width: 100%;
+                padding: 0 15px;
+                text-align: left;
+            }
+        }
+
+        .tabs-contents {
+            margin: 0;
+
+            .tab-content {
+                display: block;
+                padding: 0;
+                margin: 0 0 16px;
+                transition: $anchor-transition;
+
+                &#tab-reviews {
+                    .toggleLink {
+                        padding-bottom: 10px;
+                    }
+
+                    .icon {
+                        width: 17px;
+                        height: 18px;
+                    }
+                }
+            }
+
+            .toggle-title {
+                display: block;
+                margin: 0;
+                padding: 0 0 16px;
+            }
+
+            .toggleLink {
+                display: block;
+                float: none;
+                width: 100%;
+                padding: 16px 10px 0;
+                position: relative;
+                font-weight: $fontWeight-semibold;
+                text-transform: uppercase;
+                transition: $anchor-transition;
+
+                .text {
+                    padding-bottom: 0;
+                    background-image: unset;
+                }
+
+                .icon-plus {
+                    font-size: 0;
+                    display: inline-block;
+                    vertical-align: top;
+                    position: absolute;
+                    top: calc(50% + 8px);
+                    right: 0;
+                    z-index: 2;
+                    pointer-events: none;
+                    transform: translateY(-50%);
+                    background-color: transparent;
+                    background-position: unset;
+                    background-repeat: unset;
+                    background-image: unset;
+                    transition: $anchor-transition;
+
+                    &:before,
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        z-index: 2;
+                        transition: $anchor-transition;
+                        transform: translate(0, -50%);
+                        background: $color-textBase;
+                    }
+
+                    &:before {
+                        right: 19px;
+                        width: 2px;
+                        height: 20px;
+                    }
+
+                    &:after {
+                        right: 10px;
+                        width: 20px;
+                        height: 2px;
+                    }
+                }
+
+                &.is-open {
+                    padding-bottom: 0;
+                    color: $color-textBase;
+
+                    .icon-plus {
+
+                        &:before,
+                        &:after {
+                            background: $color-textBase;
+                        }
+
+                        &:before {
+                            transform: translateY(-50%) rotate(90deg);
+                        }
+                    }
+                }
+
+                @include smin-s {
+                    padding: 18px 45px 18px 0;
+                }
+            }
+
+            .toggle-content {
+                position: relative;
+
+                &.is-open {
+                    border-top: 1px solid #a7a7a7;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}
+
+.return,
+.shipping {
+    margin-top: 0;
+}

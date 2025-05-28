@@ -1,0 +1,23 @@
+{{inject 'noCompareMessage' (lang 'compare.no_compare')}}
+
+{{#if category.products}}
+    {{> components/products/filter sort=pagination.category.sort}}
+
+    <div data-list-name="Category: {{category.name}}">
+        {{> components/products/grid products=category.products show_compare=category.show_compare theme_settings=theme_settings event="list" }}
+    </div>
+
+    {{> components/common/paginator pagination.category total=category.total_products page_type=page_type theme_settings=theme_settings}}
+{{else}}
+    {{#if category.search_error}}
+        <p>{{lang 'search.errorMessage'}}</p>
+    {{else}}
+        <p data-no-products-notification
+           role="alert"
+           aria-live="assertive"
+           tabindex="-1"
+        >
+            {{lang 'categories.no_products'}}
+        </p>
+    {{/if}}
+{{/if}}

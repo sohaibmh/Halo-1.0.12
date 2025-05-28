@@ -1,0 +1,208 @@
+// =============================================================================
+// PRODUCT REVIEWS (CSS)
+// =============================================================================
+
+
+// Review list
+//
+// 1. Kill extra display inline-block spacing
+// -----------------------------------------------------------------------------
+.productView-reviews-wrapper {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin-bottom: 0;
+
+    .alertBox {
+        margin-bottom: 0;
+
+        +.button-createReview {
+            margin-top: 15px;
+        }
+    }
+
+    .productReviews-list {
+        margin-top: 20px;
+        margin-left: 0;
+        margin-bottom: 0;
+        padding-bottom: 56px;
+
+        .productReview {
+            width: 100%;
+        }
+    }
+
+    .pagination {
+        margin-top: 0;
+
+        .pagination-list {
+            margin-left: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            font-size: 0;
+            letter-spacing: 0;
+        }
+
+        .pagination-item {
+            +.pagination-item {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .button-createReview {
+        .button {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .pagination {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            +.button-createReview {
+                .button {
+                    width: auto;
+                    min-width: 180px;
+                }
+            }
+        }
+
+        .alertBox,
+        .productReviews-list {
+            +.button-createReview {
+                text-align: center;
+
+                .button {
+                    width: auto;
+                    min-width: 250px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .alertBox {
+            +.button-createReview {
+                margin-top: 30px;
+            }
+        }
+
+        .productReviews-list {
+            margin-top: 34px;
+        }
+
+        .pagination {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .button-createReview {
+            .button {
+                min-width: 173px;
+                width: auto;
+                font-weight: $fontWeight-semibold;
+            }
+        }
+    }
+}
+
+.productReviews-list {
+    display: block;
+    margin: 28px 0 0 0;
+    list-style: none;
+}
+
+
+// Review item
+// -----------------------------------------------------------------------------
+
+// =============================================================================
+// PRODUCT REVIEWS (CSS)
+// =============================================================================
+
+
+.productReviews {
+
+    &.reviewBlock {
+        @include smin-m{
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+    }
+
+    .halo-block-header {
+        .title {
+            margin: 0 0 16px 0;
+        }
+    }
+
+    .productView-reviews-wrapper.toggle {
+        margin-bottom: 15px;
+    }
+
+    .productReviews-list {
+        margin: 0;
+    }
+
+    .star {
+        margin: 0 0 20px 0;
+    }
+
+    .reviewBlock__item {
+        .title {
+            margin: 0 0 8px 0;
+        }
+
+        @include smin-m {
+            min-height: 263px;
+        }
+    }
+
+    .toggle-title {
+        margin: 0 0 40px;
+    }
+
+    .productReview {
+        width: 100%;
+        float: none;
+        display: block;
+        margin-bottom: 0;
+
+        .productReview-rating {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .productReview-author {
+            color: $color-textSecondary;
+            margin-bottom: 20px;
+        }
+
+        .productReview-ratingNumber {
+            display: none;
+        }
+
+        .productReview-body {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.btn-createReview {
+    margin-top: 5px;
+    float: left;
+    width: 100%;
+}
+
+.productReviews {
+    .pagination {
+        margin: 30px 0 0 0;
+    }
+}

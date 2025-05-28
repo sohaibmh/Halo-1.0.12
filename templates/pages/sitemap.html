@@ -1,0 +1,43 @@
+{{#partial "page"}}
+    <div class="container container--large">
+        <div class="breadcrumb-wrapper">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        </div>
+        <div class="page page-normal">
+            <div class="page-header">
+                <h1 class="page-heading">{{lang 'sitemap.page_title'}}</h1>
+            </div>
+            <main class="page-content">
+                <ul class="sitemap-list">
+                    {{#each sitemap}}
+                        <li class="sitemap-list--item">
+                            <h3 class="sitemap-list--title">{{label}}</h3>
+                            <ul class="sitemap-list--list">
+                                {{#each body}}
+                                    <li class="sitemap-list--subItem">
+                                        <a href="{{url}}">{{label}}</a>
+                                        {{#if children}}
+                                            <ul>
+                                            {{#each children}}
+                                                {{> components/sitemap/links}}
+                                            {{/each}}
+                                            </ul>
+                                        {{/if}}
+                                    </li>
+                                {{/each}}
+                                {{#if show_all_link}}
+                                    <li class="sitemap-list--subItem sitemap-list--viewAll">
+                                        <a href="{{subsection_url}}">
+                                            <span class="text">{{lang 'sitemap.show_all_link'}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </li>
+                    {{/each}}
+                </ul>
+            </main>
+        </div>
+    </div>
+{{/partial}}
+{{> layout/base}}

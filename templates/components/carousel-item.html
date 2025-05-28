@@ -1,0 +1,15 @@
+<div class="swiper-slide o-h" data-hero-slide="{{@index}}">
+    <div class="heroCarousel-image-wrapper{{#if imgMb}} heroCarousel-image-overlay{{/if}} pos-relative halo-fadeZoom">
+        <a class="image" href="{{url}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'carousel.slide_number' slide_number=(add @index 1)}}{{/if}}">
+            {{> components/common/responsive-img
+                image=stencil_image
+                class="heroCarousel-image w-100 b-r-0"
+                fallback_size='1280w'
+                lazyload='lazyload'
+            }}
+        </a>
+        {{#or heading text button_text}}
+            {{> components/carousel-content position=position}}
+        {{/or}}
+    </div>
+</div>

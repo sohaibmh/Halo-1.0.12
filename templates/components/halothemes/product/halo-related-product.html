@@ -1,0 +1,5 @@
+{{#each products}}
+    <div data-product-slide class="productCarousel-slide swiper-slide">
+        {{> components/halothemes/product/halo-related-product-tmp settings=../settings theme_settings=../theme_settings show_compare=true show_rating=../settings.show_product_rating customer=../customer productsnew=../productsnew event="list" position=(add @index 1)}}
+    </div>
+{{/each}}

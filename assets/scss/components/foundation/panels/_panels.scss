@@ -1,0 +1,19 @@
+// =============================================================================
+// PANELS (CSS)
+// =============================================================================
+
+
+.panel-title {
+    font-size: fontSize("small");
+}
+
+.panel--large {
+    .panel-body {
+        margin-bottom: spacing("single") + spacing("third");
+        padding: 10px;
+
+        @include smin-xs {
+            padding: spacing("single") + spacing("third");
+        }
+    }
+}

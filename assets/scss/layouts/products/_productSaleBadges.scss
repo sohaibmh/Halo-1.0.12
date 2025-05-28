@@ -1,0 +1,61 @@
+// =============================================================================
+// PRODUCT Sale Badges (CSS)
+// =============================================================================
+.halo-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: auto;
+    width: calc(100% - 24px);
+    z-index: zIndex("lower");
+    padding-right: 50px;
+
+    .productView  & {
+        top: 20px;
+        left: 20px;
+        width: calc(100% - 90px);
+
+        @include smin-s {
+            top: 24px;
+            left: 24px;
+        }
+
+        @include smin-m {
+            top: 45px;
+            left: 45px;
+        }
+    }
+}
+
+.halo-badge {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-semibold;
+    padding: 1px 7px 1px;
+    margin: 0 4px 8px 0;
+    min-height: 27px;
+    min-width: 52px;
+    background: $color-white;
+    color: $header-font-color;
+    border: 1px solid $header-font-color;
+    border-radius: 4px;
+
+    &.sale-badge {
+        background: stencilColor('sale_price_color');
+        color: $color-white;
+        border-color: stencilColor('sale_price_color');
+    }
+
+    &.soldOut-badge {
+        background: #a9a9a9;
+        color: $color-white;
+        border-color: #a9a9a9;
+    }
+
+    @include smin-m {
+        padding: 5px 15px 4px;
+        min-height: 34px;
+        min-width: 64px;
+    }
+}

@@ -1,0 +1,3 @@
+{
+  "components/products/price-label": "{{#if label_value}}\n    {{label_value}}\n{{/if}}\n"
+}

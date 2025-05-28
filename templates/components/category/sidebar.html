@@ -1,0 +1,49 @@
+<div class="halo-sidebar-header">
+    <span class="title">{{lang 'common.sidebar_title'}}</span>
+    <a href="#" class="close">
+        <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+            <title>{{lang 'common.close'}}</title>
+            <desc>{{lang 'common.close'}}</desc>
+            <use xlink:href="#icon-close"></use>
+        </svg>
+    </a>
+</div>
+<nav class="haloCustomScrollbar">
+    {{#if category.subcategories}}
+        <div class="category-sub sidebarBlock bg-white b-r-16 d-none d-block-tb">
+            <div class="accordion-nav-clear-holder">
+                <button type="button"
+                    class="accordion-navigation toggleLink is-open "
+                    data-collapsible="#facetedSearch-content--collection"
+                    aria-label="{{lang 'common.collection'}}"
+                >
+                    <span class="accordion-title f-size-large f-semibold">
+                        {{lang 'common.collection'}}
+                    </span>
+                    <span>
+                        <svg class="icon accordion-indicator toggleLink-text toggleLink-text--off">
+                            <use href="#icon-arrow-down" />
+                        </svg>
+                        <svg class="icon accordion-indicator toggleLink-text toggleLink-text--on">
+                            <use href="#icon-arrow-up" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            <div id="facetedSearch-content--collection" class="accordion-content facetedSearch-content--collection is-open">
+                <ul class="navList">
+                    {{#each category.subcategories}}
+                        <li class="navList-item pos-relative">
+                            <a class="navList-action b-r-100 f-size-large" href="{{url}}" title="{{name}}">{{name}}<svg class="icon pos-absolute"><use href="#icon-arrow-next"></use></svg></a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    {{/if}}
+    {{#if category.faceted_search_enabled}}
+        {{> components/faceted-search/index category}}
+    {{else}}
+        {{> components/category/shop-by-price}}
+    {{/if}}
+</nav>

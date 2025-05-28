@@ -1,0 +1,262 @@
+{{#if page_type '!=' 'login'}}
+	{{#if customer}}
+		<div id="halo-auth-sidebar" class="halo-sidebar halo-auth-sidebar halo-sidebar-right">
+			<div class="halo-sidebar-header">
+				<span class="title">{{lang 'account.breadcrumb'}}</span>
+				<a href="#" class="close">
+					<svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+		            	<title>{{lang 'common.close'}}</title>
+		            	<desc>{{lang 'common.close'}}</desc>
+		            	<use xlink:href="#icon-close"></use>
+		            </svg>
+				</a>
+			</div>
+		    <div class="halo-sidebar-wrapper">
+		        <ul class="account-dropdown account-dropdown-sidebar">
+		            <li class="account-item">
+		                <a class="account-action" href="{{urls.account.orders.all}}">
+		                    <span class="text">
+		                    	<svg class="icon" role="img" aria-label="{{lang 'account.nav.orders'}}">
+	                                <title>{{lang 'account.nav.orders'}}</title>
+	                                <desc>{{lang 'account.nav.orders'}}</desc>
+	                                <use xlink:href="#icon-order"></use>
+	                            </svg>
+		                    	{{lang 'account.nav.orders'}}
+		                    </span>
+		                </a>
+		            </li>
+		            {{#if settings.returns_enabled}}
+		                <li class="account-item">
+		                    <a class="account-action" href="{{urls.account.returns}}">
+		                        <span class="text">
+		                        	<svg class="icon" role="img" aria-label="{{lang 'account.nav.returns'}}">
+		                                <title>{{lang 'account.nav.returns'}}</title>
+		                                <desc>{{lang 'account.nav.returns'}}</desc>
+		                                <use xlink:href="#icon-return"></use>
+		                            </svg>
+			                    	{{lang 'account.nav.returns'}}
+		                        </span>
+		                    </a>
+		                </li>
+		            {{/if}}
+		            <li class="account-item">
+		                <a class="account-action" href="{{urls.account.inbox}}">
+		                    <span class="text">
+		                    	<svg class="icon" role="img" aria-label="{{lang 'account.mobile_nav.messages'}}">
+	                                <title>{{lang 'account.mobile_nav.messages'}}</title>
+	                                <desc>{{lang 'account.mobile_nav.messages'}}</desc>
+	                                <use xlink:href="#icon-message-2"></use>
+	                            </svg>
+		                    	{{lang 'account.mobile_nav.messages'}}
+		                    </span>
+		                </a>
+		            </li>
+		             <li class="account-item">
+		                <a class="account-action" href="{{urls.account.addresses}}">
+		                    <span class="text">
+		                    	<svg class="icon" role="img" aria-label="{{lang 'account.nav.addresses'}}">
+	                                <title>{{lang 'account.nav.addresses'}}</title>
+	                                <desc>{{lang 'account.nav.addresses'}}</desc>
+	                                <use xlink:href="#icon-address-book"></use>
+	                            </svg>
+		                    	{{lang 'account.nav.addresses'}}
+		                    </span>
+		                </a>
+		            </li>
+		            {{#if settings.show_payment_methods}}
+		                <li class="account-item">
+		                    <a class="account-action" href="{{urls.account.payment_methods.all}}">
+		                        <span class="text">
+		                        	<svg class="icon" role="img" aria-label="{{lang 'account.nav.payment_methods'}}">
+		                                <title>{{lang 'account.nav.payment_methods'}}</title>
+		                                <desc>{{lang 'account.nav.payment_methods'}}</desc>
+		                                <use xlink:href="#icon-payment"></use>
+		                            </svg>
+			                    	{{lang 'account.nav.payment_methods'}}
+		                        </span>
+		                    </a>
+		                </li>
+		            {{/if}}
+		            {{#if settings.show_wishlist}}
+		                <li class="account-item">
+		                    <a class="account-action" href="{{urls.account.wishlists.all}}">
+		                        <span class="text">
+		                        	<svg class="icon" role="img" aria-label="{{lang 'account.wishlists.heading'}}">
+	                                    <title>{{lang 'account.wishlists.heading'}}</title>
+	                                    <desc>{{lang 'account.wishlists.heading'}}</desc>
+	                                    <use xlink:href="#icon-heart"></use>
+	                                </svg>
+		                        	{{lang 'account.mobile_nav.wishlists'}}
+		                        </span>
+		                    </a>
+		                </li>
+		            {{/if}}
+		            <li class="account-item">
+		                <a class="account-action" href="{{urls.account.recent_items}}">
+		                    <span class="text">
+		                    	<svg class="icon" role="img" aria-label="{{lang 'account.nav.recently_viewed'}}">
+	                                <title>{{lang 'account.nav.recently_viewed'}}</title>
+	                                <desc>{{lang 'account.nav.recently_viewed'}}</desc>
+	                                <use xlink:href="#icon-recently-viewed"></use>
+	                            </svg>
+		                    	{{lang 'account.nav.recently_viewed'}}
+		                    </span>
+		                </a>
+		            </li>
+		            <li class="account-item">
+		                <a class="account-action" href="{{urls.account.details}}">
+		                    <span class="text">
+		                    	<svg class="icon" role="img" aria-label="{{lang 'account.nav.settings'}}">
+	                                <title>{{lang 'account.nav.settings'}}</title>
+	                                <desc>{{lang 'account.nav.settings'}}</desc>
+	                                <use xlink:href="#icon-account-settings"></use>
+	                            </svg>
+		                    	{{lang 'account.nav.settings'}}
+		                    </span>
+		                </a>
+		            </li>
+		            <li class="account-item">
+		                <a class="account-action" href="{{urls.auth.logout}}">
+		                    <span class="text">
+		                    	<svg class="icon" role="img" aria-label="{{lang 'common.logout'}}">
+	                                <title>{{lang 'common.logout'}}</title>
+	                                <desc>{{lang 'common.logout'}}</desc>
+	                                <use xlink:href="#icon-sign-out"></use>
+	                            </svg>
+		                    	{{lang 'common.logout'}}
+		                    </span>
+		                </a>
+		            </li>
+		        </ul>
+		    </div>
+		</div>
+	{{else}}
+		<div id="halo-auth-sidebar" class="halo-sidebar login-form-sidebar halo-auth-sidebar halo-sidebar-right">
+			<div class="halo-sidebar-header">
+				<span class="title">{{lang 'common.login_title'}}</span>
+				<a href="#" class="close">
+					<svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+			        	<title>{{lang 'common.close'}}</title>
+			        	<desc>{{lang 'common.close'}}</desc>
+			        	<use xlink:href="#icon-close"></use>
+			        </svg>
+				</a>
+			</div>
+		    <div class="halo-sidebar-wrapper">
+		        <form class="form" action="{{settings.secure_base_url}}/login.php?action=check_login" method="post">
+		            <div class="login-form-wrapper">
+		                <div class="form-field m-b-20">
+		                    <label class="form-label" for="login_email">
+		                        {{lang 'login.field_email'}}
+		                    </label>
+		                    <input id="login_email" class="form-input b-r-100" type="email" value="" name="login_email" placeholder="Email">
+		                </div>
+		                <div class="form-field m-b-0">
+		                    <label class="form-label" for="login_pass">
+		                        {{lang 'login.field_password'}}
+		                    </label>
+		                    <input id="login_pass" class="form-input b-r-100" type="password" value="" name="login_pass" placeholder="Password">
+		                </div>
+						<a class="forgot-password f-italic right" href="{{urls.auth.forgot_password}}">
+							<span>{{lang 'login.forgot_password'}}</span>
+						</a>
+		                <div class="form-actions">
+		                    <button type="button" class="button button--primary f-size-large f-normal w-100 mi-w">{{lang 'login.submit_value'}}</button>
+							{{#if settings.account_creation_enabled}}
+		                    	<a class="create-account w-100 mi-w u-u" href="{{urls.auth.create_account}}">{{lang 'login.new_customer.create_account'}}</a>
+							{{/if}}
+		                </div>
+		            </div>
+		        </form>
+		    </div>
+		</div>
+	{{/if}}
+{{/if}}
+
+{{#if page_type '!=' 'cart'}}
+    <div class="halo-sidebar halo-cart-sidebar halo-sidebar-right" id="halo-cart-sidebar">
+    	<div class="halo-sidebar-header">
+    		<span class="title">{{lang 'cart.preview.cart'}}</span>
+    		<a href="#" class="close">
+    			<svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+                	<title>{{lang 'common.close'}}</title>
+                	<desc>{{lang 'common.close'}}</desc>
+                	<use xlink:href="#icon-close"></use>
+                </svg>
+    		</a>
+    	</div>
+        <div class="halo-sidebar-wrapper haloCustomScrollbar">
+            {{> components/common/cart-preview}}
+        </div>
+    </div>
+{{/if}}
+
+<div class="halo-sidebar halo-menu-sidebar halo-sidebar-left{{#if theme_settings.haloMegamenu}} halo-menu-megamenu{{/if}}" id="halo-menu-sidebar" data-halo-load="animation">
+	<div class="halo-sidebar-header">
+		<span class="title">{{lang 'common.menu'}}</span>
+	    <a href="#" class="close">
+	        <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+	        	<title>{{lang 'common.close'}}</title>
+	        	<desc>{{lang 'common.close'}}</desc>
+	        	<use xlink:href="#icon-close"></use>
+	        </svg>
+	    </a>
+	</div>
+    <div class="halo-sidebar-wrapper navPages-container" data-menu>
+        {{> components/common/navigation-mobile}}
+    </div>
+</div>
+
+<div class="halo-sidebar halo-search-sidebar halo-sidebar-right" id="halo-search-sidebar">
+	<div class="container container-1600">
+		<div class="halo-sidebar-header">
+			<span class="title">{{lang 'common.search'}}</span>
+			<a href="#" class="close">
+				<svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+					<title>{{lang 'common.close'}}</title>
+					<desc>{{lang 'common.close'}}</desc>
+					<use xlink:href="#icon-close"></use>
+				</svg>
+			</a>
+		</div>
+		<div class="halo-sidebar-wrapper haloCustomScrollbar p-40-0">
+			<div class="halo-sidebar-search d-none d-block-tb">
+				<form class="form m-0" onsubmit="return false" data-url="{{urls.search}}" data-quick-search-form>
+					<fieldset class="form-fieldset">
+						<div class="form-field m-0">
+							<label class="is-srOnly" for="{{name}}">{{lang "search.quick_search.input_label"}}</label>
+							<input class="form-input"
+								   data-search-quick
+								   name="{{name}}"
+								   id="{{name}}"
+								   data-error-message="{{lang 'search.error.empty_field'}}"
+								   placeholder="{{lang 'search.quick_search.input_placeholder'}}"
+								   autocomplete="off"
+							>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<div class="halo-sidebar-content">
+				{{#if theme_settings.halo-trending-now-title}}
+					<div class="haloQuickSearchResults quickSearchResultsCustom p-0">
+						{{> components/halothemes/search/halo-before-quick-results productsnew=products.new}}
+					</div>
+				{{/if}}
+				<p role="status"
+					aria-live="polite"
+					class="aria-description--hidden"
+					data-search-aria-message-predefined-text="{{{lang 'search.results.quick_count_live'}}}"
+				></p>
+				<section class="haloQuickSearchResults quickSearchResults center" id="halo-quickResults-product" data-bind="html: results">
+					<h5 class="quickSearchResults-title w-100 left d-none m-t-0 m-b-40">Product results <span class="number">(0)</span></h5>
+					<div class="productCarousel haloSwiper pos-relative" data-list-name="Most Popular Products" data-per-view-mob="{{theme_settings.cardProd_colMob}}" data-per-view-tab="{{theme_settings.cardProd_colTab}}" data-per-view-des="{{theme_settings.cardProd_col}}" data-swiper-space-tab="20" data-swiper-space-des="30">
+						<div class="swiper-wrapper disable-srollbar">
+						</div>
+                    </div>
+					<a class="quickSearchResults-button button button--transparent f-size-large f-root-tb f-size-small-mb d-none m-t-40 m-b-0" href="#">View All Products<svg class="icon"><use href="#icon-arrow-next"></use></svg></a>
+				</section>
+			</div>
+		</div>
+	</div>
+</div>

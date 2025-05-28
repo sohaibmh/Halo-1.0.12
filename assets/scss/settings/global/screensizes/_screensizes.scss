@@ -1,0 +1,81 @@
+// =============================================================================
+// SCREEN SIZES
+// =============================================================================
+//
+// 1. Remember to update /assets/js/theme/common/media-query-list.js
+//    if you decide to change breakpoint values
+//
+// -----------------------------------------------------------------------------
+
+
+// Screen sizes
+// -----------------------------------------------------------------------------
+
+$screen-hd:                1920px;
+$screen-xxxl:              1800px;
+$screen-xxl:               1600px;
+$screen-xl:                1400px;
+$screen-l:                 1200px;
+$screen-m:                 1025px;
+$screen-s:                 768px;
+$screen-xs:                551px;
+$screen-xxs:               375px;
+$screen-xxxs:              321px;
+
+@mixin smin-hd {
+    @media (min-width: $screen-hd) {@content; }
+}
+@mixin smin-xxxl {
+    @media (min-width: $screen-xxxl) {@content; }
+}
+@mixin smin-xxl {
+    @media (min-width: $screen-xxl) {@content; }
+}
+@mixin smin-xl {
+    @media (min-width: $screen-xl) {@content; }
+}
+@mixin smin-l {
+    @media (min-width: $screen-l) {@content; }
+}
+@mixin smin-m {
+    @media (min-width: $screen-m) {@content; }
+}
+@mixin smin-s {
+    @media (min-width: $screen-s) {@content; }
+}
+@mixin smin-xs {
+    @media (min-width: $screen-xs) {@content; }
+}
+@mixin smin-xxs {
+    @media (min-width: $screen-xxs) {@content; }
+}
+@mixin smin-xxxs {
+    @media (min-width: $screen-xxxs) {@content; }
+}
+@mixin smax-xxxl {
+    @media (max-width: ($screen-xxxl - 1px)) {@content; }
+}
+@mixin smax-xxl {
+    @media (max-width: ($screen-xxl - 1px)) {@content; }
+}
+@mixin smax-xl {
+    @media (max-width: ($screen-xl - 1px)) {@content; }
+}
+@mixin smax-l {
+    @media (max-width: ($screen-l - 1px)) {@content; }
+}
+@mixin smax-m {
+    @media (max-width: ($screen-m - 1px)) {@content; }
+}
+@mixin smax-s {
+    @media (max-width: ($screen-s - 1px)) {@content; }
+}
+@mixin smax-xs {
+    @media (max-width: ($screen-xs - 1px)) {@content; }
+}
+@mixin smax-xxs {
+    @media (max-width: ($screen-xxs - 1px)) {@content; }
+}
+@mixin smax-xxxs {
+    @media (max-width: ($screen-xxxs - 1px)) {@content; }
+}

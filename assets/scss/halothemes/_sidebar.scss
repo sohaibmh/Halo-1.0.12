@@ -1,0 +1,523 @@
+.halo-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 0;
+    height: 100%;
+    z-index: 102;
+    max-width: 375px;
+    width: calc(100% - 50px);
+    transition: opacity .5s, transform .5s ease, visibility .5s ease;
+    background-color: $body-bg;
+
+    .close {
+        top: 12px;
+        right: 5px;
+
+        @include smin-m {
+            top: 24px;
+            right: 40px;
+        }
+    }
+
+    &-header {
+        position: relative;
+        padding: 16px 10px 0;
+
+        .title {
+            display: block;
+            font-family: $fontFamily-headings;
+            font-size: $fontSize-root + 4px;
+            font-weight: $fontWeight-bold;
+            line-height: 1.2335;
+            text-transform: capitalize;
+            padding-bottom: 24px;
+            color: $header-font-color;
+
+            .halo-auth-sidebar & {
+                border-bottom: 1px solid #a9a9a9;
+            }
+        }
+
+        @include smin-m {
+            padding: 24px 40px 0;
+
+            .title {
+                font-size: $fontSize-root + 14px;
+            }
+        }
+    }
+
+    &-wrapper {
+        position: relative;
+        padding: 30px 15px 30px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: 100%;
+        height: calc(100% - 86px);
+
+        @include smin-m {
+            padding: 60px 40px 24px;
+        }
+    }
+
+    &.halo-sidebar-left {
+        left: 0;
+        right: auto;
+        transform: translate3d(-112%, 0, 0);
+    }
+
+    &.halo-sidebar-right {
+        right: 0;
+        left: auto;
+        transform: translate3d(112%, 0, 0);
+    }
+
+    &.halo-cart-sidebar {
+        .close {
+            top: 20px;
+            right: 10px;
+
+            @include smin-xs {
+                right: 20px;
+            }
+        }
+
+        .halo-sidebar-header {
+            padding: 20px 10px 0;
+    
+            .title {
+                font-size: $fontSize-root + 4px;
+                line-height: 1.6;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+
+            @include smin-xs {
+                padding: 20px 20px 0;
+            }
+        }
+    
+        .halo-sidebar-wrapper {
+            padding: 14px 10px 20px;
+            height: calc(100% - 52px);
+
+            @include smin-xs {
+                padding: 14px 20px 20px;
+            }
+        }
+
+        .previewCart {
+            .previewCartList {
+                max-height: 100%;
+            }
+        }
+    }
+
+    &.halo-search-sidebar {
+        visibility: hidden;
+        opacity: 0;
+
+        .container {
+            padding: 0;
+        }
+
+        .openQuickSearch & {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        &.haloCustomScrollbar {
+            overflow-y: unset;
+        }
+
+        @include smax-m {
+            .halo-sidebar-wrapper {
+                padding: 10px 10px 20px;
+            }
+
+            .halo-sidebar-content {
+                padding-top: 30px;
+            }
+
+            .search-item {
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    &.halo-menu-sidebar {
+        .navPages-container {
+            display: block;
+
+            .navPages {
+                background: transparent;
+            }
+        }
+    }
+
+    .form-label {
+        margin-bottom: 16px;
+    }
+
+    .form-input {
+        min-height: 62px;
+    }
+
+    .form-select {
+        height: 62px;
+        line-height: 60px;
+    }
+
+    @include smin-xs {
+        &.halo-auth-sidebar {
+            max-width: 510px;
+            width: 100%;
+        }
+
+        &.halo-cart-sidebar {
+            max-width: 510px;
+            width: 100%;
+        }
+
+        &.halo-search-sidebar {
+            max-width: 510px;
+            width: 100%;
+        }
+    }
+
+    @include smin-m {
+        &.halo-search-sidebar {
+            transform: translate3d(0, -112%, 0);
+            top: 96px;
+            bottom: auto;
+            max-width: 100%;
+            height: auto;
+            z-index: 10;
+            overflow-y: auto;
+            max-height: calc(100% - 96px);
+
+            .halo-sidebar-header {
+                padding: 0;
+            }
+
+            .halo-sidebar-wrapper {
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+            
+            .title {
+                display: none;
+            }
+
+            .close {
+                top: 40px;
+            }
+        }
+    }
+}
+
+.halo-global-block {
+    z-index: 1005;
+}
+
+.halo-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: -1;
+    display: none;
+    visibility: hidden;
+    transition: $anchor-transition;
+    background-color: rgba(0, 0, 0, .4);
+    backdrop-filter: blur(10px);
+}
+
+.has-activeModal {
+    @include smin-m {
+        padding-right: 17px;
+    }
+}
+
+.has-activeQuickViewModal {
+    &.openCartSidebar {
+        .halo-sidebar {
+            z-index: 9999;
+        }
+
+        .modal-background {
+            z-index: 1001;
+        }
+    }
+}
+
+.openAuthSidebar {
+    overflow: hidden;
+    -webkit-overflow-scrolling: auto;
+
+    .halo-auth-sidebar {
+        &.is-open {
+            right: 0;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .halo-background {
+        z-index: 101;
+        opacity: 1;
+        display: block;
+        visibility: visible;
+    }
+
+    @include smin-m {
+        padding-right: 17px;
+    }
+}
+
+.openCartSidebar {
+    overflow: hidden;
+    -webkit-overflow-scrolling: auto;
+
+    .halo-cart-sidebar {
+        right: 0;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .halo-background {
+        z-index: 101;
+        opacity: 1;
+        display: block;
+        visibility: visible;
+    }
+
+    .modal-background,
+    .modal.modal--editOptions {
+        z-index: 9999;
+    }
+
+    .modal-background {
+        background: none;
+        backdrop-filter: blur(10px);
+    }
+
+    @include smin-m {
+        padding-right: 17px;
+    }
+}
+
+.openQuickSearch {
+    overflow: hidden;
+    -webkit-overflow-scrolling: auto;
+
+    .halo-background {
+        z-index: 101;
+        opacity: 1;
+        display: block;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    @include smin-m {
+        padding-right: 17px;
+
+        .header {
+            z-index: 102;
+            padding-right: 17px;
+        }
+    }
+}
+
+.openSearchMobile {
+    overflow: hidden;
+    -webkit-overflow-scrolling: auto;
+
+    .halo-search-sidebar {
+        visibility: visible;
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+
+        .form-input {
+            width: 100%;
+            height: 50px;
+            line-height: 48px;
+
+            +.button {
+                min-width: 50px;
+            }
+        }
+    }
+
+    @include smax-m {
+        .halo-background {
+            z-index: 102;
+            opacity: 1;
+            display: block;
+            visibility: visible;
+        }
+    }
+}
+
+.openSidebar {
+    overflow: hidden;
+    -webkit-overflow-scrolling: auto;
+
+    .halo-background {
+        opacity: 1;
+        visibility: visible;
+        display: block;
+        z-index: 101;
+    }
+
+    @include smin-m {
+        padding-right: 17px;
+    }
+}
+
+.has-activeNavPages {
+    overflow: hidden;
+    -webkit-overflow-scrolling: auto;
+
+    .halo-background {
+        z-index: 101;
+        opacity: 1;
+        display: block;
+        visibility: visible;
+    }
+
+    .halo-menu-sidebar {
+        left: 0;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+// Login Sidebar
+// -----------------------------------------------------------------------------
+.login-form-sidebar {
+    .note {
+        display: block;
+        padding: 10px 0 22px 0;
+
+        .alertBox {
+            margin-bottom: 0;
+        }
+    }
+
+    .form {
+        margin: 0;
+    }
+
+    .form-actions {
+        margin: 24px 0 0;
+
+        .button {
+            min-height: 62px;
+            line-height: 60px;
+        }
+    }
+
+    .forgot-password {
+        display: block;
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        color: $color-textSecondary;
+        padding: 16px 0 0 0;
+    }
+
+    .create-account {
+        margin: 20px 0 0 0 !important;
+
+        span {
+            display: inline;
+            background-image: linear-gradient(transparent 97%, $header-font-color 3%);
+            background-repeat: repeat-x;
+            background-position-y: -3px;
+            padding: 0 0 2px 0;
+        }
+    }
+
+    &.is-loading {
+        &:after {
+            content: '';
+            background-color: rgba(stencilColor("loadingOverlay-backgroundColor"), .9);
+            background-image: url(../img/loading.svg);
+            background-size: 100px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 50%;
+            left: 0;
+            right: 0;
+            border: 0;
+            border-radius: 0;
+            display: block;
+            margin: 0 auto;
+            transform: translateY(-50%) rotate(0);
+            transform-style: preserve-3d;
+            animation: unset;
+            z-index: zIndex("low");
+        }
+    }
+}
+
+// Account Sidebar
+// -----------------------------------------------------------------------------
+.account-dropdown-sidebar {
+    list-style: none;
+    margin: 0;
+
+    .account-item {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        width: 100%;
+        border-bottom: 1px solid $color-custom-grey;
+
+        .account-action {
+            display: block;
+            width: 100%;
+            color: $color-textBase;
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-normal;
+            padding: 0 35px 0 0;
+            margin: 0;
+            line-height: 45px;
+            text-transform: capitalize;
+            transition: $anchor-transition;
+        }
+
+        .text {
+            display: flex;
+            align-items: center;
+            color: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            position: relative;
+            transition: $anchor-transition;
+            padding: 0;
+            white-space: nowrap;
+
+            >.icon {
+                display: inline-block;
+                vertical-align: middle;
+                fill: $icon-color;
+                stroke: $icon-color;
+                margin: 0 10px 0 0;
+                width: 18px;
+                height: 18px;
+
+            }
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+}

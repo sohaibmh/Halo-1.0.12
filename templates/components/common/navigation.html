@@ -1,0 +1,64 @@
+<nav class="navUser">
+    <ul class="navUser-section navUser-section--action navUser-section--alt">
+        <li class="navUser-item navUser-item--alt navUser-item--account center">
+            {{#if customer}}
+                <a class="navUser-action navUser-action--account link-line"
+                href="{{urls.account.index}}"
+                aria-label="{{lang 'common.account'}}"
+                data-login-form
+                >
+                    <svg class="icon" role="img" aria-label="{{lang 'common.account'}}">
+                        <title>{{lang 'common.account'}}</title>
+                        <desc>{{lang 'common.account'}}</desc>
+                        <use xlink:href="#icon-account"></use>
+                    </svg>
+                    <span class="item-label d-inline-block d-none-xxxl">{{lang 'create_account.account_default'}} {{customer.name}}.</span>
+                </a>
+            {{else}}
+                <a class="navUser-action link-line"
+                href="{{urls.auth.login}}"
+                aria-label="{{lang 'common.login'}}"
+                data-login-form
+                >
+                    <svg class="icon" role="img" aria-label="{{lang 'common.login'}}">
+                        <title>{{lang 'common.login'}}</title>
+                        <desc>{{lang 'common.login'}}</desc>
+                        <use xlink:href="#icon-account"></use>
+                    </svg>
+                    {{#if settings.account_creation_enabled}}
+                        <span class="item-label d-inline-block d-none-xxxl">{{lang 'common.login'}}</span>
+                    {{else}}
+                        <span class="item-label d-inline-block d-none-xxxl">{{lang 'common.login_2'}}</span>
+                    {{/if}}
+                </a>
+            {{/if}}
+        </li>
+        {{#if settings.show_wishlist}}
+            <li class="navUser-item navUser-item--alt navUser-item--wishlist center">
+                <a class="navUser-action link-line" href="{{urls.account.wishlists.all}}">
+                    <div class="navUser-icon">
+                        <svg class="icon" role="img" aria-label="{{lang 'account.wishlists.heading'}}">
+                            <title>{{lang 'account.wishlists.heading'}}</title>
+                            <desc>{{lang 'account.wishlists.heading'}}</desc>
+                            <use xlink:href="#icon-heart"></use>
+                        </svg>
+                        <span class="item-label d-inline-block d-none-xxxl">{{lang 'common.wishlist'}}</span>
+                    </div>
+                </a>
+            </li>
+        {{/if}}
+        <li class="navUser-item navUser-item--alt navUser-item--cart center">
+            <a class="navUser-action link-line b-r-100" data-cart-preview data-options="align:right" href="{{urls.cart}}" aria-label="{{lang 'cart.nav_aria_label'}}">
+                <div class="navUser-item-cartLabel">
+                    <svg class="icon" role="img" aria-label="{{lang 'common.cart'}}">
+                        <title>{{lang 'common.cart'}}</title>
+                        <desc>{{lang 'common.cart'}}</desc>
+                        <use xlink:href="#icon-cart"></use>
+                    </svg>
+                    <span class="item-label d-inline-block d-none-xxxl">{{lang 'common.cart'}}</span>
+                </div>
+                <div class="countPill d-inline-block v-a-middle center cart-quantity">{{cart.quantity}}</div>
+            </a>
+        </li>
+    </ul>
+</nav>

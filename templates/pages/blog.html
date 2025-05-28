@@ -1,0 +1,58 @@
+---
+blog:
+    posts:
+        limit: {{theme_settings.blog_posts_limit}}
+        pages: 3
+        summary: 110
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+---
+{{#partial "head"}}
+    {{#if pagination.blog.previous}}
+        <link rel="prev" href="{{pagination.blog.previous}}">
+    {{/if}}
+    {{#if pagination.blog.next}}
+        <link rel="next" href="{{pagination.blog.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+
+<div class="container container-1600">
+    <div class="breadcrumb-wrapper">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} 
+    </div>
+</div>
+
+{{> components/halothemes/blog/blog-post-top}}
+
+{{> components/halothemes/blog/blog-post-featured}}
+
+
+<main class="page blog-page halo-page p-100-0" data-blog-url="{{blog.url}}">
+    <div class="halo-block" data-halo-load="animation">
+        <div class="container container-1600">
+            <div class="halo-block-header left o-h">
+                <h2 class="title d-inline-block halo-fadeInUp">{{lang 'blog.blog_title'}}</h2>
+            </div>
+            <div class="halo-blog">
+                {{#each blog.posts}}
+                    {{#or (if @index '==' 0) (if @index '==' 1) (if @index '==' 2)}}
+                    {{else}}
+                        {{> components/blog/post post=this theme_settings=../theme_settings}}
+                    {{/or}}
+                {{/each}}
+            </div>
+            {{> components/common/paginator pagination.blog}}
+        </div>
+    </div>
+</main>
+
+{{/partial}}
+{{> layout/base}}

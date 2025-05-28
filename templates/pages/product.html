@@ -1,0 +1,96 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+---
+{{inject 'productId' product.id}}
+
+{{#partial "page"}}
+    {{#each product.shipping_messages}}
+        {{> components/common/alert/alert-info message}}
+    {{/each}}
+
+    <div>
+        <div class="container container-1600">
+            <div class="breadcrumb-wrapper">
+                {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} 
+            </div>
+            
+            {{> components/products/product-view productsnew=products.new }}
+
+            <article class="productView-description c-b">
+                {{#if theme_settings.show_product_details_tabs}}
+                    {{> components/products/description-tabs}}
+                {{else}}
+                    {{> components/products/description}}
+                {{/if}}
+            </article>
+        </div>
+
+        {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+
+        {{{region name="product_below_content"}}}
+
+        {{#if theme_settings.prodPageBlock_1 '==' 'Related'}}
+            {{> components/products/related
+                products=product.related_products
+                productsnew=products.new
+                title=theme_settings.prodPageBlock_1_title
+                block_column=theme_settings.prodPageBlock_col
+                block_layout=theme_settings.prodPageBlock_1_layout
+                block_id="halo-related-products"
+                list="Related Products"
+            }}
+        {{else if theme_settings.prodPageBlock_1 '==' 'Customers'}}
+            {{> components/products/related
+                products=product.similar_by_views
+                productsnew=products.new
+                title=theme_settings.prodPageBlock_1_title
+                block_column=theme_settings.prodPageBlock_col
+                block_layout=theme_settings.prodPageBlock_1_layout
+                block_id="halo-similar-products"
+                list="Customers Also Viewed"
+            }}
+        {{/if}}
+
+        {{#if theme_settings.prodPageBlock_2 '==' 'Related'}}
+            {{> components/products/related
+                products=product.related_products
+                productsnew=products.new
+                title=theme_settings.prodPageBlock_2_title
+                block_column=theme_settings.prodPageBlock_col
+                block_layout=theme_settings.prodPageBlock_2_layout
+                block_id="halo-related-products"
+                list="Related Products"
+            }}
+        {{else if theme_settings.prodPageBlock_2 '==' 'Customers'}}
+            {{> components/products/related
+                products=product.similar_by_views
+                productsnew=products.new
+                title=theme_settings.prodPageBlock_2_title
+                block_column=theme_settings.prodPageBlock_col
+                block_layout=theme_settings.prodPageBlock_2_layout
+                block_id="halo-similar-products"
+                list="Customers Also Viewed"
+            }}
+        {{/if}}
+
+        {{> components/halothemes/product/halo-recent-viewed-products}}
+    </div>
+
+    {{> components/products/schema}}
+{{/partial}}
+{{> layout/base}}

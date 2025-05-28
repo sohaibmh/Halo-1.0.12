@@ -1,0 +1,663 @@
+// =============================================================================
+// ACCOUNT
+// =============================================================================
+
+
+// Account layouts
+// -----------------------------------------------------------------------------
+
+.account {
+    display: block;
+    margin: 0;
+}
+
+.account-head {
+    margin-bottom: spacing("double");
+    text-align: center;
+
+    .alertBox {
+        padding-left: spacing("double");
+        padding-right: spacing("double");
+        text-align: left;
+    }
+}
+
+.account-body {
+    margin: 0;
+    @include clearfix;
+}
+
+.account-content {
+    @include grid-column(12);
+
+    .alertBox {
+        margin-top: 30px;
+    }
+
+    .productGrid {
+        margin-top: 30px;
+
+        .product {
+            .form {
+                text-align: center;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .account-row {
+        margin: 30px 0 0 0;
+    }
+
+    &.account-content2 {
+        padding-left: 0;
+        padding-right: 0;
+        float: none;
+    }
+
+    @media (min-width: 1025px) {
+        .productGrid {
+            .card-body {
+                .card-body-button {
+                    top: 0;
+                }
+            }
+
+            .card {
+                &:hover {
+                    .card-body {
+                        .card-body-button {
+                            top: -60px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.account-content--fixed {
+    @media (min-width: 1025px) {
+        width: grid-calc(8, $total-columns);
+    }
+}
+
+.account-content--fixedSmall {
+    padding-top: 45px;
+
+    &.account-content2 {
+        width: 100%;
+    }
+
+    @media (min-width: 1025px) {
+        width: grid-calc(6, $total-columns);
+    }
+}
+
+.account-sidebar {
+    padding-top: 45px;
+    @include grid-column(12);
+
+    @media (min-width: 1025px) {
+        width: grid-calc(4, $total-columns);
+
+        .account-content--fixedSmall+& {
+            float: right;
+        }
+    }
+}
+
+[data-create-account-form],
+.new-password-form {
+    margin: 0;
+
+    .form-row {
+        display: block;
+        font-size: 0;
+        margin: 0 0;
+        max-width: unset;
+
+        .form-field {
+            display: inline-block;
+            vertical-align: top;
+            padding: 0;
+            width: 100%;
+            margin: 0 0 20px 0;
+            float: none;
+        }
+
+        .form-label {
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+
+        @include smin-s {
+            margin: 0 -15px;
+        }
+    }
+
+    .form-actions {
+        display: block;
+        margin: 20px 0 0 0;
+        text-align: center;
+
+        .button {
+            display: block;
+            width: 100%;
+            text-transform: uppercase;
+        }
+    }
+
+    @include smin-s {
+        .form-row {
+            margin-left: -15px;
+            margin-right: -15px;
+
+            .form-field {
+                padding-left: 15px;
+                padding-right: 15px;
+                width: 50%;
+            }
+        }
+
+        .form-actions {
+            margin-top: 0;
+            text-align: left;
+
+            .button {
+                display: inline-block;
+                vertical-align: top;
+                min-width: 270px;
+                width: auto;
+            }
+        }
+    }
+}
+
+.forgot-password-text,
+.new-password-text {
+    color: $header-font-color;
+    margin: 0 0 20px 0;
+}
+
+.new-password-text {
+    +.button {
+        text-transform: uppercase;
+    }
+
+    @include smin-s {
+        +.button {
+            min-width: 270px;
+        }
+    }
+}
+
+.forgot-password-form {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+
+    .button {
+        display: block;
+        width: 100%;
+        text-transform: uppercase;
+        margin: 20px 0 0 0;
+    }
+
+    @include smin-s {
+        .button {
+            width: auto;
+            margin-left: 20px;
+            margin-top: 0;
+            min-width: 270px;
+        }
+    }
+}
+
+.page-type-account_orderstatus,
+.page-type-account_inbox,
+.page-type-account_addressbook,
+.page-type-wishlist,
+.page-type-wishlists,
+.page-type-account_recentitems,
+.page-type-editaccount,
+.page-type-shippingaddressform,
+.page-type-add-wishlist {
+    .panel-body {
+        background: #fafafa;
+    }
+
+    .form-input[readonly] {
+        background-color: #fafafa;
+    }
+}
+
+.page-type-wishlist {
+    .product {
+        padding-bottom: 30px;
+        .card {
+            padding-bottom: 30px;
+        }
+    }
+}
+
+.page-type-newsletter_subscribe {
+    .alertBox {
+        margin-top: 32px;
+    }
+}
+
+[data-inbox-form],
+[data-add-wishlist-form],
+[data-address-form],
+[data-edit-account-form],
+[data-payment-method-form] {
+    margin: 40px 0 0;
+
+    .form-row {
+        display: block;
+        font-size: 0;
+        margin: 0;
+        max-width: unset;
+
+        .form-field {
+            display: inline-block;
+            vertical-align: top;
+            padding: 0;
+            width: 100%;
+            margin: 0 0 20px 0;
+            float: none;
+        }
+
+        .form-select {
+            height: 45px;
+        }
+    }
+
+    .form-actions {
+        display: block;
+        font-size: 0;
+        margin: 20px 0 0 0;
+        text-align: center;
+        max-width: 100%;
+
+        .button {
+            display: block;
+            width: 100%;
+            text-transform: uppercase;
+        }
+    }
+
+    @include smax-s {
+        .form-actions {
+            .button {
+                +.button {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    @include smin-s {
+        .form-row {
+            margin-left: -15px;
+            margin-right: -15px;
+
+            .form-field {
+                padding-left: 15px;
+                padding-right: 15px;
+                width: 50%;
+            }
+        }
+
+        .form-actions {
+            margin-top: 0;
+            text-align: left;
+
+            .button {
+                display: inline-block;
+                vertical-align: top;
+                max-width: 238px !important;
+
+                +.button {
+                    margin-top: 0;
+                    margin-left: 20px;
+                }
+            }
+
+            [data-wishlist-delete] {
+                margin-top: 0;
+                margin-left: 20px;
+            }
+        }
+    }
+
+    @include smin-xxl {
+        .form-row {
+            margin-left: -15px;
+            margin-right: -15px;
+
+            .form-field {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    }
+}
+
+[data-message-account-form],
+[data-account-return-form] {
+    margin: 0;
+
+    .form-select {
+        background-size: unset;
+    }
+
+    .return-itemQuantity {
+        .form-select {
+            background-position: right 5px top 12px;
+        }
+    }
+
+    .form-row {
+        display: block;
+        font-size: 0;
+        margin: 0;
+        max-width: unset;
+
+        .form-field {
+            display: inline-block;
+            vertical-align: top;
+            padding: 0;
+            width: 100%;
+            margin: 0 0 20px 0;
+            float: none;
+        }
+
+        .form-select {
+            height: 45px;
+        }
+    }
+
+    .form-actions {
+        display: block;
+        margin: 20px 0 0 0;
+        text-align: center;
+        font-size: 0;
+
+        .button {
+            display: block;
+            width: 100%;
+            text-transform: uppercase;
+        }
+    }
+
+    @include smin-s {
+        .form-row {
+            margin-left: -15px;
+            margin-right: -15px;
+
+            .form-field {
+                padding-left: 15px;
+                padding-right: 15px;
+                width: 50%;
+            }
+        }
+
+        .form-actions {
+            margin-top: 0;
+            text-align: left;
+
+            .button {
+                display: inline-block;
+                vertical-align: top;
+                max-width: 300px !important;
+
+                +.button {
+                    margin-top: 0;
+                    margin-left: 20px;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1600px) {
+        .form-row {
+            margin-left: -15px;
+            margin-right: -15px;
+
+            .form-field {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    }
+}
+
+[data-account-wishlist-form] {
+    margin: 40px auto 0 auto;
+
+    .form-select {
+        height: 45px;
+    }
+}
+
+[data-add-giftcertificates-form] {
+    margin: 40px auto 0 auto;
+    max-width: 100%;
+
+    .form-field {
+        margin-bottom: 20px;
+    }
+
+    .form-select {
+        height: 50px;
+    }
+
+    .form-actions {
+        .button {
+            margin-left: 0;
+            width: 100%;
+        }
+    }
+
+    @include smin-s {
+        max-width: 34.375rem;
+    }
+}
+
+[data-giftcertificates-form] {
+    margin: 30px 0 0 0;
+
+    .form-row {
+        display: block;
+        font-size: 0;
+        margin: 0;
+        max-width: unset;
+
+        .form-field {
+            display: inline-block;
+            vertical-align: top;
+            padding: 0;
+            width: 100%;
+            margin: 0 0 20px 0;
+            float: none;
+        }
+
+        .form-label {
+            margin-bottom: 10px;
+        }
+
+        .form-select {
+            height: 50px;
+        }
+
+        .form-field--textarea {
+            .form-input {
+                min-height: 165px;
+            }
+        }
+
+        .form-radio {
+            +.form-label {
+                color: $header-font-color;
+                margin-bottom: 15px;
+            }
+        }
+
+        .form-field--checkbox {
+            margin-top: 4px;
+            margin-bottom: 0;
+
+            .form-checkbox {
+                +.form-label {
+                    color: $header-font-color;
+                }
+            }
+
+            +.form-field--checkbox {
+                margin-top: 3px;
+            }
+        }
+
+        .form-field-group {
+            border-radius: 0;
+            border-color: #fafafa;
+            background-color: #fafafa;
+            padding: 17px 22px 10px 22px;
+        }
+    }
+
+    .form-column {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+
+        +.form-column {
+            margin-top: 15px;
+        }
+    }
+
+    .form-actions {
+        display: block;
+        margin: 0;
+        text-align: center;
+        max-width: 100%;
+        font-size: 0;
+
+        .button {
+            display: block;
+            width: 100%;
+            text-transform: uppercase;
+            margin-left: 0;
+
+            &:first-child {
+                color: $buttonStyle-primary-borderColor;
+                background-color: transparent;
+            }
+
+            +.button {
+                margin-top: 20px;
+                margin-left: 0;
+            }
+        }
+    }
+
+    @include smin-s {
+        .form-row {
+            margin-left: -15px;
+            margin-right: -15px;
+
+            .form-field {
+                padding-left: 15px;
+                padding-right: 15px;
+                width: 50%;
+            }
+
+            .form-column {
+                .form-field {
+                    width: 100%;
+                }
+            }
+        }
+
+        .form-column {
+            width: 50%;
+
+            +.form-column {
+                margin-top: 0;
+            }
+        }
+
+        .form-actions {
+            text-align: right;
+            width: 50%;
+            float: right;
+
+            .button {
+                display: inline-block;
+                vertical-align: top;
+                width: calc(100% - 15px);
+
+                +.button {
+                    width: calc(100% - 15px);
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .form-row {
+            margin-left: -35px;
+            margin-right: -35px;
+
+            .form-field {
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+        }
+
+        .form-actions {
+            .button {
+                width: 190px;
+
+                &:first-child {
+                    &:hover {
+                        color: $buttonStyle-primary-colorActive;
+                        border-color: $buttonStyle-primary-borderColorActive;
+                        background-color: $buttonStyle-primary-backgroundColorActive;
+                    }
+                }
+
+                +.button {
+                    width: calc(100% - 240px);
+                    margin-left: 15px;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1600px) {
+        .form-row {
+            margin-left: -70px;
+            margin-right: -70px;
+
+            .form-field {
+                padding-left: 70px;
+                padding-right: 70px;
+            }
+        }
+
+        .form-actions {
+            padding-top: 10px;
+
+            .button {
+                +.button {
+                    width: calc(100% - 275px);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{{#if theme_settings.homeProd_2 '==' 'Featured'}}
+    {{> components/products/featured
+        products=products.featured
+        productsnew=products.new
+        title=theme_settings.homeProd_2_title
+        block_id="halo-product-block-2"
+        block_limit=theme_settings.homeProd_limit
+        block_column_mb=theme_settings.cardProd_colMob
+        block_column_tb=theme_settings.cardProd_colTab
+        block_column=theme_settings.cardProd_col
+        block_layout=theme_settings.homeProd_2_layout
+    }}
+{{else if theme_settings.homeProd_2 '==' 'New'}}
+    {{> components/products/new
+        products=products.new
+        productsnew=products.new
+        title=theme_settings.homeProd_2_title
+        block_id="halo-product-block-2"
+        block_limit=theme_settings.homeProd_limit
+        block_column_mb=theme_settings.cardProd_colMob
+        block_column_tb=theme_settings.cardProd_colTab
+        block_column=theme_settings.cardProd_col
+        block_layout=theme_settings.homeProd_2_layout
+    }}
+{{else if theme_settings.homeProd_2 '==' 'Top'}}
+    {{> components/products/top
+        products=products.top_sellers
+        productsnew=products.new
+        title=theme_settings.homeProd_2_title
+        block_id="halo-product-block-2"
+        block_limit=theme_settings.homeProd_limit
+        block_column_mb=theme_settings.cardProd_colMob
+        block_column_tb=theme_settings.cardProd_colTab
+        block_column=theme_settings.cardProd_col
+        block_layout=theme_settings.homeProd_2_layout
+    }}
+{{/if}}

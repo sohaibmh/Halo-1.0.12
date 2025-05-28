@@ -1,0 +1,55 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+        summary: 145
+---
+{{#partial "hero"}}
+    {{{region name="home_below_menu"}}}
+    {{#and carousel carousel.slides.length}}
+        {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows play_pause_button=theme_settings.homepage_show_carousel_play_pause_button}}
+    {{/and}}
+    {{{region name="home_below_carousel"}}}
+{{/partial}}
+
+{{#partial "page"}}
+
+    {{#each shipping_messages}}
+        {{> components/common/alert/alert-info message}}
+    {{/each}}
+
+    <div class="main full">
+        {{> components/halothemes/home/halo-marquee-promotion}}
+
+        {{> components/halothemes/home/halo-featuredCate1}}
+
+        {{> components/halothemes/home/halo-featuredCate2}}
+
+        {{> components/halothemes/home/halo-productBlock1}}
+
+        {{> components/halothemes/home/halo-productFeatured}}
+
+        {{> components/halothemes/home/halo-featuredCate3}}
+
+        {{> components/halothemes/home/halo-productTab}}
+
+        {{> components/halothemes/home/halo-bannerWithText}}
+
+        {{> components/halothemes/home/halo-reviewBlock}}
+
+        {{> components/halothemes/home/halo-productBlock2}}
+
+        {{> components/halothemes/home/home-recent-posts post=blog.recent_posts}}
+
+        {{> components/halothemes/home/halo-featuredBrands}}
+    </div>
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,246 @@
+// =============================================================================
+// FOOTER (CSS)
+// =============================================================================
+
+
+// Layout and columns
+// -----------------------------------------------------------------------------
+//
+// 1. To enable the grid's display: inline-block; to work properly, we need to
+//    remove the white-space that it creates between columns with font-size: 0;
+// 2. Re-set the font-size that was reduced to 0 in point 1 for children.
+// 3. Fix for text flickers on windows devices
+//
+// -----------------------------------------------------------------------------
+
+.footer {
+    background-color: $footer-background;
+    padding: 30px 0 20px;
+    position: relative;
+    transform: translateZ(0); // 3
+
+    @include smin-m {
+        padding: 80px 0 20px;
+    }
+}
+
+.footer-title-sr-only {
+    height: 1px;
+    left: -10000px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    width: 1px;
+}
+
+.footer-info {
+    font-size: 0; // 1
+}
+
+.footer-info-col {
+    width: 100%;
+    padding: 0;
+    color: $header-font-color;
+    display: inline-block;
+    float: none;
+    font-size: fontSize("base"); // 2
+    margin-bottom: 0;
+    overflow-wrap: break-word;
+    vertical-align: top;
+    // TODO: specifically use vendor only for IE11 since overflow-wrap is not supported here
+    -ms-word-break: break-all;
+
+    @include smin-xs {
+        width: width("4/12");
+        margin-bottom: 30px;
+    }
+
+    @include smin-m {
+        margin-bottom: 80px;
+        padding: 0 20px 0 0;
+        width: width("6/12");
+    }
+
+    @include smax-m {
+        &[data-section-type="footer-social"] {
+            padding: 30px 0;
+            margin: 0;
+            width: 100%;
+        }
+    }
+
+    @include smax-xs {
+        &[data-section-type="footer-social"] {
+            border-top: 1px solid $color-textSecondary;
+        }
+    }
+}
+
+.footer-info-col--small {
+    @include breakpoint("medium") {
+        width: width("3/12");
+    }
+}
+
+
+// Content
+// -----------------------------------------------------------------------------
+
+.footer-info-heading {
+    color: $footer-heading-fontColor;
+    text-transform: inherit;
+    margin-bottom: 8px;
+    padding: 3px 0;
+}
+
+.footer-info-heading--toggle {
+    @include smax-xs {
+        border-top: 1px solid $color-textSecondary;
+        margin-bottom: 0;
+        padding: 21px 0;
+        position: relative;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:before {
+            top: 50%;
+            right: 5px;
+            z-index: 2;
+            content: "";
+            width: 2px;
+            height: 12px;
+            position: absolute;
+            transition: all .4s ease;
+            transform: translateY(-50%);
+            background-color: stencilColor("footer-heading-fontColor");
+
+            .open-dropdown & {
+                transform: translateY(-50%) rotate(90deg);
+            }
+        }
+
+        &:after {
+            top: 50%;
+            right: 0;
+            z-index: 2;
+            content: "";
+            width: 12px;
+            height: 2px;
+            position: absolute;
+            transform: translateY(-50%);
+            background-color: stencilColor("footer-heading-fontColor");
+        }
+    }
+}
+
+.footer-intro {
+    color: $footer-heading-fontColor;
+    margin-bottom: 24px;
+}
+
+.footer-info-list {
+    list-style: none;
+    margin-left: 0;
+
+    li {
+        margin-bottom: 8px;
+        padding: 3px 0;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    a {
+        color: $footer-heading-fontColor;
+        text-decoration: none;
+
+        @include smin-m {
+            &:hover {
+                color: $footer-text-colorHover;
+            }
+        }
+    }
+
+    @include smax-xs {
+        display: none
+    }
+}
+
+address,
+.phone {
+    color: $footer-heading-fontColor;
+}
+
+.footer-copyright {
+    padding: 16px 0;
+    text-align: center;
+    border-top: 1px solid #a9a9a9;
+    border-bottom: 1px solid $color-white;
+
+    @include smin-xs {
+        padding: 24px 0;
+        text-align: left;
+    }
+
+    svg {
+        @include square(32);
+    }
+
+    >.powered-by {
+        color: $header-font-color;
+
+        @include smax-xs {
+            max-width: 282px;
+            margin: 0 auto 16px;
+        }
+    }
+
+    a {
+        color: $header-font-color;
+        text-decoration: none;
+
+        @include smin-m {
+            &:hover {
+                color: $color-textLink-hover;
+            }
+        }
+    }
+
+    @include smax-m {
+        .socialLinks-item {
+            margin: 10px 10px 10px 0;
+        }
+    }
+}
+
+.footer-payment-icons {
+    .footer-payment-icon {
+        height: remCalc(26);
+        margin: 4px;
+        vertical-align: middle;
+        width: remCalc(40);
+        border: 1px solid #c7c7c7;
+        background-color: #ffffff;
+
+        @include smin-xs {
+            margin: 6px;
+        }
+    }
+
+    svg {
+        fill: stencilColor("icon-color");
+    }
+}
+
+.footer-app {
+    font-size: 0;
+    
+    @include smax-xs {
+        img {
+            max-width: 87px;
+        }
+    }
+}

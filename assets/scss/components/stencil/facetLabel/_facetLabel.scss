@@ -1,0 +1,19 @@
+// =============================================================================
+// FACET LABEL (CSS)
+// =============================================================================
+
+.facetLabel {
+    background: $facetLabel-backgroundColor;
+    border-radius: $facetLabel-borderRadius;
+    padding: 9px 38px 9px 12px;
+    text-decoration: none;
+
+    .icon {
+        @include square(18px);
+        display: inline-block;
+        fill: $color-white;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+    }
+}

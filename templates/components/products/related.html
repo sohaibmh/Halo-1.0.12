@@ -1,0 +1,24 @@
+<div class="halo-block halo-block-product pos-relative arrow-custom-center-center c-b" id="{{block_id}}" data-halo-load="animation">
+    <div class="container container-1600">
+        <div class="halo-block-header o-h">
+            <h2 class="title d-inline-block halo-fadeInUp">{{title}}</h2>
+        </div>
+        {{#if block_layout}}
+            {{> components/products/carousel
+                products=products
+                productsnew=productsnew
+                block_limit=block_limit
+                block_column=block_column
+                list=list
+            }}
+        {{else}}
+            {{> components/products/no-carousel
+                products=products
+                productsnew=productsnew
+                block_limit=block_limit
+                block_column=block_column
+                list=list
+            }}
+        {{/if}}
+    </div>
+</div>

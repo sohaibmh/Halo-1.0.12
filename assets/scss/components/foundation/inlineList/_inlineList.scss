@@ -1,0 +1,23 @@
+// =============================================================================
+// INLINE LIST (CSS)
+// =============================================================================
+// 1. It prevents from missing top outline on refine filters on focus;
+//
+// -----------------------------------------------------------------------------
+
+ul.inlineList { 
+    @include clearfix; // 1
+    overflow: visible;
+    margin: 0;
+    font-size: 0;
+}
+
+.inlineList--labels {
+    > li {
+        float: none;
+        display: inline-block;
+        margin-right: 16px;
+        margin-bottom: 16px;
+        margin-left: 0;
+    }
+}

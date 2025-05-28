@@ -1,0 +1,316 @@
+// =============================================================================
+// BUTTONS (CSS)
+// =============================================================================
+
+.button {
+    transition: $anchor-transition;
+    font-size: $fontSize-root - 4;
+    font-weight: $fontWeight-semibold;
+    font-family: $body-font-family;
+    min-height: 36px;
+    line-height: 34px;
+    padding: 0 10px;
+    border-radius: 50px;
+    overflow: hidden;
+
+    // span {
+    //     display: inline-block;
+    //     transition: all .3s;
+    // }
+
+    // &:after {
+    //     content: attr(data-button-text);
+    //     transition: all .3s;
+    //     position: absolute;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     width: 100%;
+    //     left: 50%;
+    //     top: 150%;
+    //     transform: translate(-50%);
+    //     opacity: 0;
+    // }
+
+    + .button {
+        margin-left: 0;
+
+        @include breakpoint("medium") {
+            margin-left: spacing("half");
+        }
+    }
+
+    &.button--secondary {
+        color: $buttonStyle-default-color;
+        background-color: $buttonStyle-default-backgroundColor;
+        border-color: $buttonStyle-default-borderColor;
+
+        &:active {
+            color: $buttonStyle-default-colorActive;
+            border-color: $buttonStyle-default-borderColorActive;
+            background-color: $buttonStyle-default-backgroundColorActive;
+        }
+    }
+
+    &.button--tertiary {
+        min-height: 36px;
+        line-height: 34px;
+        color: $buttonStyle-tertiary-color;
+        background-color: $buttonStyle-tertiary-backgroundColor;
+        border-color: $buttonStyle-tertiary-borderColor;
+
+        &:active {
+            color: $buttonStyle-tertiary-colorActive;
+            border-color: $buttonStyle-tertiary-borderColorActive;
+            background-color: $buttonStyle-tertiary-backgroundColorActive;
+        }
+
+        @include smin-s {
+            min-height: 50px;
+            line-height: 48px;
+        }
+
+        @include smin-m {
+            min-height: 57px;
+            line-height: 55px;
+        }
+    }
+
+    &.button--transparent {
+        background-color: transparent;
+    }
+
+    &.loading {
+        pointer-events: none;
+        font-size: 0;
+
+        svg {
+            display: none;
+        }
+
+        &:before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #c5c5cf;
+            border-radius: 100%;
+            border-top: 2px solid transparent;
+            -webkit-animation: load-animate infinite linear 1s;
+            animation: load-animate infinite linear 1s;
+        }
+    }
+
+    &.disable,
+    &[disabled] {
+        color: $buttonStyle-disabled-color;
+        background-color: $buttonStyle-disabled-backgroundColor;
+        border-color: $buttonStyle-disabled-borderColor;
+    }
+
+    @include smin-xs {
+        font-size: $fontSize-root - 2;
+        border-radius: 100px;
+    }
+
+    @include smin-m {
+        min-height: 46px;
+        line-height: 44px;
+        font-size: $fontSize-root;
+
+        &:hover,
+        &:focus {
+            svg {
+                fill: $buttonStyle-primary-colorHover;
+            }
+        }
+
+        // &:hover {
+        //     span {
+        //         transform: translateY(-200%);
+        //         opacity: 0;
+        //     }
+
+        //     &:after {
+        //         opacity: 1;
+        //         top: 50%;
+        //         transform: translate(-50%, -50%);
+        //     }
+        // }
+
+        &.button--secondary {
+            &:hover,
+            &:focus {
+                color: $buttonStyle-default-colorHover;
+                border-color: $buttonStyle-default-borderColorHover;
+                background-color: $buttonStyle-default-backgroundColorHover;
+
+                svg {
+                    fill: $buttonStyle-default-colorHover;
+                }
+            }
+        }
+
+        &.button--tertiary {
+            &:hover,
+            &:focus {
+                color: $buttonStyle-tertiary-colorHover;
+                border-color: $buttonStyle-tertiary-borderColorHover;
+                background-color: $buttonStyle-tertiary-backgroundColorHover;
+
+                svg {
+                    fill: $buttonStyle-tertiary-colorHover;
+                }
+            }
+        }
+
+        &.button--transparent {
+            &:hover,
+            &:focus {
+                color: inherit;
+            }
+        }
+
+        &.button--iconCustom {
+            &:hover,
+            &:focus {
+                background-color: transparent;
+                border-color: transparent;
+                color: inherit;
+            }
+        }
+
+        &.disable,
+        &[disabled] {
+            &:hover,
+            &:focus {
+                color: $buttonStyle-disabled-color;
+                background-color: $buttonStyle-disabled-backgroundColor;
+                border-color: $buttonStyle-disabled-borderColor;
+
+                svg {
+                    fill: $buttonStyle-disabled-color;
+                }
+            }
+        }
+    }
+}
+
+.button[disabled] {
+    cursor: not-allowed;
+}
+
+.button--icon,
+.button--iconCustom {
+    svg {
+        fill: stencilColor("button--icon-svg-color");
+    }
+}
+
+.button--iconCustom {
+    min-height: 40px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+
+    &.button {
+        background-color: transparent;
+        border: none;
+    }
+
+    svg {
+        width: 30px;
+        height: 30px;
+
+        @include smin-xs {
+            width: 40px;
+            height: 40px;
+        }
+
+        @include smax-xs {
+            vertical-align: bottom;
+        }
+    }
+
+    @include smin-xs {
+        +.button--iconCustom {
+            margin: 0 0 0 10px;
+        }
+    }
+
+    @include smin-m {
+        .form-option-tooltip {
+            display: block;
+            font-size: $fontSize-root - 2;
+            line-height: 1.5;
+            color: $color-white;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        &:hover {
+            .form-option-tooltip {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            svg {
+                animation: animateIcon .5s infinite ease;
+            }
+        }
+    }
+
+    @include smin-xs {
+        line-height: 40px;
+    }
+
+    @include smin-hd {
+        +.button--iconCustom {
+            margin-left: 16px;
+        }
+    }
+}
+
+.button--small {
+    font-size: $fontSize-root - 4;
+    min-width: 95px;
+    min-height: 36px;
+    line-height: 34px;
+
+    @include smin-s {
+        font-size: $fontSize-root;
+        min-width: 126px;
+        min-height: 50px;
+        line-height: 48px;
+    }
+
+    @include smin-m {
+        font-size: $fontSize-root + 2;
+        min-width: 147px;
+        min-height: 67px;
+        line-height: 65px;
+    }
+}
+
+.button--large {
+    font-weight: $fontWeight-normal;
+    padding: 0 10px;
+    min-width: 99px;
+    min-height: 39px;
+    line-height: 37px;
+
+    @include smin-s {
+        min-width: 125px;
+        min-height: 54px;
+        line-height: 52px;
+    }
+
+    @include smin-m {
+        min-width: 150px;
+        min-height: 68px;
+        line-height: 66px;
+    }
+}

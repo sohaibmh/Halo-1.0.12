@@ -1,0 +1,59 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+cart: true
+---
+{{inject 'cancelButtonText' (lang 'common.cancel')}}
+{{#partial "page"}}
+{{inject 'invalidEntryMessage' (lang 'cart.invalid_entry_message')}}
+    <div class="page page-cart{{#if theme_settings.halo_shipping}} has-calculate-shipping{{/if}}">
+        <div class="page-content" data-cart>
+            <div class="container container-1400">
+                <div class="page-header">
+                    <div class="breadcrumb-wrapper">
+                        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+                    </div>
+                    {{> components/cart/page-title}}
+                </div>
+                {{#and (if theme_settings.halo_shipping) (if cart.items.length)}}
+                    <div class="halo-free-shipping-message animated-loading">
+                        <div class="progress-shipping" role="progressbar">
+                            <div class="progress-meter" style="width: 0"></div>
+                        </div>
+                        <div class="shipping-message">
+                            <span class="message"></span>
+                            <span class="progress-percent">0%</span>
+                        </div>
+                    </div>
+                {{/and}}
+            </div>
+            <div class="container container-1400 p-t-28">
+                <div data-cart-status>
+                    {{> components/cart/status-messages}}
+                </div>
+
+                {{#if cart.items.length}}
+                    <div class="loadingOverlay"></div>
+                    <div class="cart-content-wrapper">
+                        <div data-cart-content class="cart-content-padding-right">
+                            {{> components/cart/content}}
+                        </div>
+
+                        <div data-cart-totals class="cart-content-padding-right">
+                            {{> components/cart/totals}}
+                        </div>
+                    </div>
+                    {{{region name="cart_below_totals"}}}
+                {{else}}
+                    <h3 tabindex="0">{{lang 'cart.checkout.empty_cart'}}</h3>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+{{/partial}}
+{{> layout/base}}

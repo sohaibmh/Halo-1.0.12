@@ -1,0 +1,55 @@
+<div class="facetedSearch-refineFilters sidebarBlock bg-white b-r-16">
+    <div class="accordion-nav-clear-holder">
+        <button type="button"
+            class="accordion-navigation toggleLink is-open"
+            data-collapsible="#facetedSearch-content--refineBy"
+            aria-label="{{lang 'search.faceted.selected.title'}}"
+        >
+            <span class="sidebarBlock-heading m-0 f-size-large f-semibold">
+                <span class="d-inline-block v-a-middle">{{lang 'search.faceted.selected.title'}}</span>
+                <span class="number bg-global-color b-circle d-inline-block v-a-middle center f-root f-semibold">{{#if items}}{{#each items}}{{#if @last}}{{add @index 1}}{{/if}}{{/each}}{{else}}0{{/if}}</span>
+            </span>
+            <span>
+                <svg class="icon accordion-indicator toggleLink-text toggleLink-text--off">
+                    <use href="#icon-arrow-down" />
+                </svg>
+                <svg class="icon accordion-indicator toggleLink-text toggleLink-text--on">
+                    <use href="#icon-arrow-up" />
+                </svg>
+            </span>
+        </button>
+    </div>
+    <div id="facetedSearch-content--refineBy" class="accordion-content facetedSearch-content--refineBy is-open">
+        {{#if items}}
+            <ul class="inlineList inlineList--labels">
+                {{#each items}}
+                    <li class="d-inline-block f-size-small">
+                        <a href="{{url}}"
+                        class="facetLabel b-r-100 pos-relative bg-primary color-custom-white"
+                        rel="nofollow"
+                        data-faceted-search-facet
+                        >
+                            {{#if facet '===' 'rating'}}
+                                {{lang 'search.faceted.selected.rating-label' rating=title}}
+                            {{else}}
+                                {{{sanitize title}}}
+                            {{/if}}
+
+                            <svg class="icon pos-absolute">
+                                <use href="#icon-close" />
+                            </svg>
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        {{else}}
+            <p class="sidebarBlock-content">{{lang 'search.faceted.selected.no-filters'}}</p>
+        {{/if}}
+
+        {{#if remove_all_url}}
+            <a class="remove-all d-block color-heading u-u u-p-u" href="{{remove_all_url}}" data-faceted-search-facet>
+                {{lang 'search.faceted.selected.clear-all'}}
+            </a>
+        {{/if}}
+    </div>
+</div>

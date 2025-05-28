@@ -1,0 +1,149 @@
+// =============================================================================
+// BREADCRUMBS (CSS)
+// =============================================================================
+//
+//
+// 1. Hide breadcrumbs on mobile-sized screens to improve screen real estate.
+//
+// 2. Since our breadcrumbs are centred with a variable width, we need to use
+//    display: inline-block; on the breadcrumbs. Hence needing to remove the
+//    white-space with font-size: 0;
+//    The font-size is reset in the breadcrumb settings file.
+//
+// -----------------------------------------------------------------------------
+
+.breadcrumbs-content {
+    padding: 8px 12px;
+
+    @include smin-s {
+        padding: 12px;
+    }
+
+    @include smin-m {
+        padding: 16px;
+    }
+}
+
+ol.breadcrumbs {
+    display: block; // 1
+    font-size: 0; // 2
+    overflow: visible;
+    margin: 0;
+
+    @include smax-m{
+        .is-scroll & {
+            display: block;
+            white-space: nowrap;
+            overflow: auto hidden;
+            margin: 0 -10px;
+            padding: 0 10px;
+
+            .breadcrumb {
+                &.is-active {
+                    .breadcrumb-label {
+                        padding-right: 20px;
+                    }
+                }
+            }
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                background: linear-gradient(270deg, hsla(0, 0, 100%, 1) 0%, hsla(0, 0, 100%, .1));
+                width: 12px;
+                height: 20px;
+                z-index: 1;
+                transform: rotate(180deg) translateY(50%);
+            }
+
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+                background: linear-gradient(270deg, hsla(0, 0, 100%, 1) 0%, hsla(0, 0, 100%, .1));
+                width: 50px;
+                height: 20px;
+                z-index: 1;
+            }
+
+            .breadcrumb {
+                float: none;
+            }
+        }
+    }
+}
+
+.breadcrumb {
+    font-size: $fontSize-root - 4;
+    line-height: 1.2;
+    display: inline-block;
+    float: none;
+    margin-right: 0.25rem;
+
+    .breadcrumb-label {
+        font-weight: $fontWeight-semibold;
+        color: $color-custom-grey;
+    }
+
+    &.is-active {
+        font-size: $fontSize-root - 2;
+
+        >.breadcrumb-label {
+            color: $header-font-color;
+            cursor: pointer;
+        }
+
+        @include smin-m {
+            font-size: $fontSize-root;
+        }
+    }
+
+    &:not(:first-child):before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 12px;
+        height: 12px;
+        margin: 0 11px;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none"><path d="M17.5705 12.5607L9.08445 20.7861C8.94286 20.9234 8.75474 21 8.55912 21C8.3635 21 8.17538 20.9234 8.03379 20.7861L8.02465 20.7768C7.95577 20.7102 7.90093 20.6301 7.86345 20.5413C7.82597 20.4525 7.80664 20.3568 7.80664 20.2602C7.80664 20.1635 7.82597 20.0679 7.86345 19.9791C7.90093 19.8903 7.95577 19.8102 8.02465 19.7436L16.0158 11.9985L8.02465 4.25641C7.95577 4.18984 7.90093 4.10972 7.86345 4.02091C7.82597 3.9321 7.80664 3.83646 7.80664 3.73981C7.80664 3.64316 7.82597 3.54752 7.86345 3.45871C7.90093 3.3699 7.95577 3.28978 8.02465 3.22321L8.03379 3.21391C8.17538 3.0766 8.3635 3 8.55912 3C8.75474 3 8.94286 3.0766 9.08445 3.21391L17.5705 11.4393C17.6451 11.5116 17.7045 11.5986 17.7451 11.695C17.7857 11.7914 17.8066 11.8951 17.8066 12C17.8066 12.1049 17.7857 12.2086 17.7451 12.305C17.7045 12.4014 17.6451 12.4884 17.5705 12.5607Z" fill="%236E6E6E"/></svg>');
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-top: -2px;
+    }
+
+    @include smin-s {
+        font-size: $fontSize-root - 2;
+
+        &:not(:first-child):before {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    @include smin-m {
+        font-size: $fontSize-root;
+
+        &:not(:first-child):before {
+            width: 22px;
+            height: 22px;
+        }
+    }
+}
+
+.breadcrumb-wrapper {
+    padding: 9px 0;
+
+    @include smin-s {
+        padding: 12px 0;
+    }
+
+    @include smin-m {
+        padding: 16px 0;
+    }
+}

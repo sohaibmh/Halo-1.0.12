@@ -1,0 +1,9 @@
+{{inject 'noCompareMessage' (lang 'compare.no_compare')}}
+
+{{> components/products/filter sort=pagination.brand.sort}}
+
+<div data-list-name="Brand: {{brand.name}}">
+    {{> components/products/grid products=brand.products show_compare=brand.show_compare theme_settings=theme_settings event="list"}}
+</div>
+
+{{> components/common/paginator pagination.brand}}

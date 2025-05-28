@@ -1,0 +1,211 @@
+<a href="#main-content" class="skip-to-main-link">{{lang 'header.skip_to_main'}}</a>
+{{#if banners.top}}
+    <div class="banners" data-banner-location="top">
+        {{#each (limit banners.top_metadata 1)}}
+            <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
+                <div data-event-type="promotion-click">
+                    {{{this.content}}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{/if}}
+<header class="header header-logo-position--{{theme_settings.logo-position}}" role="banner" data-halo-load="animation">
+    <div class="halo-topHeader halo-fadeInDown" data-prevent-quick-search-close>
+        <div class="container container-1600">
+            {{#if theme_settings.logo-position '==' 'left'}}
+                <div class="topHeader-item z-index-1 f-1 left">
+                    <div class="topHeader-item__item item--sticky-logo">
+                        {{#if page_type '===' 'default'}}
+                            <h1 class="header-logo header-logo--{{theme_settings.logo-position}} d-inline-block v-a-middle">
+                                {{> components/common/store-logo}}
+                            </h1>
+                        {{else}}
+                            <div class="header-logo header-logo--{{theme_settings.logo-position}} d-inline-block v-a-middle">
+                                {{> components/common/store-logo}}
+                            </div>
+                        {{/if}}
+                        <div class="contact-phone d-inline-block v-a-middle">{{{theme_settings.halo_header_customText}}}</div>
+                    </div>
+                </div>
+            {{else}}
+                <div class="topHeader-item z-index-2 f-1 left">
+                    <div class="item--quicksearch item--searchMobile w-100 halo-search halo-search-main d-inline-block v-a-middle">
+                        <div id="quickSearch" class="quickSearch">
+                            {{> components/common/quick-search name='quick_search_header'}}
+                        </div>
+                    </div>
+                    <div class="contact-phone d-inline-block v-a-middle">{{{theme_settings.halo_header_customText}}}</div>
+                </div>
+            {{/if}}
+
+            {{#if theme_settings.logo-position '==' 'left'}}
+                <div class="topHeader-item z-index-2 f-1 center">
+                    <div class="item--quicksearch item--searchMobile w-100 halo-search halo-search-main">
+                        <div id="quickSearch" class="quickSearch">
+                            {{> components/common/quick-search name='quick_search_header'}}
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+                <div class="topHeader-item z-index-1 f-1 center">
+                    <div class="topHeader-item__item item--sticky-logo">
+                        {{#if page_type '===' 'default'}}
+                            <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+                                {{> components/common/store-logo}}
+                            </h1>
+                        {{else}}
+                            <div class="header-logo header-logo--{{theme_settings.logo-position}}">
+                                {{> components/common/store-logo}}
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/if}}
+
+            <div class="topHeader-item z-index-1 f-1 right">
+                {{> components/common/navigation}}
+            </div>
+        </div>
+    </div>
+
+    <div class="halo-middleHeader halo-fadeInDown">
+        <div class="container container-1600">
+            <div class="middleHeader-item left">
+                <div class="middleHeader-item__item item--hamburger">
+                    <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+                        <span class="mobileMenu-toggleIcon">Toggle menu</span>
+                    </a>
+                </div>
+            </div>
+            <div class="middleHeader-item center">
+                <div class="middleHeader-item__item item--logo">
+                    {{#if page_type '===' 'default'}}
+                        <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+                            {{> components/common/store-logo}}
+                        </h1>
+                    {{else}}
+                        <div class="header-logo header-logo--{{theme_settings.logo-position}}">
+                            {{> components/common/store-logo}}
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="middleHeader-item right">
+                <div class="middleHeader-item__item item--searchMobile">
+                    <button class="navUser-action navUser-action--quickSearch"
+                       type="button"
+                       id="quick-search-expand"
+                       data-search="quickSearch" 
+                       aria-controls="quickSearch" 
+                       aria-label="{{lang 'common.search'}}"
+                    >
+                        <div class="navUser-icon">
+                            <svg class="icon" role="img" aria-label="{{lang 'search.quick_search.input_label'}}">
+                                <title>{{lang 'search.quick_search.input_label'}}</title>
+                                <desc>{{lang 'search.quick_search.input_placeholder'}}</desc>
+                                <use xlink:href="#icon-search"></use>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+                <div class="middleHeader-item__item item--account">
+                    <a class="navUser-action" {{#if customer}}href="{{urls.account.index}}"{{else}}href="{{urls.auth.login}}"{{/if}} aria-label="{{lang 'common.login'}}" data-login-form>
+                        <div class="navUser-icon">
+                            <svg class="icon" role="img" aria-label="{{lang 'common.account'}}">
+                                <title>{{lang 'common.account'}}</title>
+                                <desc>{{lang 'common.account'}}</desc>
+                                <use xlink:href="#icon-account"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="middleHeader-item__item item--cart halo-cart">
+                    <a class="navUser-action" data-cart-preview data-options="align:right" href="{{urls.cart}}" aria-label="{{lang 'cart.nav_aria_label'}}">
+                        <div class="navUser-icon navUser-item-cartIcon">
+                            <svg class="icon" role="img" aria-label="{{lang 'cart.preview.cart'}}">
+                                <title>{{lang 'cart.preview.cart'}}</title>
+                                <desc>{{lang 'cart.preview.cart'}}</desc>
+                                <use xlink:href="#icon-cart"></use>
+                            </svg>
+                            <span class="countPill d-inline-block v-a-middle center cart-quantity">{{#if cart.items}}{{cart.quantity}}{{else}}0{{/if}}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="halo-bottomHeader halo-fadeInDown">
+        <div class="container container-1600">
+            <div class="navPages-container item--sticky-logo" id="menu" data-menu>
+                {{> components/common/navigation-menu}}
+            </div>
+            <div class="bottomHeader-item right">
+                <nav class="navUser">
+                    <ul class="navUser-section navUser-section--alt">
+                        {{#if theme_settings.halo_header_liveHelp}}
+                            <li class="navUser-item">
+                                <a class="navUser-action link-line"
+                                   href="{{theme_settings.halo_header_liveHelpLink}}"
+                                   aria-label="{{lang 'common.help'}}"
+                                >
+                                    <span class="d-inline-block v-a-middle">{{lang 'common.help'}}</span>
+                                    <svg class="icon d-inline-block v-a-middle" role="img" aria-label="{{lang 'common.help'}}">
+                                        <title>{{lang 'common.help'}}</title>
+                                        <desc>{{lang 'common.help'}}</desc>
+                                        <use xlink:href="#icon-helper"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        {{/if}}
+                        {{#or customer (unless settings.hide_price_from_guests)}}
+                            {{#if currency_selector.currencies.length '>' 1}}
+                                <li class="navUser-item navUser-item--currency left">
+                                    <a class="navUser-action navUser-action--currencySelector link-line has-dropdown"
+                                        href="#"
+                                        data-dropdown="currencySelection"
+                                        aria-controls="currencySelection"
+                                        aria-expanded="false"
+                                        aria-label="{{lang 'common.currency' code=currency_selector.active_currency_code}}"
+                                    >
+                                        <div class="cur-flag d-inline-block v-a-middle">{{{currency_selector.active_currency_flag}}}</div>
+                                        <span class="cur-code d-inline-block v-a-middle">{{currency_selector.active_currency_code}}</span>
+                                        <svg class="icon d-inline-block v-a-middle" role="img" aria-label="{{currency_selector.active_currency_code}}">
+                                            <title>{{currency_selector.active_currency_code}}</title>
+                                            <desc>{{currency_selector.active_currency_code}}</desc>
+                                            <use xlink:href="#icon-dropdown"></use>
+                                        </svg>
+                                    </a>
+                                    <ul class="dropdown-menu" id="currencySelection" data-dropdown-content aria-hidden="true" tabindex="-1">
+                                        <li class="dropdown-menu-title">
+                                            <span class="text">{{lang 'common.select_currency'}}</span>
+                                        </li>
+                                        {{#each currency_selector.currencies}}
+                                            <li class="dropdown-menu-item link-line">
+                                                <a href="{{{switch_url}}}"
+                                                    data-currency-code="{{{code}}}"
+                                                    {{#if cart_currency_switch_url.length '>' 0 }}
+                                                    data-cart-currency-switch-url="{{{cart_currency_switch_url}}}"
+                                                    {{/if}}
+                                                    data-warning="{{lang 'common.currency_switch_promotion'}}"
+                                                    {{#if is_active}} class="is-active"{{/if}}
+                                                >
+                                                    {{{flag}}}
+                                                    <span class="text color-black">{{name}}</span>
+                                                </a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                </li>
+                            {{/if}}
+                        {{/or}}
+                    </ul>
+                </nav>                
+            </div>
+        </div>
+    </div>
+    {{{region name="header_navigation_bottom--global"}}}
+</header>
+{{{region name="header_bottom--global"}}}
+{{{region name="header_bottom"}}}

@@ -1,0 +1,263 @@
+// =============================================================================
+// SWATCH SIZES (CSS)
+// =============================================================================
+
+
+// Swatch Size Changes
+// -----------------------------------------------------------------------------
+
+// do some math
+$value_of_swatch_size : stencilString("swatch_option_size");
+$position_of_x : str-index($value_of_swatch_size, "x");
+$first_value : str-slice($value_of_swatch_size, 0, $position_of_x - 1);
+$second_value : str-slice($value_of_swatch_size, $position_of_x + 1);
+
+.form-option.form-option-swatch {
+    overflow: visible;
+    border: none;
+}
+
+.form-option-variant--none {
+    height: 22px;
+    overflow: hidden;
+}
+
+.form-option-variant--color,
+.form-option-variant--pattern {
+    height: $second_value +"px";
+    width: $first_value +"px";
+}
+
+.form-option-expanded {
+    background-color: stencilColor("body-bg");
+    border: 1px solid stencilColor("input-border-color-active");
+    left: calc(100% + 55px);
+    opacity: 0;
+    padding: 3px;
+    position: absolute;
+    top: calc(100% + 5px);
+    transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    visibility: hidden;
+}
+
+.form-option:hover {
+    .form-option-expanded {
+        opacity: 1;
+        transform: translate(-50%, 0);
+        visibility: visible;
+        z-index: 5000;
+    }
+}
+
+.form-option-image {
+    background: {
+        position: 50%;
+        repeat: no-repeat;
+        size: cover;
+    }
+
+    display: block;
+    height: 100px;
+    width: 100px;
+}
+
+.halo-productOptions {
+    &-save {
+        min-width: 140px;
+    }
+
+    .form-radio {
+        display: inherit;
+    }
+
+    .form-option {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 10px 10px 0;
+        padding: 0;
+        line-height: 1.375;
+
+        &.form-option-swatch {
+            @include square(40);
+
+            .form-option-variant,
+            .form-option-variant--color2 .form-option-variant-wrapper,
+            .form-option-variant--color3 .form-option-variant-wrapper {
+                @include square(40);
+            }
+        }
+
+        &-expanded {
+            display: none;
+            background-color: stencilColor("body-bg");
+            border: 1px solid transparent;
+            padding: 2px;
+            position: absolute;
+            top: calc(100% + 5px);
+            left: calc(100% + 5px);
+            transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            visibility: hidden;
+            opacity: 0;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, .06), 0 1px 2px 0 rgba(0, 0, 0, .1);
+
+            .form-option-image {
+                display: block;
+                height: 100px;
+                width: 100px;
+                background-position: 50%;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+
+        &-swatch {
+            position: relative;
+            overflow: visible;
+            border-color: transparent;
+            background-color: transparent;
+        }
+
+        &.unavailable {
+            position: relative;
+            background: transparent;
+
+            .form-option-variant {
+                opacity: .5;
+
+                &:before {
+                    content: "";
+                    top: 18px;
+                    left: 50%;
+                    height: 1px;
+                    opacity: 1;
+                    z-index: 5;
+                    border: none;
+                    position: absolute;
+                    visibility: visible;
+                    width: 60px;
+                    background-color: $productOptions-strikethrough-color;
+                    transform: translateX(-50%) rotate(-45deg);
+                }
+
+                &:after {
+                    box-shadow: none !important;
+                }
+            }
+
+            .form-option-variant--color2 {
+                &:before {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+    }
+
+    &.productView-options {
+        [data-product-attribute="swatch"] {
+            padding-bottom: 0;
+        }
+    }
+
+    [data-product-attribute="input-checkbox"] {
+        .form-checkbox {
+            +.form-label {
+                &:before {
+                    top: 5px;
+                }
+
+                &:after {
+                    top: 5px;
+                }
+            }
+
+            &:checked {
+                +.form-label {
+                    font-weight: $fontWeight-bold;
+                }
+            }
+        }
+    }
+
+    [data-product-attribute="set-radio"] {
+        .form-radio {
+            &:checked {
+                +.form-label {
+                    font-weight: $fontWeight-bold;
+                }
+            }
+        }
+    }
+
+    [data-product-attribute="set-radio"],
+    [data-product-attribute="product-list"] {
+        .unavailable {
+            opacity: $productOptions-disable-opacity * 2;
+            text-decoration: line-through;
+        }
+    }
+
+    [data-product-attribute="input-text"] {
+        .form-input {
+            height: auto;
+        }
+    }
+
+    [data-product-attribute="set-select"] {
+        .form-select {
+            height: 50px;
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            background-position: right 10px top 16px;
+        }
+    }
+
+    [data-product-attribute="textarea"] {
+        .form-input {
+            line-height: unset;
+            min-height: 150px;
+        }
+    }
+
+    [data-product-attribute="input-number"] {
+        .form-input {
+            min-width: 100px;
+            font-style: normal;
+        }
+    }
+
+    [data-product-attribute="date"] {
+        .form-select {
+            min-width: 90px;
+            height: 50px;
+            padding-left: 15px;
+            padding-right: 15px;
+            background-position: right 10px top 16px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        [data-product-attribute="set-select"] {
+            .form-select {
+                max-width: 50%
+            }
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .form-option {
+            &-expanded {
+                display: block;
+            }
+
+            &:hover {
+                .form-option-expanded {
+                    opacity: 1;
+                    transform: translate(-50%, 0);
+                    visibility: visible;
+                    z-index: 5000;
+                }
+            }
+        }
+    }
+}

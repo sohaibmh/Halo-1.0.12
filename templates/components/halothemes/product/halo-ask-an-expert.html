@@ -1,0 +1,76 @@
+{{#all (if theme_settings.halo_ask_an_expert) (if theme_settings.halo_ask_an_expert_pagelink)}}
+    <div class="halo-askAnExpert d-inline-block v-a-top">
+        <a class="productView-item-link productView-askAnExpert-link ask-an-expert-link color-black b-r-100" href="#" aria-label="{{lang 'products.ask_an_expert'}}" data-reveal-id="halo-ask-an-expert-popup">
+            <svg class="icon d-inline-block v-a-middle" role="img" aria-hidden="true" aria-label="{{lang 'products.ask_an_expert'}}">
+                <title>{{lang 'products.ask_an_expert'}}</title>
+                <desc>{{lang 'products.ask_an_expert'}}</desc>
+                <use xlink:href="#icon-ask-an-expert"></use>
+            </svg>
+            <span class="text d-inline-block v-a-middle">
+                <span>{{lang 'products.ask_an_expert'}}</span>
+            </span>
+        </a>
+        <div id="halo-ask-an-expert-popup" class="modal modal--medium halo-ask-an-expert-popup halo-ask-an-expert" data-reveal>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-header-title">{{lang 'products.ask_an_expert'}}</h2>
+                    <button class="modal-close" type="button" title="Close">
+                        <span class="aria-description--hidden">Close</span>
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{#if theme_settings.halo_ask_an_expert_desc1}}
+                        <h4 class="halo-ask-an-expert-heading">
+                            <span>{{theme_settings.halo_ask_an_expert_desc1}}</span>
+                        </h4>
+                    {{/if}}
+                    {{#if theme_settings.halo_ask_an_expert_desc2}}
+                        <div class="halo-ask-an-expert-text">{{theme_settings.halo_ask_an_expert_desc2}}</div>
+                    {{/if}}
+                    <span class="halo-line">halo line</span>
+                    {{#if theme_settings.halo_ask_an_expert_desc3}}
+                        <div class="halo-ask-an-expert-intro">{{theme_settings.halo_ask_an_expert_desc3}}</div>
+                    {{/if}}
+                    <div id="halo-ask-an-expert-results" class="halo-ask-an-expert-text"></div>
+                    <form data-contact-form class="halo-ask-an-expert-form" action="{{urls.contact_us_submit}}" method="post" data-product-ask-id="{{product.id}}" data-product-ask-title="{{product.title}}" data-product-ask-url="{{product.url}}" data-product-ask-sku="{{product.sku}}">
+                        <fieldset class="form-fieldset">
+                            <div class="hl-form-field-wrapper"></div>
+                            <div class="form-field form-field-radio">
+                                <label class="form-label">Do you need:</label>
+                                <input class="form-radio" id="pricing-radio" type="radio" name="type_package" checked value="Pricing">
+                                <label class="form-label" for="pricing-radio">Pricing</label>
+                                <input class="form-radio" id="answers-radio" type="radio" name="type_package" value="Answers">
+                                <label class="form-label" for="answers-radio">Answers</label>
+                                <input class="form-radio" id="both-radio" type="radio" name="type_package" value="Pricing & Answers">
+                                <label class="form-label" for="both-radio">Both</label>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="contact_comment_area">What can i help you with today?
+                                    <small>*</small>
+                                </label>
+                                <textarea name="contact_comment_area" cols="30" rows="3" class="form-input" id="contact_comment_area" required></textarea>
+                            </div>
+                            <div class="form-field form-field-radio form-field-radio2">
+                                <label class="form-label form-label-custom">How would you like me to contact you?</label>
+                                <input class="form-radio" id="phone-radio" type="radio" name="type_contact" checked value="Phone">
+                                <label class="form-label" for="phone-radio">Phone</label>
+                                <input class="form-radio" id="email-radio" type="radio" name="type_contact" value="Email">
+                                <label class="form-label" for="email-radio">Email</label>
+                                <input class="form-radio" id="both-radio-2" type="radio" name="type_contact" value="Phone & Email">
+                                <label class="form-label" for="both-radio-2">Both</label>
+                            </div>
+                            <div class="hl-form-field" style="display: none;">
+                                <textarea name="contact_question" cols="30" rows="3" class="form-input" id="contact_question"></textarea>
+                            </div>
+                            <div class="g-recaptcha" data-sitekey="6LcjX0sbAAAAACp92-MNpx66FT4pbIWh-FTDmkkz"></div>
+                            <div class="form-actions">
+                                <button type="submit" class="button button--tertiary" id="halo-ask-an-expert-button">Send Question</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/all}}

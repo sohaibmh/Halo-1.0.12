@@ -1,0 +1,46 @@
+<div class="halo-block halo-block-post bg-white" data-halo-load="animation">
+    <div class="container container-1600">
+        <div class="halo-block-header center o-h">
+            <h1 class="title d-inline-block halo-fadeInUp">{{{theme_settings.halo_recent_post_title}}}</h1>
+        </div>
+        <div class="halo-recent-post blog-lasted-new">
+            {{#each (limit blog.posts 3)}}
+                <div class="item item-{{add @index 1}} hover-zoom pos-relative" data-index="{{add @index 1}}">
+                    {{#if thumbnail}}
+                        <div class="item-image o-h">
+                            <a class="halo-fadeZoom image-with-overlay{{#if @index '==' 0}} b-r-32{{else}} b-r-20{{/if}}" href="{{url}}">
+                                {{> components/common/responsive-img
+                                    image=thumbnail
+                                    fallback_size=../theme_settings.blog_size
+                                    lazyload=../theme_settings.lazyload_mode
+                                    class="w-100"
+                                }}
+                            </a>
+                        </div>
+                    {{else}}
+                        <div class="item-image o-h">
+                            <a class="halo-fadeZoom image-with-overlay{{#if @index '==' 0}} b-r-32{{else}} b-r-20{{/if}}" href="{{url}}">
+                                <img class="w-100" src="{{cdn 'img/placeholder-electronic.svg'}}" alt="{{title}}">
+                            </a>
+                        </div>
+                    {{/if}}
+                    <div class="content-wrapper halo-fadeInUp">
+                        <p class="date color-custom-white m-b-16">{{#if author}}{{lang 'blog.posted_by' name=author}} on {{/if}}{{date_published}}</p>
+                        <h4 class="m-t-0{{#if @index '==' 0}} f-36 m-b-16{{else}} title-small{{/if}}">
+                            <a class="link-line color-custom-white" href="{{url}}" aria-label="{{title}}"><span>{{title}}</span></a>
+                        </h4>
+                        {{#if @index '==' 0}}
+                            {{#if summary}}
+                                <div class="summary f-root f-size-small-tb f-size-tiny-mb w-s-normal color-custom-white m-b m-b-18-tb m-b-16-mb l-h-extra l-h-larger-tb l-h-large-mb">
+                                    {{{summary}}}&hellip;
+                                </div>
+                            {{/if}}
+                            <a class="button button--tertiary" href="{{url}}">{{lang 'common.read_more'}}</a>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{{region name="blog_below_recent_posts"}}}

@@ -1,0 +1,30 @@
+<form class="form form-newsletter m-0 halo-fadeInUp" action="{{urls.subscribe.action}}" method="post" data-halo-animate="2">
+    <fieldset class="form-fieldset">
+        <input type="hidden" name="action" value="subscribe">
+        <input type="hidden" name="nl_first_name" value="bc">
+        <input type="hidden" name="check" value="1">
+        <div class="form-field m-0">
+            <label class="form-label is-srOnly" for="nl_email">{{lang 'common.email_address'}}</label>
+            <div class="wrap pos-relative">
+                <input class="form-input input-newsletter b-r-40"
+                       id="nl_email"
+                       name="nl_email"
+                       type="email"
+                       value="{{customer.email}}"
+                       placeholder="{{lang 'newsletter.email_placeholder'}}"
+                       aria-describedby="alertBox-message-text"
+                       aria-required="true"
+                       autocomplete="email"
+                       required
+                >
+                <input class="button button--secondary button-newsletter f-bold b-none b-r-40 pos-absolute"
+                       type="submit"
+                       value="{{lang 'newsletter.subscribe_submit'}}"
+                >
+            </div>
+            {{#if settings.show_newsletter_summary }}
+                <div class="footer-newsletter-summary p-t">{{settings.newsletter_summary}}</div>
+            {{/if}}
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,21 @@
+{{#if product_results.products}}
+    {{#each (limit product_results.products 4)}}
+        <div data-product-slide class="productCarousel-slide swiper-slide" {{#if @index '==' 0}}data-total="{{../product_results.products.length}}"{{/if}}>
+            {{> components/products/card
+                settings=../settings
+                theme_settings=../theme_settings
+                alternate=true
+                show_compare=../settings.show_compare
+                show_rating=../settings.show_product_rating
+                customer=../customer
+                productsnew=../products.new
+                event="list"
+                position=(add @index 1)
+            }}
+        </div>
+    {{/each}}
+{{else}}
+    <p class="quickSearchMessage">
+        {{{lang 'search.results.quick_count' count=pagination.product_results.total search_query=(sanitize forms.search.query) }}}
+    </p>
+{{/if}}

@@ -1,0 +1,92 @@
+<nav class="navPages">
+    <ul class="navPages-list navPages-list-mobile"></ul>
+    <ul class="navPages-list navPages-list--user" data-level-list>
+        <li class="navPages-item navPages-item-user">
+            <a class="navPages-action navPages-action-wishlist navPages-action-end" href="/wishlist.php">
+                <span class="text">
+                    <svg class="icon" role="img" aria-label="{{lang 'account.wishlists.heading'}}">
+                        <title>{{lang 'account.wishlists.heading'}}</title>
+                        <desc>{{lang 'account.wishlists.heading'}}</desc>
+                        <use href="#icon-heart"></use>
+                    </svg>
+                    {{lang 'account.wishlists.heading'}}
+                </span>
+            </a>
+        </li>
+        {{#if settings.phone_number}}
+            <li class="navPages-item navPages-item-user">
+                <a class="navPages-action navPages-action-phone navPages-action-end" role="button" tabindex="-1" href="tel:{{settings.phone_number}}">
+                    <span class="text">
+                        <svg class="icon" role="img" aria-label="{{lang 'account.addresses.phone'}}">
+                            <title>{{lang 'account.addresses.phone'}}</title>
+                            <desc>{{lang 'account.addresses.phone'}}</desc>
+                            <use href="#icon-phone"></use>
+                        </svg>
+                        {{settings.phone_number}}
+                    </span>
+                </a>
+            </li>
+        {{/if}}
+        {{#if theme_settings.halo_header_liveHelp}}
+            <li class="navPages-item navPages-item-user">
+                <a class="navPages-action navPages-action-phone navPages-action-end" href="{{theme_settings.halo_header_liveHelpLink}}" aria-label="{{lang 'common.help'}}">
+                    <span class="text">
+                        <svg class="icon" role="img" aria-label="{{lang 'common.help'}}">
+                            <title>{{lang 'common.help'}}</title>
+                            <desc>{{lang 'common.help'}}</desc>
+                            <use href="#icon-helper"></use>
+                        </svg>
+                        {{lang 'common.help'}}
+                    </span>
+                </a>
+            </li>
+        {{/if}}
+        {{#if currency_selector.currencies.length '>' 1}}
+            <li class="navPages-item navPages-item-user has-dropdown currencies" data-level="2">
+                <p id="currency_selector" class="navPages-action navPages-action-currency navPages-action-depth-max has-subMenu is-root">
+                    <a class="text center" href="#">
+                        <span class="cur-flag d-inline-block v-a-middle">{{{currency_selector.active_currency_flag}}}</span>
+                        <span class="d-inline-block v-a-middle f-root">{{currency_selector.active_currency_code}}</span>
+                    </a>
+                    <span class="navPages-action-moreIcon" aria-hidden="true">
+                        <svg class="icon"><use href="#icon-chevron-down" /></svg>
+                    </span>
+                </p>
+                <div class="navPage-subMenu navPage-subMenu-horizontal halo-fadeIn" id="navPages-currency">
+                    <ul class="navPage-subMenu-list">
+                        <li class="navPage-subMenu-item-child navPage-subMenu-title" data-level="2">
+                            <p class="navPage-subMenu-action navPages-action">
+                                <span class="navPages-action-moreIcon" aria-hidden="true">
+                                    <svg class="icon"><use href="#icon-arrow-prev" /></svg>
+                                </span>
+                                <span class="text">{{lang 'common.select_currency'}}</span>
+                            </p>
+                        </li>
+                        {{#each currency_selector.currencies}}
+                            <li class="dropdown-menu-item link-line">
+                                <a href="{{{switch_url}}}"
+                                    data-currency-code="{{{code}}}"
+                                    {{#if cart_currency_switch_url.length '>' 0 }}
+                                    data-cart-currency-switch-url="{{{cart_currency_switch_url}}}"
+                                    {{/if}}
+                                    data-warning="{{lang 'common.currency_switch_promotion'}}"
+                                    {{#if is_active}} class="is-active"{{/if}}
+                                >
+                                    {{{flag}}}
+                                    <span class="text color-black">{{name}}</span>
+                                </a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </li>
+        {{/if}}
+        <li class="navPages-item navPages-item-user">
+            <div class="navPages-action navPages-action-end">
+                <div class="text">
+                    {{> components/common/social-links}}
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>

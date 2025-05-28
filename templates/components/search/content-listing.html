@@ -1,0 +1,9 @@
+{{#if content_results}}
+    <ul class="l-h-extra">
+        {{#each content_results}}
+            <strong><a href="{{url}}">{{{title}}}</a></strong>({{type}})
+            <p>{{{content}}}</p>
+        {{/each}}
+    </ul>
+    {{> components/common/paginator pagination.content_results reload=true}}
+{{/if}}

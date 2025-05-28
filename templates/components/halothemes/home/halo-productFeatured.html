@@ -1,0 +1,91 @@
+{{#if theme_settings.product_featured}}
+    <div class="halo-block productFeatured" data-halo-load="animation">
+        <div class="container container-1600">
+            <div class="halo-block-header">
+                <h2 class="title o-h">
+                    <span class="text d-inline-block halo-fadeInUp">{{theme_settings.product_featured_title}}</span>
+                </h2>
+            </div>
+            <div class="productFeatured-wrapper d-flex d-block-xl a-i-start">
+                <div class="halo-block-product halo-featured-product" id="halo-featured-product">
+                    <div class="halo-featured-product-wrapper">
+                        <div class="loadingOverlay"></div>
+                        <div class="productView product-sample bg-white b-r-20">
+                            <section class="productView-images">
+                                <div class="animated-loading m-b-20">
+                                    <div class="productView-nav pos-relative">
+                                        <div class="disable-srollbar pos-relative">
+                                            <figure class="productView-image m-0">
+                                                <div class="productView-img-container">image</div>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="animated-loading p-40"><span>thumbnail</span></div>
+                            </section>
+                            <section class="productView-right">
+                                <div class="productView-details product-data">
+                                    <div class="productView-product">
+                                        <div class="m-b-20 animated-loading">
+                                            <p class="m-0">description</p>
+                                        </div>
+                                        <div class="m-b-20 animated-loading p-20">
+                                            <p class="m-0">description</p>
+                                        </div>
+                                        <div class="m-b-20 animated-loading">
+                                            <p class="m-0">description</p>
+                                        </div>
+                                        <div class="m-b-20 animated-loading">
+                                            <p class="m-0">description</p>
+                                        </div>
+                                        <div class="m-b-20 animated-loading p-20">
+                                            <p class="m-0">description</p>
+                                        </div>
+                                        <div class="m-b-20 animated-loading p-20">
+                                            <p class="m-0">description</p>
+                                        </div>
+                                        <div class="m-b-20 animated-loading">
+                                            <p class="m-0">description</p>
+                                        </div>
+                                        <div class="m-b-20 animated-loading p-40">
+                                            <p class="m-0">description</p>
+                                        </div>
+                                        <div class="m-b-20 animated-loading p-20">
+                                            <p class="m-0">description</p>
+                                        </div>
+                                        <div class="m-b-20 animated-loading p-20">
+                                            <p class="m-0">description</p>
+                                        </div>
+                                        <div class="m-b-20 animated-loading">
+                                            <p class="m-0">description</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="halo-block-product halo-bestseller-product o-h" id="halo-bestseller-product">
+                    {{#if theme_settings.product_featured_title2}}
+                        <div class="halo-bestseller-product-header p-20 m-b-20 b-r-10 bg-white">
+                            <a class="d-flex a-i-center j-c-between" href="#" aria-label="{{theme_settings.product_featured_title2}}">
+                                <h5 class="title d-inline-block v-a-middle m-0"><span class="text">{{theme_settings.product_featured_title2}}</span></h5>
+                                <svg class="icon d-inline-block v-a-middle"><use xlink:href="#icon-arrow-next"/></svg>
+                            </a>
+                        </div>
+                    {{/if}}
+                    <div class="productCarousel haloSwiper pos-relative" data-list-name="Most Popular Products" data-per-view-tab="2" data-rows-des="4" data-rows-tab="2" data-rows-mob="4" data-swiper-pag-des="true" data-swiper-pag-tab="true" data-swiper-pag-mob="true" data-swiper-space="20">
+                        <div class="swiper-wrapper disable-srollbar">
+                            {{> components/halothemes/product/halo-product-sample-2}}
+                            {{> components/halothemes/product/halo-product-sample-2}}
+                            {{> components/halothemes/product/halo-product-sample-2}}
+                            {{> components/halothemes/product/halo-product-sample-2}}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{{region name="home_below_product_featured"}}}
+{{/if}}

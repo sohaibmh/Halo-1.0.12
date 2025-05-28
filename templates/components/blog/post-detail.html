@@ -1,0 +1,59 @@
+<article class="blog" data-halo-load="animation">
+    <div class="blog-post-body">
+        <header class="blog-header">
+            <h{{#if is_blog_post}}1{{else}}2{{/if}} class="blog-title">
+                <a href="{{post.url}}">{{post.title}}</a>
+            </h{{#if is_blog_post}}1{{else}}2{{/if}}>
+
+            <div class="blog-post-info">
+                <p class="date f-root f-size-small-tb color-secondary center m-b-20">{{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}{{post.date_published}}</p>
+            </div>
+
+            <div class="blog-post-figure">
+                {{#if post.thumbnail}}
+                    <figure class="blog-thumbnail m-0 o-h">
+                        <a class="halo-fadeZoom b-r-32" href="{{post.url}}">
+                            {{> components/common/responsive-img
+                                image=post.thumbnail
+                                fallback_size=theme_settings.blog_size
+                                lazyload=theme_settings.lazyload_mode
+                                class="w-100"
+                            }}
+                        </a>
+                    </figure>
+                {{else}}
+                    <figure class="blog-thumbnail m-0 o-h">
+                        <a class="halo-fadeZoom b-r-32" href="{{post.url}}">
+                            <img class="w-100" src="{{cdn 'img/placeholder-electronic.svg'}}" alt="{{post.title}}">
+                        </a>
+                    </figure>
+                {{/if}}
+            </div>
+        </header>
+
+        <div class="blog-post blog-post-detail">
+            <div class="container container--small">
+                {{#if post.body}}
+                    {{{post.body}}}
+                {{/if}}
+                <div class="blog-footer d-flex f-column-s a-i-center a-i-start-s j-c-between r-gap-20 bg-white b-r-8">
+                    {{#if show_tags}}
+                        {{#if post.tags}}
+                            <ul class="tags">
+                                {{#each post.tags}}
+                                    <li class="tag b-r-100 m-r-20 m-t-8 m-b-8">
+                                        <a class="f-size-small" href="{{url}}">#{{name}}</a>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    {{/if}}
+                    <div class="action right left-s d-inline-block v-a-middle">
+                        {{> components/common/share url=post.url layout="blog"}}
+                        <button class="p-0 m-l-16" onclick="window.print()"><svg class="icon d-inline-block v-a-middle" aria-label="icon Print"><use xlink:href="#icon-print"></use> </svg><span class="text d-inline-block v-a-middle f-semibold">Print</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

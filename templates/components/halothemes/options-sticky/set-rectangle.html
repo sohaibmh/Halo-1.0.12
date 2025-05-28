@@ -1,0 +1,41 @@
+<div class="form-field" data-product-attribute="set-rectangle">
+    <label class="form-label form-label--inlineSmall">
+        {{this.display_name}}
+        {{> components/common/requireness-msg}}
+    </label>
+
+    {{#unless required}}
+        <div class="form-option-wrapper">  
+            <input
+                class="form-radio"
+                type="radio"
+                id="st_attribute_rectangle__{{id}}_none"
+                name="attribute[{{id}}]"
+                value=""
+                checked="{{#if defaultValue '==' ''}}checked{{/if}}"
+            >
+            <label class="form-option" for="st_attribute_rectangle__{{id}}_none">
+                <span class="form-option-variant">{{lang 'products.none'}}</span>
+            </label>
+        </div>
+    {{/unless}}
+
+    {{#each this.values}}
+        <div class="form-option-wrapper"> 
+            <input
+                class="form-radio"
+                type="radio"
+                id="st_attribute_rectangle__{{../id}}_{{id}}"
+                name="attribute[{{../id}}]"
+                value="{{id}}"
+                {{#if selected}}
+                    checked
+                    data-default
+                {{/if}}
+                {{#if ../required}}required{{/if}}>
+            <label class="form-option form-option-rectangle" for="st_attribute_rectangle__{{../id}}_{{id}}" data-product-attribute-value="{{id}}">
+                <span class="form-option-variant"><span>{{this.label}}</span></span>
+            </label>
+        </div>
+    {{/each}}
+</div>

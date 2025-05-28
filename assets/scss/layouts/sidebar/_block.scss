@@ -1,0 +1,32 @@
+// =============================================================================
+// SIDEBAR BLOCKS (CSS)
+// =============================================================================
+
+
+// Block
+// -----------------------------------------------------------------------------
+.sidebarBlock {
+    padding: 0 20px 1px;
+    position: relative;
+    margin-bottom: 30px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .loadingOverlay {
+        display: block;
+    }
+}
+
+.sidebarBlock-heading {
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-medium;
+    color: $color-textBase;
+    text-transform: capitalize;
+    padding: 16px 0;
+}
+
+.sidebarBlock-content {
+    margin: 16px 0 32px 0;
+}

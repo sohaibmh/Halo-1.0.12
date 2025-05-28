@@ -1,0 +1,3 @@
+{
+  "components/halothemes/product/halo-product-security-image": "{{#if theme_settings.halo-product-security-image}}\n    <div class=\"productView-securityImage\">\n        <img src=\"https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.halo-product-security-image}}\" alt=\"{{theme_settings.halo-product-security-image}}\">\n    </div>\n{{/if}}\n"
+}

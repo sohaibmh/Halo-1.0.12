@@ -1,0 +1,66 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+    <div class="container">
+        <div class="breadcrumb-wrapper">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        </div>
+        {{#if brand.image}}
+            <div class="brand-image-container">
+                {{> components/common/responsive-img
+                    class="w-100"
+                    image=brand.image
+                    fallback_size=theme_settings.thumb_size
+                    lazyload='disabled'
+                }}
+            </div>
+        {{/if}}
+        <h1 class="page-heading">{{brand.name}}</h1>
+        {{{region name="brand_below_header"}}}
+        <div class="page">
+            <div class="page-sidebar-mobile-wrapper">
+                <div class="page-sidebar-mobile b-r-24">
+                    <span class="text d-inline-block v-a-middle">{{lang 'common.sidebar_button'}}</span>
+                    <svg class="icon d-inline-block v-a-middle" aria-hidden="true"><use href="#icon-chevron-down" /></svg>
+                </div>
+            </div>
+            <aside class="page-sidebar" id="faceted-search-container">
+                {{> components/brand/sidebar}}
+            </aside>
+
+            <main class="page-content" id="product-listing-container">
+                {{#if brand.search_error }}
+                    <p>{{lang 'search.errorMessage'}}</p>
+                {{else}}
+                    {{#if brand.products}}
+                        {{> components/brand/product-listing}}
+                    {{else}}
+                        <p>{{lang 'brands.no_products'}}</p>
+                    {{/if}}
+                    {{{region name="brand_below_content"}}}
+                {{/if}}
+            </main>
+        </div>
+    </div>
+{{/partial}}
+{{> layout/base}}

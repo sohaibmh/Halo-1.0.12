@@ -1,0 +1,20 @@
+<div class="accordion-nav-clear-holder">
+    <button type="button"
+         class="accordion-navigation toggleLink{{#unless start_collapsed}} is-open{{/unless}}"
+         data-collapsible="#facetedSearch-content--{{dashcase facet}}"
+         aria-label="{{lang 'search.faceted.toggleSection' title=title}}"
+    >
+        <span class="sidebarBlock-heading m-0 f-size-large f-semibold">
+            <span class="d-inline-block v-a-middle">{{title}}</span><span class="number number-count bg-global-color b-circle d-inline-block d-none v-a-middle center f-root f-semibold"></span>
+        </span>
+
+        <span>
+            <svg class="icon accordion-indicator toggleLink-text toggleLink-text--off">
+                <use href="#icon-arrow-down" />
+            </svg>
+            <svg class="icon accordion-indicator toggleLink-text toggleLink-text--on">
+                <use href="#icon-arrow-up" />
+            </svg>
+        </span>
+    </button>
+</div>

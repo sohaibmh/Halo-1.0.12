@@ -1,0 +1,39 @@
+<section class="productCarousel haloSwiper pos-relative p-b-38-mb o-h"
+    data-list-name="{{list}}"
+    data-per-view-mob="{{block_column_mb}}" 
+    data-per-view-tab="{{block_column_tb}}" 
+    data-per-view-des="{{block_column}}" 
+    data-swiper-nav-des="true" 
+    data-swiper-pag-mob="true" 
+    data-swiper-space-tab="20"
+    data-swiper-space-des="30"
+>
+    <div class="swiper-wrapper disable-srollbar">
+        {{#each (limit products block_limit)}}
+            <div data-product-slide class="productCarousel-slide swiper-slide">
+                {{> components/products/card settings=../settings theme_settings=../theme_settings show_compare=true show_rating=../settings.show_product_rating customer=../customer productsnew=../productsnew event="list" position=(add @index 1)}}
+            </div>
+        {{/each}}
+    </div>
+    <div class="swiper-pagination"></div>
+</section>
+<div class="swiper-button-prev arrow-custom">
+    <div class="icon-wrap pos-relative o-h d-flex j-c-center a-i-center w-100 h-100">
+        <i class="icon-inner icon-fr w-100 h-100">
+            <svg><use href="#icon-arrow-prev"></use></svg>
+        </i>
+        <i class="icon-inner icon-sec pos-absolute w-100 h-100">
+            <svg><use href="#icon-arrow-prev"></use></svg>
+        </i>
+    </div>
+</div>
+<div class="swiper-button-next arrow-custom">
+    <div class="icon-wrap pos-relative o-h d-flex j-c-center a-i-center w-100 h-100">
+        <i class="icon-inner icon-fr w-100 h-100">
+            <svg><use href="#icon-arrow-next"></use></svg>
+        </i>
+        <i class="icon-inner icon-sec pos-absolute w-100 h-100">
+            <svg><use href="#icon-arrow-next"></use></svg>
+        </i>
+    </div>
+</div>

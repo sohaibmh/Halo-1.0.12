@@ -1,0 +1,142 @@
+// =============================================================================
+// ACTION BAR (CSS)
+// =============================================================================
+
+.actionBar {
+    display: inline-block;
+    margin: 0;
+
+    .form-field {
+        margin: 0;
+    }
+
+    @include smin-m {
+        +.actionBar {
+            margin-left: 5px;
+        }
+    }
+}
+
+.actionBar-wrapper {
+    padding-bottom: 30px;
+}
+
+.actionBar-section {
+    .form-label {
+        font-size: $actionBar-form-label-fontSize - 2;
+    }
+
+    .form-input,
+    .form-select {
+        border: 0;
+        padding-left: $actionBar-form-input-padding;
+        width: auto;
+    }
+
+    .form-label,
+    .form-input,
+    .form-select {
+        display: inline-block;
+
+        @media (min-width: $screen-m) and (max-width: ($screen-xl - 1px)) {
+            display: block;
+            padding: 0 30px 0 0;
+            margin: 0;
+        }
+    }
+
+    .form-select {
+        color: $color-black;
+        height: $input-small-height - remCalc($input-border-width * 2);
+        position: relative;
+        bottom: -1px;
+    }
+}
+
+.form-select-custom {
+    background-color: transparent;
+}
+
+[data-sort-by] {
+    .filter-dropdown {
+        min-width: 200px;
+    }
+
+    @include smin-xxl {
+        .filter-dropdown {
+            min-width: 262px;
+        }
+    }
+}
+
+.filter-dropdown {
+    min-width: 200px;
+    vertical-align: top;
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    border: 1px solid #a9a9a9;
+
+    .icon {
+        position: absolute;
+        right: 20px;
+        padding: 3px;
+    }
+
+    .filter-action {
+        padding: 11px 20px;
+    }
+
+    .dropdown-label {
+        color: #a9a9a9;
+    }
+
+    .dropdown-menu {
+        background-color: stencilColor("navUser-dropdown-backgroundColor");
+        border: 1px solid stencilColor("navUser-dropdown-borderColor");
+        box-shadow: container("dropShadow");
+        max-width: 100%;
+        z-index: 20;
+
+        &.is-open {
+            left: 0 !important;
+            top: 100% !important;
+        }
+    }
+
+    a {
+        color: $color-black;
+    }
+
+    @include smin-xxl {
+        min-width: 250px;
+    }
+}
+
+.actionBar-filter {
+    @include smax-xxxl {
+        .form-select {
+            bottom: 0;
+            min-height: 46px;
+            background-position: right 0.5rem top 0.8rem;
+        }
+
+        .filter-dropdown {
+            .icon {
+                width: 16px;
+                height: 24px;
+                padding: 0;
+            }
+
+            .filter-action {
+                padding: 8px 16px;
+
+                .dropdown-label {
+                    color: $color-black;
+                    font-size: $fontSize-root;
+                    font-weight: $fontWeight-semibold;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+{{#if theme_settings.blog_featured}}
+    <div class="halo-block productFeatured" data-blog-tag="{{theme_settings.blogByTag}}" data-halo-load="animation">
+        <div class="container container-1600">
+            <div class="halo-block-header">
+                <h2 class="title o-h">
+                    <span class="text d-inline-block halo-fadeInUp">{{theme_settings.blog_featured_title}}</span>
+                </h2>
+            </div>
+            <div class="productFeatured-wrapper d-flex d-block-xl a-i-start">
+                <div class="halo-featured-product" id="halo-featured-product">
+                    <div class="halo-recent-post blog-post-featured">
+                        <div class="halo-block-content">
+                            <div class="loadingOverlay" style="display:block; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="halo-block-product halo-related-product o-h" id="halo-related-product">
+                    <div class="halo-related-product-header p-10 m-b-12 b-r-10 bg-white">
+                        <a class="d-flex a-i-center j-c-between" href="#" aria-label="Related Products">
+                            <h5 class="title d-inline-block v-a-middle m-0"><span class="text">Related Products</span></h5>
+                            <svg class="icon d-inline-block v-a-middle"><use xlink:href="#icon-arrow-next"/></svg>
+                        </a>
+                    </div>
+                    <div class="productCarousel haloSwiper pos-relative" data-list-name="Most Popular Products" data-per-view-tab="2" data-rows-des="4" data-rows-tab="2" data-rows-mob="4" data-swiper-pag-des="true" data-swiper-pag-tab="true" data-swiper-pag-mob="true" data-swiper-space-des="12" data-swiper-space-des="20">
+                        <div class="swiper-wrapper disable-srollbar">
+                            {{#if theme_settings.homeProd_1 '==' 'Featured'}}
+                                {{> components/halothemes/product/halo-related-product
+                                    products=products.featured
+                                    productsnew=products.new
+                                }}
+                            {{else if theme_settings.homeProd_1 '==' 'New'}}
+                                {{> components/halothemes/product/halo-related-product
+                                    products=products.new
+                                    productsnew=products.new
+                                }}
+                            {{else if theme_settings.homeProd_1 '==' 'Top'}}
+                                {{> components/halothemes/product/halo-related-product
+                                    products=products.top_sellers
+                                    productsnew=products.new
+                                }}
+                            {{/if}}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}
+{{{region name="blog_below_post_featured"}}}

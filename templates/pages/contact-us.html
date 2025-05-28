@@ -1,0 +1,120 @@
+{{#partial "page"}}
+    <div class="container container-1600 breadcrumb-wrapper">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    </div>
+
+    <main class="page page-contact-us p-60-0">
+        <div class="container container-1500">
+            {{#if page.sub_pages}}
+                <nav class="navBar navBar--sub">
+                    <ul class="navBar-section account-navigation">
+                        {{#each page.sub_pages}}
+                            <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+                        {{/each}}
+                    </ul>
+                </nav>
+            {{/if}}
+
+            <div id="contact-us-page" class="page-content page-content--centered">
+                {{#if forms.contact.success}}
+                    <div id="contact-us-success">{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</div>
+                {{else}}
+                    <div class="contact-wrapper">
+                        <div class="contact-left left w-100 m-b-35-tb m-b-16-mb d-inline-block v-a-top">
+                            <div class="content">
+                                {{#unless theme_settings.hide_contact_us_page_heading }}
+                                    <h1 class="page-heading m-t-60 m-t-0-tb left">{{page.title}}</h1>
+                                {{/unless}}
+                                {{{page.content}}}
+                            </div>
+                        </div>
+                        <div class="contact-right w-100 d-inline-block v-a-top">
+                            {{> components/page/contact-us-form}}
+                        </div>
+                    </div>
+                {{/if}} 
+            </div>
+        </div>
+    </main>
+
+    {{#if theme_settings.show_contact_us_map}}
+        <div class="contactUsMap p-100-0 bg-white">
+            <div class="container container-1500">
+                <div class="contactUsMap-wrapper">
+                    <div class="item item-left w-100 b-r-16 m-b-32-tb d-inline-block v-a-middle">
+                        {{{theme_settings.contact_us_map}}}
+                    </div>
+                    <div class="item item-right w-100 d-inline-block v-a-middle">
+                        <div class="contactUsMap-content">
+                            <p class="f-heading f-36 l-h-h m-b-60 color-heading f-bold">{{theme_settings.contact_us_title}}</p>
+        
+                            <div class="content">
+                                <div class="store-info m-b-20 m-b-16-tb">
+                                    <span class="text color-heading f-bold f-size-larger f-size-large-tb f-root-mb l-h-large l-h-extra-tb l-h-larger-mb">{{{theme_settings.contact_us_item1}}}</span>
+                                </div>
+                                <div class="store-info m-b-20 m-b-16-tb">
+                                    <span class="text color-secondary f-size-large f-root-tb f-size-small-mb l-h-large l-h-extra-tb l-h-larger-mb">{{{theme_settings.contact_us_item2}}}</span>
+                                </div>
+                                <div class="store-info m-b-20 m-b-16-tb">
+                                    <span class="text color-secondary f-size-large f-root-tb f-size-small-mb l-h-large l-h-extra-tb l-h-larger-mb">{{{theme_settings.contact_us_item3}}}</span>
+                                </div>
+                                <div class="store-info m-b-20 m-b-16-tb">
+                                    <span class="text color-secondary f-size-large f-root-tb f-size-small-mb l-h-large l-h-extra-tb l-h-larger-mb">{{{theme_settings.contact_us_item4}}}</span>
+                                </div>
+                                <div class="store-info m-0">
+                                    <span class="text color-secondary f-size-large f-root-tb f-size-small-mb l-h-large l-h-extra-tb l-h-larger-mb">{{{theme_settings.contact_us_item5}}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+
+    {{#if theme_settings.show_contact_us_faqs}}
+        <div class="contactFAQs halo-faqs-content p-100-0">
+            <div class="container container-1500">
+                <div class="contactFAQs-wrapper">
+                    <div class="item item-left w-100 b-r-16 m-b-32-tb d-inline-block v-a-middle">
+                        <p class="f-heading f-36 l-h-h m-b-32 m-b-tb color-heading f-bold">{{theme_settings.contact_us_faqs}}</p>
+                        <a href="{{theme_settings.contact_us_faqs_link}}" class="button button--tertiary f-semibold uppercase f-size-large f-root-tb f-size-tiny-mb button--large">{{theme_settings.contact_us_faqs_btn}}</a>
+                    </div>
+                    <div class="item item-right w-100 d-inline-block v-a-middle">
+                        <div class="contactFAQs-content">
+                            <div class="faqs-paragraph">
+                                <div id="accordion">
+                                    <div class="card bg-white b-r-6 m-b-20">
+                                        <div id="faqs-1-title" class="card-header"><button class="title color-heading f-size-large f-root-tb f-size-small-mb f-semibold" data-toggle="collapse" data-target="#faqs-1-content"><span>{{{theme_settings.contact_us_faqs_text1}}}</span></button> <span class="icon-plus">&nbsp;</span></div>
+                                        <div id="faqs-1-content" class="collapse" data-parent="#accordion">
+                                            <div class="card-body f-root f-size-small-tb f-size-tiny-mb l-h-extra">
+                                                <p>{{{theme_settings.contact_us_faqs_desc1}}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-white b-r-6 m-b-20">
+                                        <div id="faqs-2-title" class="card-header"><button class="title color-heading f-size-large f-root-tb f-size-small-mb f-semibold" data-toggle="collapse" data-target="#faqs-2-content"><span>{{{theme_settings.contact_us_faqs_text2}}}</span></button> <span class="icon-plus">&nbsp;</span></div>
+                                        <div id="faqs-2-content" class="collapse" data-parent="#accordion">
+                                            <div class="card-body f-root f-size-small-tb f-size-tiny-mb l-h-extra">
+                                                <p>{{{theme_settings.contact_us_faqs_desc2}}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-white b-r-6">
+                                        <div id="faqs-3-title" class="card-header"><button class="title color-heading f-size-large f-root-tb f-size-small-mb f-semibold" data-toggle="collapse" data-target="#faqs-3-content"><span>{{{theme_settings.contact_us_faqs_text3}}}</span></button> <span class="icon-plus">&nbsp;</span></div>
+                                        <div id="faqs-3-content" class="collapse" data-parent="#accordion">
+                                            <div class="card-body f-root f-size-small-tb f-size-tiny-mb l-h-extra">
+                                                <p class="italic">{{{theme_settings.contact_us_faqs_desc3}}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+{{/partial}}
+{{> layout/base}}

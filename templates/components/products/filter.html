@@ -1,0 +1,98 @@
+<div class="actionBar-wrapper d-flex a-i-center j-c-between">
+    <div class="actionBar-filter d-none-tb">
+        <ul class="filter-dropdown b-r-24">
+            <li class="filter-item pos-relative">
+                <a class="filter-action d-block has-dropdown"
+                    href="#"
+                    data-dropdown="viewAs"
+                    aria-controls="viewAs"
+                    aria-expanded="false"
+                >
+                    <span class="f-semibold d-none-xxl">{{lang 'categories.layout'}}</span>
+                    <span class="dropdown-label">{{#with theme_settings}}{{#if product_list_display_mode '==' 'list'}}{{lang 'categories.list_view'}}{{else if product_list_display_mode '==' 'grid2'}}{{lang 'categories.grid_view2'}}{{else if product_list_display_mode '==' 'grid3'}}{{lang 'categories.grid_view3'}}{{/if}}{{/with}}</span>
+                    <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down" /></svg>
+                </a>
+                <ul id="viewAs" class="dropdown-menu b-r-24" data-dropdown-content aria-hidden="true" tabindex="-1">
+                    <li class="dropdown-menu-item">
+                        <a class="btn-view grid-view{{#if theme_settings.product_list_display_mode '==' 'list'}} selected{{/if}} link-line" id="grid-view" data-index="1" aria-label="{{lang 'categories.list_view'}}" href="#">
+                            <span>{{lang 'categories.list_view'}}</span>
+                        </a>
+                    </li>
+                    <li class="dropdown-menu-item">
+                        <a class="btn-view grid-view{{#if theme_settings.product_list_display_mode '==' 'grid2'}} selected{{/if}} link-line" id="grid-view2" data-index="2" aria-label="{{lang 'categories.grid_view2'}}" href="#">
+                            <span>{{lang 'categories.grid_view2'}}</span>
+                        </a>
+                    </li> 
+                    <li class="dropdown-menu-item">
+                        <a class="btn-view grid-view{{#if theme_settings.product_list_display_mode '==' 'grid3'}} selected{{/if}} link-line" id="grid-view3" data-index="3" aria-label="{{lang 'categories.grid_view3'}}" href="#">
+                            <span>{{lang 'categories.grid_view3'}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="actionBar-filter">
+        <form class="actionBar d-none-tb" method="get" data-sort-by="product" data-show-products>
+            <ul class="filter-dropdown actionBar-dropdown b-r-24">
+                <li class="filter-item pos-relative">
+                    <a class="filter-action d-block has-dropdown"
+                        href="#"
+                        data-dropdown="limit"
+                        aria-controls="limit"
+                        aria-expanded="false"
+                    >
+                        <span class="f-semibold d-none-xxl">{{lang 'categories.product_per_page'}}</span>
+                        <span class="dropdown-label">{{theme_settings.categorypage_products_per_page}}</span>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down" /></svg>
+                    </a>
+                    <ul id="limit" class="dropdown-menu b-r-24" data-dropdown-content aria-hidden="true" tabindex="-1">
+                        <li class="dropdown-menu-item">
+                            <a class="btn-show-products{{#if theme_settings.categorypage_products_per_page '==' '9'}} selected{{/if}} link-line" data-index="1" data-value="9" aria-label="9" href="?limit=9">
+                                <span>9</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-menu-item">
+                            <a class="btn-show-products{{#if theme_settings.categorypage_products_per_page '==' '12'}} selected{{/if}} link-line" data-index="2" data-value="12" aria-label="12" href="?limit=12">
+                                <span>12</span>
+                            </a>
+                        </li> 
+                        <li class="dropdown-menu-item">
+                            <a class="btn-show-products{{#if theme_settings.categorypage_products_per_page '==' '15'}} selected{{/if}} link-line" data-index="3" data-value="15" aria-label="15" href="?limit=15">
+                                <span>15</span>
+                            </a>
+                        </li>   
+                        <li class="dropdown-menu-item">
+                            <a class="btn-show-products{{#if theme_settings.categorypage_products_per_page '==' '18'}} selected{{/if}} link-line" data-index="4" data-value="18" aria-label="18" href="?limit=18">
+                                <span>18</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-menu-item">
+                            <a class="btn-show-products{{#if theme_settings.categorypage_products_per_page '==' '21'}} selected{{/if}} link-line" data-index="5" data-value="21" aria-label="21" href="?limit=21">
+                                <span>21</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-menu-item">
+                            <a class="btn-show-products{{#if theme_settings.categorypage_products_per_page '==' '24'}} selected{{/if}} link-line" data-index="6" data-value="24" aria-label="24" href="?limit=24">
+                                <span>24</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-menu-item">
+                            <a class="btn-show-products{{#if theme_settings.categorypage_products_per_page '==' '27'}} selected{{/if}} link-line" data-index="7" data-value="27" aria-label="27" href="?limit=27">
+                                <span>27</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-menu-item">
+                            <a class="btn-show-products{{#if theme_settings.categorypage_products_per_page '==' '30'}} selected{{/if}} link-line" data-index="8" data-value="30" aria-label="30" href="?limit=30">
+                                <span>30</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </form>
+        <form class="actionBar" method="get" data-sort-by="product">
+            {{> components/category/sort-box sort=sort}}
+        </form>
+    </div>
+</div>

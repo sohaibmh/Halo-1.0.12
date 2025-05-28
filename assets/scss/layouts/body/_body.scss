@@ -1,0 +1,185 @@
+// =============================================================================
+// BODY (CSS)
+//
+// 1. Header is fixed on small screens, use the content body to create the whitespace
+//    between it and the header on all situations. If you change the spacing here,
+//    please update .heroCarousel too.
+//
+// =============================================================================
+
+html,
+body {
+    scroll-behavior: smooth;
+    padding: 0;
+}
+
+.body {
+    margin-bottom: 50px;
+    margin-top: 0;
+    line-height: 1.375;
+    letter-spacing: $letterSpacing-base;
+
+    .page-type-default &,
+    .page-type-product &,
+    .page-type-blog &,
+    .page-type-page &,
+    .page-type-page_contact_form & {
+        margin-bottom: 0;
+    }
+}
+
+.page {
+    @include grid-row($behavior: nest);
+    margin: 0;
+}
+
+.page-content,
+.page-content--full {
+    @include grid-column(12);
+    padding: 0
+}
+
+.page-region {
+    @include grid-column(12);
+    float: right;
+    width: 100%;
+
+    @include breakpoint("medium") {
+        width: 75%;
+    }
+}
+
+.page-content--centered {
+
+    @include breakpoint("medium") {
+        @include grid-column($columns: 8,
+            $center: true);
+    }
+}
+
+.page-content--textCenter {
+    text-align: center;
+}
+
+.page-sidebar {
+    padding: 0;
+    width: 100%;
+    float: left;
+    position: relative;
+    background-color: $body-bg;
+    
+    &.u-hidden {
+        ~.page-content {
+            padding: 0;
+            width: 100%;
+        }
+    }
+
+    .halo-sidebar-header {
+        .title {
+            padding: 8px;
+            border-bottom: none;
+        }
+    }
+
+    nav {
+        display: block;
+        width: 100%;
+        height: calc(100% - 60px);
+        overflow-x: hidden;
+
+        >div:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    .number {
+        @include square(24);
+        margin-left: 10px;
+    }
+
+    @include smin-m {
+        width: 270px;
+
+        .halo-sidebar-header {
+            display: none;
+        }
+
+        +.page-content {
+            padding-left: 10px;
+            width: calc(100% - 270px);
+        }
+    }
+
+    @include smin-xl {
+        +.page-content {
+            padding-left: 30px;
+        }
+    }
+
+    @include smin-xxl {
+        width: 370px;
+
+        +.page-content {
+            width: calc(100% - 370px);
+        }
+    }
+
+    @include smax-m {
+        position: fixed;
+        top: 0;
+        right: -101%;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 102;
+        max-width: 410px;
+        transition: $anchor-transition;
+
+        &.is-open {
+            .openSidebar & {
+                right: 0;
+            }
+        }
+
+        .haloCustomScrollbar {
+            padding: 30px 20px 20px;
+        }
+    }
+}
+
+.page-sidebar-mobile-wrapper {
+    display: inline-block;
+    position: relative;
+    margin: 0 0 20px 0;
+
+    .page-sidebar-mobile {
+        position: relative;
+        display: inline-block;
+        z-index: 2;
+        cursor: pointer;
+        pointer-events: auto;
+        border: 1px solid #a9a9a9;
+        padding: 8px 16px;
+
+        .text {
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-semibold;
+
+            .page-blog & {
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
+
+        .icon {
+            @include square(16);
+            margin-left: 15px;
+        }
+    }
+
+    @include smin-m {
+        display: none;
+        margin-bottom: 0;
+    }
+}

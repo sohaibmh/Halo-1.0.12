@@ -1,0 +1,96 @@
+<div class="halo-product-item{{#if product.can_purchase}} isChecked{{/if}}" data-product-id="{{product.id}}">
+    <div class="halo-product-content">
+        <form method="post" action="{{urls.cart}}" enctype="multipart/form-data">
+            <input type="hidden" name="action" value="add">
+            <input type="hidden" name="product_id" value="{{product.id}}">
+            <input type="hidden" name="qty[]" value="1">
+            <div class="halo-detail-field">
+                <input class="halo-detail-checkbox form-checkbox" type="checkbox" id="fbt_product{{product.id}}" {{#if product.can_purchase}}checked{{else}}disabled{{/if}}>
+                <label class="halo-detail-label form-label" for="fbt_product{{product.id}}">
+                    <div class="halo-product-image">
+                        {{> components/common/responsive-img
+                            image=product.main_image
+                            fallback_size=theme_settings.productgallery_size
+                            lazyload=theme_settings.lazyload_mode
+                            default_image=theme_settings.default_image_product
+                            class='w-100'
+                        }}
+                    </div>
+                    <div class="halo-product-details d-flex j-c-between">
+                        <div class="content-left left">
+                            <div class="halo-detail-name f-semibold">
+                                <a href="{{product.url}}" class="text color-heading">{{product.title}}</a>
+                            </div>
+                            <div class="halo-detail-price card-price"
+                                {{#if product.price.with_tax}}data-price-value="{{product.price.with_tax.value}}"{{/if}}
+                                {{#if product.price.without_tax}}data-price-value="{{product.price.without_tax.value}}"{{/if}}
+                                {{#if product.price.non_sale_price_with_tax}}data-price-sale-value="{{product.price.non_sale_price_with_tax.value}}"{{else if product.price.with_tax}}data-price-sale-value="{{product.price.with_tax.value}}"{{/if}}
+                                {{#if product.price.non_sale_price_without_tax}}data-price-sale-value="{{product.price.non_sale_price_without_tax.value}}"{{else if product.price.without_tax}}data-price-sale-value="{{product.price.without_tax.value}}"{{/if}}
+                            >
+                                {{#or customer (unless settings.hide_price_from_guests)}}
+                                    {{> components/products/price price=product.price}}
+                                {{else}}
+                                    {{> components/common/login-for-pricing}}
+                                {{/or}}
+                            </div>
+                            {{#all (if product.options) (if product.can_purchase)}}
+                                <a class="halo-toggle-options f-size-small" href="#">
+                                    <span class="text d-inline-block v-a-middle">{{lang 'products.choose_options'}}</span><svg class="icon d-inline-block v-a-middle"><use xlink:href="#icon-arrow-down"></use></svg>
+                                </a>
+                                <div class="halo-detail-options halo-productOptions halo-options o-h halo-fadeIn" data-fbt-option-change>
+                                    <div class="halo-option-header">
+                                        <span class="halo-option-title">{{lang 'products.choose_options'}}</span>
+                                        <a href="#" class="halo-option-close" aria-label="Close" role="button" data-halo-option-close>
+                                            <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+                                                <title>{{lang 'common.close'}}</title>
+                                                <desc>{{lang 'common.close'}}</desc>
+                                                <use xlink:href="#icon-close"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="halo-option-content haloCustomScrollbar">
+                                        {{#each product.options}}
+                                            {{{dynamicComponent 'components/halothemes/options'}}}
+                                        {{/each}}
+                                        <div class="productAttributes-message">
+                                            <p class="alertBox-message"></p>
+                                        </div>
+                                        <a href="#" class="halo-productOptions-save button button--primary m-t-20" aria-label="Close" role="button" data-halo-option-close><span>{{lang 'common.save'}}</span></a>
+                                    </div>
+                                </div>
+                            {{/all}}
+                            <div class="form-increment" data-quantity-fbt-change>
+                                <button class="button button--icon" data-action="dec">
+                                    <span class="is-srOnly">{{lang 'products.quantity_decrease' name=product.title}}</span>
+                                </button>
+                                <input class="form-input form-input--incrementTotal"
+                                        name="fbtqty[]"
+                                        type="tel"
+                                        value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+                                        data-quantity-min="{{product.min_purchase_quantity}}"
+                                        data-quantity-max="{{product.max_purchase_quantity}}"
+                                        min="1"
+                                        pattern="[0-9]*"
+                                        aria-live="polite"
+                                >
+                                <button class="button button--icon" data-action="inc">
+                                    <span class="is-srOnly">{{lang 'products.quantity_increase' name=product.title}}</span>
+                                </button>
+                            </div>
+                            {{#if product.out_of_stock}}
+                                {{#if product.out_of_stock_message}}
+                                    {{> components/common/alert/alert-error product.out_of_stock_message}}
+                                {{else}}
+                                    {{> components/common/alert/alert-error (lang 'products.sold_out')}}
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                        <div class="content-right right">
+                            <span class="status button button--primary">Selected</span>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<article class="blog halo-blog-item d-inline-block v-a-top">
+    <div class="halo-blog-wrapper bg-white b-r-12">
+        <div class="blog-post-figure m-b-20">
+            {{#if post.thumbnail}}
+                <figure class="blog-thumbnail m-0 o-h">
+                    <a class="halo-fadeZoom b-r-32" href="{{post.url}}">
+                        {{> components/common/responsive-img
+                            image=post.thumbnail
+                            fallback_size=theme_settings.blog_size
+                            lazyload=theme_settings.lazyload_mode
+                            class="w-100"
+                        }}
+                    </a>
+                </figure>
+            {{else}}
+                <figure class="blog-thumbnail m-0 o-h">
+                    <a class="halo-fadeZoom b-r-32" href="{{post.url}}">
+                        <img class="w-100" src="{{cdn 'img/placeholder-electronic.svg'}}" alt="{{post.title}}">
+                    </a>
+                </figure>
+            {{/if}}
+        </div>
+        <div class="blog-post-body">
+            <header class="blog-header">
+                <h5 class="title left m-b-16">
+                    <a class="color-heading" href="{{post.url}}">{{post.title}}</a>
+                </h5>
+            </header>
+            <p class="date f-root f-size-small-tb color-secondary left m-b-16">{{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}{{post.date_published}}</p>
+            <div class="blog-post">
+                {{#if post.body}}
+                    {{{post.body}}}
+                {{else}}
+                    <div class="summary f-root w-s-normal m-b-16">
+                        {{{post.summary}}} &hellip;
+                    </div>
+                    <a class="u-u u-p-u color-link" href="{{post.url}}">{{lang 'common.read_more'}}</a>
+                {{/if}}
+            </div>
+            {{#if show_tags}}
+                {{#if post.tags}}
+                    <ul class="tags">
+                        {{#each post.tags}}
+                            <li class="tag">
+                                <a href="{{url}}">#{{name}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
+            {{/if}}
+            {{> components/common/share url=post.url}}
+        </div>
+    </div>
+</article>

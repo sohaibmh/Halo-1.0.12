@@ -1,0 +1,160 @@
+// PRODUCT CAROUSEL
+// -----------------------------------------------------------------------------
+//
+// Purpose: Styles the product carousel component, which basically adds extras to the
+// vendor slick carousel, to specifically display product
+//
+// 1. If there's no JS layout the products out based on the grid.
+//
+// -----------------------------------------------------------------------------
+
+.productCarousel {
+    min-width: 100%;
+}
+
+.productCarousel-slide {
+    .card {
+        margin-bottom: 0;
+
+        .card-title {
+            overflow-wrap: break-word;
+        }
+    }
+}
+
+[data-per-view-des="4"],
+[data-per-view-des="3"],
+[data-per-view-des="2"] {
+    &:not(.swiper-initialized) {
+        display: block;
+        white-space: nowrap;
+        overflow: auto;
+        font-size: 0;
+        margin: 0 -5px;
+
+        .swiper-slide {
+            display: inline-block;
+            vertical-align: top;
+            overflow: hidden;
+            padding: 0 5px;
+        }
+
+        .content-wrapper {
+            white-space: normal;
+        }
+
+        @include smax-xs {
+            &[data-swiper-disable-mb="true"] {
+                white-space: normal;
+            }
+        }
+
+        @include smin-s{
+            margin: 0 -8px;
+    
+            .swiper-slide {
+                padding: 0 8px;
+            }
+        }
+    
+        @include smin-m {
+            margin: 0 -15px;
+    
+            .swiper-slide {
+                padding: 0 15px;
+            }
+        }
+    }
+}
+
+[data-per-view-des="5"] {
+    &:not(.swiper-initialized) {
+        .swiper-slide {
+            width: 20%;
+
+            &:nth-child(n+6) {
+                display: none;
+            }
+        }
+    }
+}
+
+[data-per-view-des="4"] {
+    &:not(.swiper-initialized) {
+        .swiper-slide {
+            width: 25%;
+
+            &:nth-child(n+5) {
+                display: none;
+            }
+        }
+    }
+}
+
+[data-per-view-des="3"] {
+    &:not(.swiper-initialized) {
+        .swiper-slide {
+            width: 33.3334%;
+
+            &:nth-child(n+4) {
+                display: none;
+            }
+
+            @include smax-xs {
+                width: 100%;
+            }
+        }
+    }
+}
+
+[data-per-view-des="2"] {
+    &:not(.swiper-initialized) {
+        .swiper-slide {
+            width: 50%;
+
+            &:nth-child(n+3) {
+                display: none;
+            }
+        }
+    }
+}
+
+@include smax-m {
+    [data-per-view-tab="3"] {
+        &:not(.swiper-initialized) {
+            .swiper-slide {
+                width: 33.3334%;
+    
+                &:nth-child(n+4) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    [data-per-view-tab="2"] {
+        &:not(.swiper-initialized) {
+            .swiper-slide {
+                width: 50%;
+    
+                &:nth-child(n+3) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@include smax-xs {
+    [data-per-view-mob="2"] {
+        &:not(.swiper-initialized) {
+            .swiper-slide {
+                width: 50%;
+    
+                &:nth-child(n+3) {
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{{#each product.custom_fields}}
+    {{#startsWith '__' name}}
+    {{else}}
+        <div class="productView-info-item">
+            <span class="productView-info-name {{chop name}}">{{name}}:</span>
+            <span class="productView-info-value {{chop name}}">{{{ sanitize value}}}</span>
+        </div>
+    {{/startsWith}}
+{{/each}}

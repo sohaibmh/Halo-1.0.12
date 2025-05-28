@@ -1,0 +1,43 @@
+{{#if theme_settings.prodRecentViewed}}
+    <div class="halo-block halo-block-product pos-relative arrow-custom-center-center c-b" id="halo-recent-viewed-products" data-limit="10" data-halo-load="animation">
+        <div class="container container-1600">
+            <div class="halo-block-header o-h">
+                <h2 class="title d-inline-block halo-fadeInUp">{{theme_settings.prodRecentViewed_title}}</h2>
+            </div>
+            <section class="productCarousel haloSwiper pos-relative o-h"
+                data-list-name="Recent Viewed Products"
+                data-per-view-mob="{{theme_settings.cardProd_colMob}}" 
+                data-per-view-tab="{{theme_settings.cardProd_colTab}}" 
+                data-per-view-des="{{theme_settings.cardProd_col}}" 
+                data-swiper-nav-des="true" 
+                data-swiper-nav-tab="true" 
+                data-swiper-pag-mob="true" 
+                data-swiper-space-des="30"
+            >
+                <div class="swiper-wrapper disable-srollbar">
+                </div>
+            </section>
+            <div class="swiper-button-prev arrow-custom">
+                <div class="icon-wrap pos-relative o-h d-flex j-c-center a-i-center w-100 h-100">
+                    <i class="icon-inner icon-fr w-100 h-100">
+                        <svg><use href="#icon-arrow-prev"></use></svg>
+                    </i>
+                    <i class="icon-inner icon-sec pos-absolute w-100 h-100">
+                        <svg><use href="#icon-arrow-prev"></use></svg>
+                    </i>
+                </div>
+            </div>
+            <div class="swiper-button-next arrow-custom">
+                <div class="icon-wrap pos-relative o-h d-flex j-c-center a-i-center w-100 h-100">
+                    <i class="icon-inner icon-fr w-100 h-100">
+                        <svg><use href="#icon-arrow-next"></use></svg>
+                    </i>
+                    <i class="icon-inner icon-sec pos-absolute w-100 h-100">
+                        <svg><use href="#icon-arrow-next"></use></svg>
+                    </i>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+{{/if}}

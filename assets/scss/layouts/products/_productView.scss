@@ -1,0 +1,75 @@
+// =============================================================================
+// PRODUCT VIEW (CSS)
+// =============================================================================
+
+
+// Product view layout
+// -----------------------------------------------------------------------------
+
+.productView {
+    @include grid-row($behavior: "nest");
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-right: 0;
+
+    @include smin-s {
+        display: block;
+    }
+
+    .modal & {
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+}
+
+.productView-images {
+    @include grid-column(12);
+    padding: 0 0 20px;
+    background-color: $color-white;
+    border-radius: 24px;
+
+    @include smin-s {
+        width: calc(50% - 16px);
+        margin-right: 16px;
+
+        .productView-images-wrapper {
+            max-width: 100%;
+            float: none;
+            overflow: hidden;
+        }
+    }
+
+    @include smin-m {
+        width: calc(50% - 25px);
+        margin-right: 25px;
+    }
+}
+
+.productView-details {
+    @include grid-column(12);
+    padding: 0;
+    max-width: 100%;
+
+    @include smin-xxl {
+        clear: right;
+        padding: 0 45px;
+    }
+
+    .productView--quickView & {
+        padding: 0
+    }
+}
+
+.productView-description {
+    @include grid-column(12);
+    padding: 30px 0;
+    position: relative;
+    z-index: 1;
+
+    @include smin-m {
+        padding: 60px 0 100px;
+    }
+}

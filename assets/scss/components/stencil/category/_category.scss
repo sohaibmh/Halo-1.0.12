@@ -1,0 +1,164 @@
+// =============================================================================
+// CATEGORY (CSS)
+// =============================================================================
+
+
+// Category header
+// -----------------------------------------------------------------------------
+
+[data-no-products-notification] {
+    outline: none;
+}
+
+.category-header-image {
+    width: 100%;
+}
+
+.breadcrumb-custom {
+    .breadcrumb .breadcrumb-label {
+        color: $header-color;
+    }
+
+    .breadcrumb {
+        &:not(:first-child):before {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="38" height="12" viewBox="0 0 38 12" fill="none"><path d="M-2.23233e-07 6.89302L34.4901 6.89302L30.5807 10.7163L31.8648 12L38 6L31.8648 5.14493e-07L30.5807 1.28372L34.4901 5.10698L-3.01304e-07 5.10698L-2.23233e-07 6.89302Z" fill="%23ffffff"/></svg>');
+            background-size: 24px;
+            background-repeat: no-repeat;
+        }
+    }
+
+    @include smax-m {
+        .page-type-category & {
+            .breadcrumb .breadcrumb-label {
+                color: $color-textBase;
+            }
+
+            .breadcrumb {
+                &:not(:first-child):before {
+                    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="38" height="12" viewBox="0 0 38 12" fill="none"><path d="M-2.23233e-07 6.89302L34.4901 6.89302L30.5807 10.7163L31.8648 12L38 6L31.8648 5.14493e-07L30.5807 1.28372L34.4901 5.10698L-3.01304e-07 5.10698L-2.23233e-07 6.89302Z" fill="%23000000"/></svg>');
+                    background-size: 24px;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
+}
+
+.page-header--wrapper {
+    min-height: 262px;
+
+    @include smin-s {
+        min-height: 329px;
+    }
+
+    @include smin-m {
+        min-height: 439px;
+    }
+}
+
+.page-header--banner {
+    margin-bottom: 30px;
+
+    @include smin-s {
+        margin-bottom: 40px;
+    }
+
+    @include smin-m {
+        margin-bottom: 60px;
+    }
+}
+
+.category-sub {
+    min-width: 300px;
+    padding: 20px 8px;
+
+    svg {
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        fill: $color-white;
+    }
+
+    .navList-action {
+        line-height: 1.4;
+
+        @include smin-m {
+            padding: 16px 20px;
+
+            &:hover {
+                color: $buttonStyle-primary-color;
+                background-color: $buttonStyle-primary-backgroundColor;
+            }
+        }
+    }
+
+    @include smin-m {
+        min-width: 300px;
+    }
+
+    @include smin-xxl {
+        min-width: 370px;
+    }
+}
+
+.category-image {
+    overflow-y: auto;
+
+    img {
+        min-height: 262px;
+        max-height: 262px;
+        object-fit: cover;
+    }
+
+    .content-wrapper {
+        max-height: 262px;
+        padding: 24px;
+
+        @include smin-m {
+            padding: 30px;
+        }
+    }
+
+    .content-right {
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .page-heading {
+        font-size: 26px;
+        margin-bottom: 17px;
+    }
+
+    @include smin-s {
+        img {
+            min-height: 329px;
+            max-height: 329px;
+        }
+
+        .content-wrapper {
+            max-height: 329px;
+        }
+    }
+
+    @include smin-m {
+        img {
+            min-height: 439px;
+            max-height: 439px;
+        }
+
+        .content-wrapper {
+            max-height: 439px;
+        }
+    }
+}
+
+.page-show-more-wrapper {
+    padding-top: 60px;
+
+    @include smax-xs {
+        .pagination-info {
+            margin-bottom: 15px;
+        }
+    }
+}

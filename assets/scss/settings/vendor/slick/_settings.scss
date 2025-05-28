@@ -1,0 +1,47 @@
+// Slick Carousel
+// -----------------------------------------------------------------------------
+//
+// Purpose: Settings for the vendor carousel, Slick
+//
+// -----------------------------------------------------------------------------
+
+$slick-font-path:                       "./fonts/";
+$slick-font-family:                     inherit;
+$slick-loader-path:                     null;
+$slick-arrow-slideshow-color:           "#abadaf";
+$slick-arrow-slideshow-color-hover:     "#ffffff";
+$slick-arrow-color:                     stencilColor("carousel-arrow-color");
+$slick-arrow-color-hover:               stencilColor("carousel-arrow-color--hover");
+$slick-arrow-bgColor:                   rgba(stencilColor("carousel-arrow-bgColor"), 0.9);
+$slick-arrow-borderColor:               stencilColor("carousel-arrow-borderColor");
+$slick-play-pause-button-color:         stencilColor("carousel-play-pause-button-textColor");
+$slick-play-pause-button-color-hover:   stencilColor("carousel-play-pause-button-textColor--hover");
+$slick-play-pause-button-bgColor:       rgba(stencilColor("carousel-play-pause-button-bgColor"), 0.9);
+$slick-play-pause-button-borderColor:   stencilColor("carousel-play-pause-button-borderColor");
+$slick-dot-color:                       stencilColor("carousel-dot-color");
+$slick-dot-color-active:                stencilColor("carousel-dot-color-active");
+$slick-dot-bgColor:                     rgba(stencilColor("carousel-dot-bgColor"), 0.9);
+$slick-prev-character:                  "";
+$slick-next-character:                  "";
+$slick-dot-character:                   "";
+$slick-dot-size:                        60px;
+$slick-opacity-default:                 1;
+$slick-opacity-on-hover:                0.8;
+$slick-opacity-not-active:              0.6;
+$slick-arrows-offset:                   -5px;
+
+
+// Stencil Additional Settings
+// -----------------------------------------------------------------------------
+//
+// Purpose: Additional settings for the slick plugin
+//
+// -----------------------------------------------------------------------------
+
+$carousel-bgColor:              stencilColor("carousel-bgColor");
+$carousel-description-color:    stencilColor("carousel-description-color");
+$carousel-title-color:          stencilColor("carousel-title-color");
+
+/* Vertical Carousel */
+$arrow-prev:       	url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none"><path d="M12.6729 20.9346L26.8163 34.6435C27.0523 34.8723 27.3658 35 27.6918 35C28.0179 35 28.3314 34.8723 28.5674 34.6435L28.5826 34.628C28.6974 34.517 28.7888 34.3835 28.8513 34.2355C28.9138 34.0875 28.946 33.9281 28.946 33.767C28.946 33.6059 28.9138 33.4465 28.8513 33.2985C28.7888 33.1505 28.6974 33.0169 28.5826 32.906L15.264 19.9974L28.5826 7.09402C28.6974 6.98307 28.7888 6.84953 28.8513 6.70151C28.9138 6.55349 28.946 6.3941 28.946 6.23302C28.946 6.07194 28.9138 5.91254 28.8513 5.76452C28.7888 5.6165 28.6974 5.48296 28.5826 5.37202L28.5674 5.35652C28.3314 5.12767 28.0179 5 27.6918 5C27.3658 5 27.0523 5.12767 26.8163 5.35652L12.6729 19.0654C12.5485 19.186 12.4495 19.331 12.3818 19.4916C12.3142 19.6523 12.2793 19.8252 12.2793 20C12.2793 20.1748 12.3142 20.3477 12.3818 20.5084C12.4495 20.669 12.5485 20.814 12.6729 20.9346Z" fill="black"/></svg>');
+$arrow-next:         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none"><path d="M28.5523 20.9346L14.409 34.6435C14.173 34.8723 13.8595 35 13.5334 35C13.2074 35 12.8939 34.8723 12.6579 34.6435L12.6427 34.628C12.5279 34.517 12.4364 34.3835 12.374 34.2355C12.3115 34.0875 12.2793 33.9281 12.2793 33.767C12.2793 33.6059 12.3115 33.4465 12.374 33.2985C12.4364 33.1505 12.5279 33.0169 12.6427 32.906L25.9612 19.9974L12.6427 7.09402C12.5279 6.98307 12.4364 6.84953 12.374 6.70151C12.3115 6.55349 12.2793 6.3941 12.2793 6.23302C12.2793 6.07194 12.3115 5.91254 12.374 5.76452C12.4364 5.6165 12.5279 5.48296 12.6427 5.37202L12.6579 5.35652C12.8939 5.12767 13.2074 5 13.5334 5C13.8595 5 14.173 5.12767 14.409 5.35652L28.5523 19.0654C28.6767 19.186 28.7758 19.331 28.8434 19.4916C28.9111 19.6523 28.946 19.8252 28.946 20C28.946 20.1748 28.9111 20.3477 28.8434 20.5084C28.7758 20.669 28.6767 20.814 28.5523 20.9346Z" fill="black"/></svg>');

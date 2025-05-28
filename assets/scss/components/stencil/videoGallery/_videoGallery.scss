@@ -1,0 +1,105 @@
+// =============================================================================
+// VIDEO GALLERY
+// =============================================================================
+
+.videoGallery-main {
+    @include flex-video-container();
+    margin-bottom: $videoGallery-spacing;
+    padding-top: 0; // 1
+}
+
+.videoGallery-list {
+    @include u-listBullets("none");
+    @include grid-row($behavior: "nest");
+    font-size: 0;
+}
+
+.videoGallery-item {
+    @include grid-column(12);
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+
+    @include breakpoint("medium") {
+        width: grid-calc(6, $total-columns);
+    }
+}
+
+.video {
+    @include media;
+    display: block;
+    margin-bottom: $videoGallery-spacing;
+    opacity: 0.4;
+    text-decoration: none;
+    transition: opacity 100ms ease-out;
+
+    @include breakpoint("medium") {
+        margin-bottom: $videoGallery-spacing;
+    }
+
+    &:hover,
+    &.is-active {
+        color: color("greys", "darker");
+        opacity: 1;
+    }
+}
+
+.video-figure {
+    margin-right: $videoGallery-spacing;
+}
+
+.video-title {
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: none;
+}
+
+.video-description {
+    font-size: fontSize("base");
+    margin-bottom: 0;
+}
+
+.halo_videoGallery {
+    .videoGallery-main {
+        margin-bottom: 15px;
+    }
+
+    .videoGallery-list {
+        text-align: center;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        margin: 0;
+        padding: 0 0 10px 0;
+
+        .videoGallery-item {
+            white-space: normal;
+            width: auto;
+            max-width: 180px;
+            padding: 0 15px 0 0;
+
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+
+        .video {
+            display: block;
+            margin-bottom: 0;
+
+            .video-figure,
+            .video-body {
+                float: none;
+                display: block;
+            }
+
+            .video-figure {
+                margin-right: 0;
+            }
+
+            .video-body {
+                display: none;
+            }
+        }
+    }
+}

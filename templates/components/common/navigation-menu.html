@@ -1,0 +1,26 @@
+<nav class="navPages">
+    <ul class="navPages-list{{#if theme_settings.haloMegamenu}} navPages-list-megamenu{{/if}}">
+        {{#if theme_settings.menu_home}}
+            <li class="navPages-item navPages-item-page">
+                <a class="navPages-action link-line{{#if page_type '==' 'default'}} activePage{{/if}} uppercase"
+                    href="/"
+                    aria-label="Home"
+                >
+                    <span>{{lang 'home.heading'}}</span>
+                </a>
+            </li>
+        {{/if}}
+        {{#each categories}}
+            <li class="navPages-item{{#if children}} has-dropdown{{/if}}">
+                {{> components/common/navigation-list}}
+            </li>
+        {{/each}}
+        {{#unless theme_settings.hide_content_navigation}}
+            {{#each pages}}
+                <li class="navPages-item navPages-item-page{{#if children}} has-dropdown{{/if}}{{#if name '==' ../page.title}} activePage{{/if}} {{id}}">
+                    {{> components/common/navigation-list id=(toLowerCase (dashcase name))}}
+                </li>
+            {{/each}}
+        {{/unless}}
+    </ul>
+</nav>

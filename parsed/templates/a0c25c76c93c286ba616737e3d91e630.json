@@ -1,0 +1,3 @@
+{
+  "components/halothemes/brand/halo-all-brands": "<ul class=\"brandList\" data-brands-list-next=\"{{pagination.brands.next}}\">\n    {{#each (sort brands)}}\n        <li class=\"brand\" data-brand-code=\"{{dashcase name}}\" data-brand-letter=\"{{limit (toLowerCase (dashcase name)) 1}}\">\n            <article class=\"brand-name\">\n                <h4 class=\"title\">\n                    <a class=\"link\" href=\"{{url}}\">{{name}}</a>\n                </h4>\n            </article>\n        </li>\n    {{/each}}\n</ul>\n"
+}

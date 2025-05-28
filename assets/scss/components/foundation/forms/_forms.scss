@@ -1,0 +1,62 @@
+// =============================================================================
+// FORMS (CSS)
+// =============================================================================
+
+
+// Select boxes
+// -----------------------------------------------------------------------------
+
+.form-select {
+    appearance: none;
+    background-image: $select-backgroundImage;
+    background-position: $select-backgroundPosition;
+    border-radius: $select-borderRadius;
+    padding: $select-padding;
+
+    &:hover {
+        border-color: $select-hover-borderColor;
+    }
+}
+
+
+// Form labels
+// -----------------------------------------------------------------------------
+
+.form-label {
+    font-size: $fontSize-root - 4;
+
+    small {
+        display: inline-block;
+        font-size: $fontSize-root - 2;
+        margin: 0 0 0 -3px;
+    }
+
+    @include smin-xs {
+        font-size: $fontSize-root - 2;
+
+        small {
+            font-size: $fontSize-root;
+        }
+    }
+
+    @include smin-m {
+        font-size: $fontSize-root;
+
+        small {
+            font-size: $fontSize-root + 2;
+            margin: 0 0 0 -5px;
+        }
+    }
+}
+
+
+// Form labels (inline small text)
+// -----------------------------------------------------------------------------
+
+.form-label--inlineSmall {
+    small {
+        color: $header-font-color;
+        float: none;
+        text-transform: none;
+    }
+}

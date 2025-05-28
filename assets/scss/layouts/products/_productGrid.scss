@@ -1,0 +1,316 @@
+// =============================================================================
+// PRODUCT GRID (CSS)
+// =============================================================================
+
+
+// Product grid view
+// -----------------------------------------------------------------------------
+//
+// 1. Re-set the font-size, as we're reducing it to 0 in the .products class.
+//
+// -----------------------------------------------------------------------------
+
+.productGrid {
+    @include u-listBullets("none");
+    @include grid-row($behavior: "nest");
+    font-size: 0; // 1
+    margin: 0 -5px;
+
+    .product {
+        @include grid-column(6, $float: none);
+        padding: 0 5px;
+        display: inline-block;
+        font-size: fontSize("base"); // 1
+        vertical-align: top;
+    }
+
+    @include smin-s{
+        margin: 0 -8px;
+
+        .product {
+            padding: 0 8px;
+        }
+    }
+
+    @include smin-m {
+        margin: 0 -15px;
+
+        .product {
+            padding: 0 15px;
+            width: grid-calc(3, $total-columns);
+        }
+    }
+}
+
+
+// Product when sidebar is present
+// -----------------------------------------------------------------------------
+//
+// 1. When the sidebar is visible, reduce products to 3 across.
+//
+// -----------------------------------------------------------------------------
+
+[data-layout="product-col1"] {
+    display: block;
+    margin: 0;
+    font-size: 0;
+    list-style: none;
+    text-align: left;
+
+    .product {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        padding: 0;
+        margin: 0 0 30px 0;
+        white-space: normal;
+    }
+
+    .card-figure {
+        .card-figcaption-bottom {
+            display: none;
+        }
+    }
+
+    .card-body {
+        .number-review {
+            top: 1px;
+        }
+    }
+
+    .card-link {
+        .card-img-container {
+            margin: 0 auto;
+            max-width: 100%;
+        }
+    }
+
+    .card-desc {
+        display: block;
+        margin: 0 0 8px;
+        color: $header-font-color;
+    }
+
+    @media (min-width: 551px) {
+        .card {
+            width: 100%;
+            display: table;
+        }
+
+        .card-figure {
+            display: table-cell;
+            vertical-align: top;
+            width: 250px;
+        }
+
+        .card-body {
+            display: table-cell;
+            vertical-align: top;
+            padding: 0 0 0 30px;
+            width: calc(100% - 250px);
+
+            .card-body-content {
+                padding-top: 0;
+            }
+        }
+    }
+
+    @include smin-s {
+        .card-body {
+            .card-body-button {
+                justify-content: flex-start;
+            }
+        }
+    }
+
+    @include smin-m {
+        .product {
+            margin-bottom: 10px;
+        }
+
+        .card {
+            .card-figure {
+                &:hover {
+                    .card-figure-action {
+                        opacity: 1;
+                        visibility: visible;
+                        pointer-events: auto;
+                    }
+                }
+            }
+        }
+
+        .card-figure {
+            width: 278px;
+
+            .card-figure-action {
+                position: absolute;
+                top: auto;
+                left: 0;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                z-index: 10;
+                transition: $anchor-transition;
+                width: 100%;
+            }
+
+            .card-quickview,
+            .card-compare {
+                flex: 0 0 50%;
+            }
+
+            .card-quickview {
+                +.card-compare {
+                    border-left: 1px solid #dfdcd5;
+                }
+            }
+        }
+
+        .card-body {
+            display: table-cell;
+            vertical-align: top;
+            padding-left: 30px;
+            padding-top: 0;
+            width: calc(100% - 278px);
+
+            .card-body-button {
+                margin-top: 28px;
+            }
+        }
+
+        .card-option {
+            .form-field {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+
+    @include smin-l {
+        .card-body {
+            padding: 24px 30px;
+        }
+    }
+
+    .product {
+        @include smin-s {
+            width: grid-calc(12, $total-columns);
+        }
+    }
+}
+
+[data-layout="product-col2"] {
+    .product {
+        @include smin-s {
+            width: grid-calc(6, $total-columns);
+        }
+    }
+}
+
+[data-layout="product-col3"] {
+    .product {
+        @include smin-m {
+            width: grid-calc(4, $total-columns);
+        }
+    }
+}
+
+[data-layout="product-col4"] {
+    .product {
+        @include smin-s {
+            width: grid-calc(3, $total-columns);
+        }
+    }
+}
+
+[data-layout="product-col5"] {
+    .product {
+        @include smin-s {
+            width: grid-calc(2, $total-columns - 2);
+        }
+    }
+}
+
+//
+// Product Grid with masonry layout
+//
+// Purpose: Display products in a masonry grid, with a display inline-block for
+// older browsers that don't support css multicolumn
+//
+// -----------------------------------------------------------------------------
+
+.productMasonry {
+    column-count: 2;
+    column-fill: auto;
+    column-gap: remCalc(20px);
+    margin: 0 0 spacing("single");
+    overflow: hidden;
+
+    @include breakpoint("small") {
+        column-count: 3;
+    }
+
+    @include breakpoint("medium") {
+        column-count: 4;
+    }
+
+    .product {
+        break-inside: avoid;
+        display: block;
+        margin-bottom: spacing("double");
+        padding: 0;
+        page-break-inside: avoid; // for firefox
+        width: 100%;
+    }
+
+    .card {
+        margin: 0;
+    }
+}
+
+
+// Product grid view variation
+// -----------------------------------------------------------------------------
+
+.productGrid--maxCol6 {
+    .no-csscolumns & {
+        .product {
+            @include breakpoint("medium") {
+                width: grid-calc(2, $total-columns);
+            }
+        }
+    }
+
+    .csscolumns & {
+        @include breakpoint("medium") {
+            column-count: 6;
+        }
+    }
+}
+
+.productGrid--maxCol3 {
+    .no-csscolumns & {
+        .product {
+            @include breakpoint("medium") {
+                width: grid-calc(4, $total-columns);
+            }
+        }
+    }
+
+    .csscolumns & {
+        @include breakpoint("medium") {
+            @include grid-column(12);
+
+            float: none;
+
+            .product {
+                @include grid-column(4, $float: none);
+            }
+        }
+    }
+}

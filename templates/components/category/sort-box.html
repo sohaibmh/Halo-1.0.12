@@ -1,0 +1,63 @@
+<ul class="filter-dropdown actionBar-dropdown b-r-24">
+    <li class="filter-item pos-relative">
+        <a class="filter-action d-block has-dropdown"
+            href="#"
+            data-dropdown="sort"
+            aria-controls="sort"
+            aria-expanded="false"
+        >
+            <span class="f-semibold d-none-xxl">{{lang 'common.sorter.sort_by'}}</span>
+            <span class="dropdown-label">{{#if sort '==' 'featured'}}{{lang 'common.sorter.featured'}}{{else if sort '==' 'newest'}}{{lang 'common.sorter.newest'}}{{else if sort '==' 'bestselling'}}{{lang 'common.sorter.top_sellers'}}{{else if sort '==' 'alphaasc'}}{{lang 'common.sorter.alpha_asc'}}{{else if sort '==' 'alphadesc'}}{{lang 'common.sorter.alpha_desc'}}{{else if sort '==' 'avgcustomerreview'}}{{lang 'common.sorter.reviews'}}{{else if sort '==' 'priceasc'}}{{lang 'common.sorter.price_asc'}}{{else if sort '==' 'pricedesc'}}{{lang 'common.sorter.price_desc'}}{{else if sort '==' 'relevance'}}{{lang 'common.sorter.relevance'}}{{/if}}</span>
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down" /></svg>
+        </a>
+        <ul id="sort" class="dropdown-menu b-r-24" data-dropdown-content aria-hidden="true" tabindex="-1">
+            <li class="dropdown-menu-item">
+                <a class="btn-show-products{{#if sort '==' 'featured'}} selected{{/if}} link-line" data-index="1" data-value="featured" aria-label="{{lang 'common.sorter.featured'}}" href="?sort=featured">
+                    <span>{{lang 'common.sorter.featured'}}</span>
+                </a>
+            </li>
+            <li class="dropdown-menu-item">
+                <a class="btn-show-products{{#if sort '==' 'newest'}} selected{{/if}} link-line" data-index="2" data-value="newest" aria-label="{{lang 'common.sorter.newest'}}" href="?sort=newest">
+                    <span>{{lang 'common.sorter.newest'}}</span>
+                </a>
+            </li> 
+            <li class="dropdown-menu-item">
+                <a class="btn-show-products{{#if sort '==' 'bestselling'}} selected{{/if}} link-line" data-index="3" data-value="bestselling" aria-label="{{lang 'common.sorter.top_sellers'}}" href="?sort=bestselling">
+                    <span>{{lang 'common.sorter.top_sellers'}}</span>
+                </a>
+            </li>   
+            <li class="dropdown-menu-item">
+                <a class="btn-show-products{{#if sort '==' 'alphaasc'}} selected{{/if}} link-line" data-index="4" data-value="alphaasc" aria-label="{{lang 'common.sorter.alpha_asc'}}" href="?sort=alphaasc">
+                    <span>{{lang 'common.sorter.alpha_asc'}}</span>
+                </a>
+            </li>
+            <li class="dropdown-menu-item">
+                <a class="btn-show-products{{#if sort '==' 'alphadesc'}} selected{{/if}} link-line" data-index="5" data-value="alphadesc" aria-label="{{lang 'common.sorter.alpha_desc'}}" href="?sort=alphadesc">
+                    <span>{{lang 'common.sorter.alpha_desc'}}</span>
+                </a>
+            </li>
+            <li class="dropdown-menu-item">
+                <a class="btn-show-products{{#if sort '==' 'avgcustomerreview'}} selected{{/if}} link-line" data-index="6" data-value="avgcustomerreview" aria-label="{{lang 'common.sorter.reviews'}}" href="?sort=avgcustomerreview">
+                    <span>{{lang 'common.sorter.reviews'}}</span>
+                </a>
+            </li>
+            <li class="dropdown-menu-item">
+                <a class="btn-show-products{{#if sort '==' 'priceasc'}} selected{{/if}} link-line" data-index="7" data-value="priceasc" aria-label="{{lang 'common.sorter.price_asc'}}" href="?sort=priceasc">
+                    <span>{{lang 'common.sorter.price_asc'}}</span>
+                </a>
+            </li>
+            <li class="dropdown-menu-item">
+                <a class="btn-show-products{{#if sort '==' 'pricedesc'}} selected{{/if}} link-line" data-index="8" data-value="pricedesc" aria-label="{{lang 'common.sorter.price_desc'}}" href="?sort=pricedesc">
+                    <span>{{lang 'common.sorter.price_desc'}}</span>
+                </a>
+            </li>
+            {{#if result_count}}
+                <li class="dropdown-menu-item">
+                    <a class="btn-show-products{{#if sort '==' 'relevance'}} selected{{/if}} link-line" data-index="9" data-value="9" aria-label="{{lang 'common.sorter.relevance'}}" href="?sort=relevance">
+                        <span>{{lang 'common.sorter.relevance'}}</span>
+                    </a>
+                </li>
+            {{/if}}
+        </ul>
+    </li>
+</ul>
