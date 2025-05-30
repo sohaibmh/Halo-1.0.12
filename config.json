@@ -38,11 +38,7 @@
   },
   "css_compiler": "scss",
   "autoprefixer_cascade": true,
-  "autoprefixer_browsers": [
-    "> 1%",
-    "last 2 versions",
-    "Firefox ESR"
-  ],
+  "autoprefixer_browsers": ["> 1%", "last 2 versions", "Firefox ESR"],
   "settings": {
     "hide_breadcrumbs": false,
     "hide_page_heading": false,
@@ -362,11 +358,7 @@
       "unionpay",
       "visa"
     ],
-    "supported_payment_methods": [
-      "card",
-      "paypal",
-      "bank"
-    ],
+    "supported_payment_methods": ["card", "paypal", "bank"],
     "lazyload_mode": "lazyload+lqip",
     "checkout-paymentbuttons-paypal-color": "black",
     "checkout-paymentbuttons-paypal-shape": "rect",
@@ -377,9 +369,7 @@
     "afterpay-button-color": "black-mint",
     "amazon-button-color": "Gold",
     "masterpass-button-color": "black",
-    "paymentbuttons-provider-sorting": [
-
-    ]
+    "paymentbuttons-provider-sorting": []
   },
   "read_only_files": [
     "/assets/scss/components/citadel",
@@ -413,12 +403,9 @@
           "sales_discounts",
           "large_catalog"
         ],
-        "industries": [
-          "electronics_computers"
-        ]
+        "industries": ["electronics_computers"]
       },
-      "images": {
-      },
+      "images": {},
       "settings": {
         "hide_breadcrumbs": false,
         "hide_page_heading": false,
@@ -461,7 +448,7 @@
         "show_product_weight": true,
         "show_product_dimensions": false,
         "show_product_swatch_names": true,
-        "product_list_display_mode": "grid3",
+        "product_list_display_mode": "list",
         "logo-position": "left",
         "logo_size": "145x40",
         "logo_fontSize": 28,
@@ -732,11 +719,7 @@
           "unionpay",
           "visa"
         ],
-        "supported_payment_methods": [
-          "card",
-          "paypal",
-          "bank"
-        ],
+        "supported_payment_methods": ["card", "paypal", "bank"],
         "lazyload_mode": "lazyload+lqip",
         "checkout-paymentbuttons-paypal-color": "black",
         "checkout-paymentbuttons-paypal-shape": "rect",
@@ -747,9 +730,7 @@
         "afterpay-button-color": "black-mint",
         "amazon-button-color": "Gold",
         "masterpass-button-color": "black",
-        "paymentbuttons-provider-sorting": [
-
-        ],
+        "paymentbuttons-provider-sorting": [],
         "global_color": "#a6c7e2",
         "global_bg": "#001B44",
         "header-textColor": "#ffffff",
